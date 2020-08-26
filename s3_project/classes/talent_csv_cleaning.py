@@ -22,7 +22,6 @@ class TalentCsv(ExtractFromS3):
             df['gender'] = df['gender'].apply(self.formatting_gender)
             df = df.drop(columns='id')
             df['dob'] = df['dob'].apply(self.dob_formatting)
-            print(df['dob'])
 
     def cleaning_phone_numbers(self, phone):
         # Takes a phone number as an argument, changes format to fit our requirements
