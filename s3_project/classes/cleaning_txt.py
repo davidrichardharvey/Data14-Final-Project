@@ -20,10 +20,11 @@ class TextFiles:
         self.results = []
         self.split_name_results()
         self.split_list = []
-        self.get_scores()
+        self.clean_scores_names()
         self.two_names_txt()
         self.final_list = []
         self.date_format()
+        self.df = ""
         self.to_dataframe()
 
     def iterate_txt(self):
@@ -45,7 +46,7 @@ class TextFiles:
                                     , 'psyc': person_split[psyc_index + 1].strip(','),
                                  'pres': person_split[psyc_index + 3].strip("',")})
 
-    def get_scores(self):
+    def clean_scores_names(self):
         # Splits the presentation and psychometric scores into score and max scores, also formats the name to title casing
         for item in self.results:
             psyc = item['psyc'].split('/')
@@ -76,7 +77,7 @@ class TextFiles:
                                        , 'presentation_max': item['presentation_max']})
 
     def to_dataframe(self):
-        df = pd.DataFrame(self.final_list)
-        return df
+        self.df = pd.DataFrame(self.final_list)
+        return self.df
 
 

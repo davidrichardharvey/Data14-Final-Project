@@ -5,7 +5,7 @@ test = TextFiles()
 
 
 def test_iterate_txt():
-    assert len(test.file_contents) == len(test.talent_txt_list)
+    assert len(test.file_contents) == len(test.files)
 
 
 def test_split_name_results():
@@ -33,7 +33,7 @@ def test_date_format():
 
 
 def test_to_dataframe():
-    assert len(test.dataframe.columns) == 8
-    assert len(test.dataframe) == len(test.final_list)
+    assert len(test.df.columns) == 8
+    assert len(test.df) == len(test.final_list)
 
 
