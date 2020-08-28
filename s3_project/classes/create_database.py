@@ -19,7 +19,7 @@ class ProjectDatabase:
         return self.cursor.execute(sql_query)
 
     def create_keyless_table(self, table_name, table_dict):
-        # Creates a table with no keys from {table_name, col1: [type, if null], col2: [type, if null]...}
+        # Creates a table with no keys from a dictionary containing the table dictionaries
         all_lines = []
         for column in table_dict:
             all_lines.append(f"{column} {table_dict[column][0]} {table_dict[column][1]}")
@@ -39,7 +39,7 @@ class ProjectDatabase:
 
 new = ProjectDatabase()
 new.create_keyless_table('Location', {
-                                    'LocationID': ['INT', 'NOT NULL'],
-                                    'LocationName': ['VARCHAR(25)', 'NOT NULL']
+                                    'LocationID': {'varaiable type': 'INT', 'if null': 'NOT NULL'},
+                                    'LocationName': {'varaiable type': 'VARCHAR(25)', 'if null': 'NOT NULL'}
                                      })
 
