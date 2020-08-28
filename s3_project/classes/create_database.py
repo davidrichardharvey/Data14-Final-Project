@@ -7,10 +7,10 @@ import json
 
 class ProjectDatabase:
     def __init__(self):
-        self.server = '35.179.41.219'
-        self.database = 'SpartaGlobal'
-        self.username = 'SA'
-        self.password = 'Passw0rd2018'
+        self.server = input('Password:\n')
+        self.database = input('Password:\n')
+        self.username = input('Password:\n')
+        self.password = input('Password:\n')
         self.connection_string = "DRIVER={SQL Server};"
         self.connection_string += f"SERVER={self.server};"
         self.connection_string += f"DATABASE={self.database};"
@@ -34,19 +34,19 @@ class ProjectDatabase:
             columns = schema.keys()
             for column in columns:
                 all_lines.append(f"{column} {schema[column]['variable type']} {schema[column]['if null']}")
-        query = f"""
-                USE SpartaGlobal
-                CREATE TABLE {table['Name']}
-                (
-                """
-        query += ',\n'.join(all_lines)
-        query += ');'
-        print(query)
+            query = f"""
+                    USE SpartaGlobal
+                    CREATE TABLE {table['Name']}
+                    (
+                    """
+            query += ',\n'.join(all_lines)
+            query += ');'
+            print(f"Creating Table: {table['Name']}")
         self._sql_query(query)
         self.sparta.commit()
 
     def get_schemas(self):
-        tables = find_variable('all_tables', 'TABLE SCHEMAS').split(',')
+        tables = find_variable('all_tables', 'TABLE SCHEMAS').split(', ')
         for table in tables:
             self.tables.append({'Name': table, 'Schema': ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))})
 
@@ -54,6 +54,7 @@ class ProjectDatabase:
         for table in self.tables:
             self.schemas.append(table['Schema'])
             create_table_schema(table, 'database_schema.json')
+
 
 new = ProjectDatabase()
 new.create_table_no_keys()
