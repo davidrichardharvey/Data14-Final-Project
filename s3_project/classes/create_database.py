@@ -7,9 +7,10 @@ import json
 
 class ProjectDatabase:
     def __init__(self):
-        self.server = input('Password:\n')
-        self.database = input('Password:\n')
-        self.username = input('Password:\n')
+
+        self.server = input('Server:\n')
+        self.database = input('Database:\n')
+        self.username = input('UsernameL\n')
         self.password = input('Password:\n')
         self.connection_string = "DRIVER={SQL Server};"
         self.connection_string += f"SERVER={self.server};"
