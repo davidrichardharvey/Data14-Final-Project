@@ -1,4 +1,3 @@
-import json
 import boto3
 import os
 import pandas as pd
@@ -19,6 +18,7 @@ class TextFiles:
         self.iterate_txt()
         self.results = []
         self.split_name_results()
+        self.apply_split_name()
         self.split_list = []
         self.clean_scores_names()
         self.two_names_txt()
@@ -41,10 +41,33 @@ class TextFiles:
             for person in split:
                 person_split = person.split()
                 psyc_index = person_split.index('Psychometrics:')
-                self.results.append({'first_name': str(person_split[0:psyc_index - 2]), 'last_name': person_split[psyc_index - 2]
+                self.results.append({'name': " ".join(person_split[0:psyc_index - 1]).title()
                                     , 'date': item["date"], 'location': item["location"]
                                     , 'psyc': person_split[psyc_index + 1].strip(','),
-                                 'pres': person_split[psyc_index + 3].strip("',")})
+                                      'pres': person_split[psyc_index + 3].strip("',")})
+
+    def apply_split_name(self):
+        for item in self.results:
+            name = item['name']
+            item['first_name'] = self.split_name(name)[0]
+            item['last_name'] = self.split_name(name)[1]
+            item.pop('name')
+
+    def split_name(self, name):
+        common_last_names = find_variable("common_last_names", "LAST NAMES")
+        split_name = name.title().split()
+        first_name = ''
+        last_name = ''
+        for name in split_name:
+            if name in common_last_names:
+                first_name = ' '.join(split_name[:split_name.index(name)])
+                last_name = ' '.join(split_name[split_name.index(name):])
+                return [first_name, last_name]
+            else:
+                first_name = ' '.join(split_name[:-1])
+                last_name = split_name[-1]
+        return [first_name, last_name]
+
 
     def clean_scores_names(self):
         # Splits the presentation and psychometric scores into score and max scores, also formats the name to title casing
@@ -53,9 +76,9 @@ class TextFiles:
             pres = item['pres'].split('/')
             name_filter = filter(lambda x: x.isalpha() or x.isspace(), item['first_name'])
             name_clean = "".join(name_filter)
-            self.split_list.append({'first_name': name_clean.title(), 'last_name': item['last_name'].title()
-                                       , 'date': item['date'], 'location': item['location'],
-                                    'psychometrics': int(psyc[0])
+
+            self.split_list.append({'first_name': name_clean.title(), 'last_name': item['last_name'].title().strip(']')
+                                       , 'date': item['date'], 'location': item['location'], 'psychometrics': int(psyc[0])
                                        , 'psychometric_max': int(psyc[1]), 'presentation': int(pres[0])
                                        , 'presentation_max': int(pres[1].strip("']").strip('"'))})
 
@@ -63,24 +86,24 @@ class TextFiles:
         # Append the 2 name names to a text file
         for name in self.split_list:
             if " " in list(name['first_name']):
-                with open(find_variable("talent_txt_issues", "ISSUE FILES"), "a") as text_file:
-                    text_file.writelines(f"{name['first_name']} {name['last_name']} in file: {name['date']} {name['location']}\n")
+                with open(find_variable("issues", "ISSUE FILES"), "a") as text_file:
+                    text_file.writelines(f"FileName: Sparta Day {' '.join(name['date'].split()[1:])}.txt   Name:{name['first_name']} {name['last_name']}" 
+                                          f"    Issue: Ambiguity in sorting names   How Resolved: Ambiguous names put in first name\n")
 
     def date_format(self):
         # Formats the date into YYYY/mm/dd format
         for item in self.split_list:
             date = datetime.strptime(item['date'], '%A %d %B %Y').strftime('%Y/%m/%d')
             self.final_list.append({'first_name': item['first_name'], 'last_name': item['last_name'], 'date': date
-                                       , 'location': item['location'], 'psychometrics': item['psychometrics']
-                                       , 'psychometric_max': item['psychometric_max'],
-                                    'presentation': item['presentation']
-                                       , 'presentation_max': item['presentation_max']})
+                                    ,'location': item['location'], 'psychometrics': item['psychometrics']
+                                    , 'psychometric_max': item['psychometric_max'],'presentation': item['presentation']
+                                    , 'presentation_max': item['presentation_max']}
 
     def to_dataframe(self):
         self.df = pd.DataFrame(self.final_list)
-        print(self.df)
+        return self.df
 
 
-txt_instance = TextFiles()
+talent_txt = TextFiles()
 
 

@@ -8,7 +8,7 @@ class ExtractFromS3:
         self.s3_client = boto3.client('s3')
         self.s3_resource = boto3.resource('s3')
         self.bucket_list = self.s3_client.list_buckets()
-        self.bucket_name = find_variable('bucket_name')
+        self.bucket_name = 'data14-engineering-project' # find_variable('bucket_name')
         self.bucket = self.s3_resource.Bucket(self.bucket_name)
         self.contents = self.bucket.objects.all()
         # Creating lists for storing separated file names
