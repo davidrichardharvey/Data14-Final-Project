@@ -1,6 +1,4 @@
 boto3
-os
 pandas
 pytest
 numpy
-datetime
