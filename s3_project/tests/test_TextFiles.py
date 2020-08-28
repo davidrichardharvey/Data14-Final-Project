@@ -24,6 +24,7 @@ def test_clean_scores_names():
         assert i['presentation'] <= 32
         assert i['first_name'] == i['first_name'].title()
         assert i['last_name'] == i['last_name'].title()
+        assert ']' not in i['last_name']
 
 
 def test_date_format():
@@ -32,8 +33,10 @@ def test_date_format():
         assert len(i['date']) == 10
 
 
+def test_two_names_txt():
+    assert os.path.isfile('./issues.txt') is True
+
+
 def test_to_dataframe():
     assert len(test.df.columns) == 8
     assert len(test.df) == len(test.final_list)
-
-

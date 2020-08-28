@@ -1,8 +1,6 @@
 import boto3
-import os
 import pandas as pd
 from datetime import datetime
-
 
 from s3_project.classes.extraction_class import import_files
 from s3_project.Config.config_manager import find_variable
@@ -42,9 +40,9 @@ class TextFiles:
                 person_split = person.split()
                 psyc_index = person_split.index('Psychometrics:')
                 self.results.append({'name': " ".join(person_split[0:psyc_index - 1]).title()
-                                    , 'date': item["date"], 'location': item["location"]
-                                    , 'psyc': person_split[psyc_index + 1].strip(','),
-                                      'pres': person_split[psyc_index + 3].strip("',")})
+                                        , 'date': item["date"], 'location': item["location"]
+                                        , 'psyc': person_split[psyc_index + 1].strip(','),
+                                     'pres': person_split[psyc_index + 3].strip("',")})
 
     def apply_split_name(self):
         for item in self.results:
@@ -68,7 +66,6 @@ class TextFiles:
                 last_name = split_name[-1]
         return [first_name, last_name]
 
-
     def clean_scores_names(self):
         # Splits the presentation and psychometric scores into score and max scores, also formats the name to title casing
         for item in self.results:
@@ -76,9 +73,9 @@ class TextFiles:
             pres = item['pres'].split('/')
             name_filter = filter(lambda x: x.isalpha() or x.isspace(), item['first_name'])
             name_clean = "".join(name_filter)
-
             self.split_list.append({'first_name': name_clean.title(), 'last_name': item['last_name'].title().strip(']')
-                                       , 'date': item['date'], 'location': item['location'], 'psychometrics': int(psyc[0])
+                                       , 'date': item['date'], 'location': item['location'],
+                                    'psychometrics': int(psyc[0])
                                        , 'psychometric_max': int(psyc[1]), 'presentation': int(pres[0])
                                        , 'presentation_max': int(pres[1].strip("']").strip('"'))})
 
@@ -87,17 +84,19 @@ class TextFiles:
         for name in self.split_list:
             if " " in list(name['first_name']):
                 with open(find_variable("issues", "ISSUE FILES"), "a") as text_file:
-                    text_file.writelines(f"FileName: Sparta Day {' '.join(name['date'].split()[1:])}.txt   Name:{name['first_name']} {name['last_name']}" 
-                                          f"    Issue: Ambiguity in sorting names   How Resolved: Ambiguous names put in first name\n")
+                    text_file.writelines(
+                        f"FileName: Sparta Day {' '.join(name['date'].split()[1:])}.txt   Name:{name['first_name']} {name['last_name']}"
+                        f"    Issue: Ambiguity in sorting names   How Resolved: Ambiguous names put in first name\n")
 
     def date_format(self):
         # Formats the date into YYYY/mm/dd format
         for item in self.split_list:
             date = datetime.strptime(item['date'], '%A %d %B %Y').strftime('%Y/%m/%d')
             self.final_list.append({'first_name': item['first_name'], 'last_name': item['last_name'], 'date': date
-                                    ,'location': item['location'], 'psychometrics': item['psychometrics']
-                                    , 'psychometric_max': item['psychometric_max'],'presentation': item['presentation']
-                                    , 'presentation_max': item['presentation_max']}
+                                       , 'location': item['location'], 'psychometrics': item['psychometrics']
+                                       , 'psychometric_max': item['psychometric_max'],
+                                    'presentation': item['presentation']
+                                       , 'presentation_max': item['presentation_max']})
 
     def to_dataframe(self):
         self.df = pd.DataFrame(self.final_list)
@@ -105,5 +104,3 @@ class TextFiles:
 
 
 talent_txt = TextFiles()
-
-
