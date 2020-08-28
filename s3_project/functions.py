@@ -1,10 +1,8 @@
 import json
 
 
-def create_table_schema(table_schema: dict, location: str = None):
-    if location:
-        file = f"{location}/{table_schema['Name']}_table.json"
-    else:
-        file = 'table_schema.json'
-    with open(file, 'a') as write_file:
-        json.dump(table_schema['Schema'], write_file)
+def create_table_schema(table: dict, file_name: str = None):
+    with open(file_name, 'w') as write_file:
+        json.dump("", write_file)
+    with open(file_name, 'a') as write_file:
+        json.dump(table['Schema'], write_file)
