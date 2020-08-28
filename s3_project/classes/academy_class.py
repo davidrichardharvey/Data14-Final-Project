@@ -23,7 +23,6 @@ class Academy:
         # Splits a name column into first and last names then adds it to the dataframe
         first_names = []
         last_names = []
-        common_last_names = find_variable('common_last_names', 'LAST NAMES')
         for index, row in df.iterrows():
             name_split = row[input_col].split()
             first_name, last_name = self.find_last_names(name_split)
