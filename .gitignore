@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Remove .idea
-.idea
+# .idea
+.idea/

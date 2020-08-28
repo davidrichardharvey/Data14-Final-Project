@@ -27,12 +27,27 @@ def test_date_format():
 test_date_format()
 
 
-# Tests if the values that can be converted to boolean are converted correctly
 def test_boolean_values():
-    assert testing.boolean_values(dict_1) == [True, False, True, True]
-    assert testing.boolean_values(dict_2) == [False, True, False, True]
-    assert testing.boolean_values(dict_3) == [True, True, True, True]
+    assert testing.boolean_values(dict_1['result']) == True
+    assert testing.boolean_values(dict_1['self_development']) == False
+    assert testing.boolean_values(dict_1['financial_support_self']) == True
+    assert testing.boolean_values(dict_1['geo_flex']) == True
+    assert testing.boolean_values(dict_2['result']) == False
+    assert testing.boolean_values(dict_2['self_development']) == True
+    assert testing.boolean_values(dict_2['financial_support_self']) == False
+    assert testing.boolean_values(dict_2['geo_flex']) == True
+    assert testing.boolean_values(dict_3['result']) == True
+    assert testing.boolean_values(dict_3['self_development']) == True
+    assert testing.boolean_values(dict_3['financial_support_self']) == True
+    assert testing.boolean_values(dict_3['geo_flex']) == True
 
 
 test_boolean_values()
-
+#
+# result_type = isinstance(bool(dict_1['result']), bool)
+# if result_type:
+#     print("Test passed")
+# else:
+#     print("Test failed")
+#
+# print(type(bool(dict_1['result'])))

@@ -1,5 +1,5 @@
 import boto3
-from s3_project.classes.ExtractionClass import ExtractFromS3
+from s3_project.classes.extraction_class import ExtractFromS3
 test = ExtractFromS3()
 
 def test_extraction():

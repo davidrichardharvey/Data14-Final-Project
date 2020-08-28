@@ -1,13 +1,22 @@
-from s3_project.classes.extraction_class import ExtractFromS3
 import json
+import boto3
+import os
 import pandas as pd
 from datetime import datetime
 
+# new_wd = os.getcwd()[:-19]
+# os.chdir(new_wd)
 
-class ApplicantInfoClean(ExtractFromS3):
+from s3_project.classes.extraction_class import import_files
+from s3_project.Config.config_manager import find_variable
+
+
+class ApplicantInfoClean:
 
     def __init__(self):
-        super().__init__()
+        self.s3_client = boto3.client('s3')
+        self.bucket_name = find_variable("bucket_name")
+        self.files = import_files.talent_json_list
         self.clean_files()
         self.df_talent_json = pd.DataFrame()
 
@@ -15,8 +24,7 @@ class ApplicantInfoClean(ExtractFromS3):
         # This method iterates through each file, and applies the cleaning methods to each file.
         # This method also appends the cleaned files to a dictionary.
         talent_json_list = []
-        instance = ExtractFromS3()
-        for file in instance.talent_json_list:
+        for file in self.files:
             s3_object = self.s3_client.get_object(Bucket=self.bucket_name, Key=file)
             body = s3_object['Body'].read()
             object_dict = json.loads(body)
@@ -49,7 +57,7 @@ class ApplicantInfoClean(ExtractFromS3):
 
     def append_file(self, file):
         # This method appends a text file.
-        with open("applicant_info_edgecases.txt", "a") as ai:
+        with open(find_variable("talent_json_issues", "ISSUE FILES"), "a") as ai:
             ai.writelines(f"{file}\n")
 
     def date_format(self, object_dict):
@@ -80,4 +88,5 @@ class ApplicantInfoClean(ExtractFromS3):
         df = pd.DataFrame(talent_json_list)
         return df
 
-juxhen = ApplicantInfoClean()
+
+talent_applicant_info = ApplicantInfoClean()

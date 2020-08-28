@@ -1,28 +1,33 @@
+import json
 import boto3
+import os
 import pandas as pd
-from s3_project.classes.ExtractionClass import ExtractFromS3
 from datetime import datetime
 
 
-class TextFiles(ExtractFromS3):
+from s3_project.classes.extraction_class import import_files
+from s3_project.Config.config_manager import find_variable
+
+
+class TextFiles:
 
     def __init__(self):
-        super().__init__()
+        self.s3_client = boto3.client('s3')
+        self.bucket_name = 'data14-engineering-project'
+        self.files = import_files.talent_txt_list
         self.file_contents = []
         self.iterate_txt()
         self.results = []
         self.split_name_results()
         self.split_list = []
-        self.clean_scores_names()
+        self.get_scores()
         self.two_names_txt()
         self.final_list = []
         self.date_format()
-        self.dataframe = ""
         self.to_dataframe()
 
     def iterate_txt(self):
-        # Gets the information from the body of the txt file
-        for i in self.talent_txt_list:
+        for i in self.files:
             s3_object = self.s3_client.get_object(Bucket=self.bucket_name, Key=i)
             body = s3_object['Body'].read()
             strbody = body.decode('utf-8').splitlines()
@@ -40,7 +45,7 @@ class TextFiles(ExtractFromS3):
                                     , 'psyc': person_split[psyc_index + 1].strip(','),
                                  'pres': person_split[psyc_index + 3].strip("',")})
 
-    def clean_scores_names(self):
+    def get_scores(self):
         # Splits the presentation and psychometric scores into score and max scores, also formats the name to title casing
         for item in self.results:
             psyc = item['psyc'].split('/')
@@ -57,9 +62,8 @@ class TextFiles(ExtractFromS3):
         # Append the 2 name names to a text file
         for name in self.split_list:
             if " " in list(name['first_name']):
-                with open('../../sparta_days_txt_2names.txt', "a") as text_file:
-                    text_file.writelines(
-                        f"{name['first_name']} {name['last_name']} in file: {name['date']}{name['location']}\n")
+                with open(find_variable("talent_txt_issues", "ISSUE FILES"), "a") as text_file:
+                    text_file.writelines(f"{name['first_name']} {name['last_name']} in file: {name['date']} {name['location']}\n")
 
     def date_format(self):
         # Formats the date into YYYY/mm/dd format
@@ -72,9 +76,7 @@ class TextFiles(ExtractFromS3):
                                        , 'presentation_max': item['presentation_max']})
 
     def to_dataframe(self):
-        # Turns dictionary into a dataframe
-        self.dataframe = pd.DataFrame(self.final_list)
-        print(self.dataframe)
+        df = pd.DataFrame(self.final_list)
+        return df
 
 
-trial = TextFiles()
