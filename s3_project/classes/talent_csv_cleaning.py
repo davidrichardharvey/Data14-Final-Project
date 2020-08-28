@@ -3,8 +3,6 @@ import boto3
 import os
 import pandas as pd
 from datetime import datetime
-
-
 from s3_project.classes.extraction_class import import_files
 from s3_project.Config.config_manager import find_variable
 
@@ -26,12 +24,13 @@ class TalentCsv:
             df = pd.read_csv(obj['Body'])
             print(f"Getting data from {index}")
             df = df.drop(columns='id')
+            for name in df['name']:
+                if len(self.splitting_first_names(name).split()) > 1:
+                    self.flag_name(name, index)
             for email in df['email']:
                 self.email_valid(email, index)
             df['first_name'] = df['name'].apply(self.splitting_first_names)
             df['last_name'] = df['name'].apply(self.splitting_last_names)
-            for name in df['first_name']:
-                self.flag_name(name, index)
             df['gender'] = df['gender'].apply(self.formatting_gender)
             df['dob'] = df['dob'].apply(self.dob_formatting)
             df['address'] = df['address'].apply(self.format_address)
