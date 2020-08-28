@@ -9,4 +9,3 @@ print(f"Talent Text Files Data Frame: {talent_txt.to_dataframe()}")
 print(f"Academy Data Frame: {academy_dataframe.cleaned_df}")
 print(f"Monthly Talent Data Frame: {monthly_talent_info.df_talent_csv}")
 
-
