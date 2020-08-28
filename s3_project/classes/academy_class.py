@@ -5,26 +5,12 @@ from s3_project.classes.extraction_class import import_files
 from s3_project.Config.config_manager import find_variable
 
 
-def find_last_name(name_split, common_last_names):
-    # Finds the part of the name that is the last name, taking suffixes and common last names into account
-    suffix = ""
-    if name_split[-1] in find_variable('common_suffixes', 'LAST NAMES'):
-        suffix = name_split.pop(-1)
-    starting_last_name = [len(name_split) - 1]
-    if len(name_split) >= 3:
-        for each_name in name_split:
-            if each_name.capitalize() in common_last_names:
-                starting_last_name.append(name_split.index(each_name))
-    first_name = name_split[:min(starting_last_name)]
-    last_name = name_split[min(starting_last_name):] + [suffix]
-    return [first_name, last_name]
-
-
 class Academy:
     def __init__(self):
         self.s3_client = boto3.client('s3')
         self.files = import_files.academy_csv_list
         self.issue_files = find_variable('issues', 'ISSUE FILES')
+        self.common_last_names = find_variable('common_last_names', 'LAST NAMES')
         self.cleaned_df = self.get_cleaned_df()
 
     def append_to_txt_file(self, name, file_name):
@@ -40,7 +26,7 @@ class Academy:
         common_last_names = find_variable('common_last_names', 'LAST NAMES')
         for index, row in df.iterrows():
             name_split = row[input_col].split()
-            first_name, last_name = find_last_name(name_split, common_last_names)
+            first_name, last_name = self.find_last_names(name_split)
             if len(first_name) >= 2:
                 self.append_to_txt_file(name_split, file_name)
             first_names.append(' '.join(first_name))
@@ -78,6 +64,20 @@ class Academy:
             df['course_start_date'] = file_name_split[2].split('.')[0].replace('-', '/')
             df_list.append(self.reformat_dataframe(df, file_name))
         return pd.concat(df_list)
+
+    def find_last_names(self, name_split):
+        # Finds the part of the name that is the last name, taking suffixes and common last names into account
+        suffix = ""
+        if name_split[-1] in find_variable('common_suffixes', 'LAST NAMES'):
+            suffix = name_split.pop(-1)
+        starting_last_name = [len(name_split) - 1]
+        if len(name_split) >= 3:
+            for each_name in name_split:
+                if each_name.capitalize() in self.common_last_names:
+                    starting_last_name.append(name_split.index(each_name))
+        first_name = name_split[:min(starting_last_name)]
+        last_name = name_split[min(starting_last_name):] + [suffix]
+        return [first_name, last_name]
 
 
 academy_dataframe = Academy()
