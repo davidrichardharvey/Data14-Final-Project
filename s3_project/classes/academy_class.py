@@ -66,6 +66,7 @@ class Academy:
         return pd.concat(df_list)
 
     def find_last_name(self, name_split, common_last_names):
+        # Finds the part of the name that is the last name, taking suffixes and common last names into account
         suffix = ""
         if name_split[-1] in find_variable('common_suffixes', 'LAST NAMES'):
             suffix = name_split.pop(-1)
