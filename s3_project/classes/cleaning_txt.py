@@ -78,6 +78,9 @@ class TextFiles:
 
     def to_dataframe(self):
         self.df = pd.DataFrame(self.final_list)
-        return self.df
+        print(self.df)
+
+
+txt_instance = TextFiles()
 
 
