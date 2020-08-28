@@ -7,6 +7,7 @@ from datetime import datetime
 from s3_project.classes.extraction_class import import_files
 from s3_project.Config.config_manager import find_variable
 
+
 def split_names(object_dict):
     # This method splits name into first_name and last_name,
     # if there's more than 2 names, every name but the last goes into the first_name column,
