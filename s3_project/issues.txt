@@ -1,0 +1,536 @@
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],   Name: somethinggmail.com,   Issue: Invalid email,    How Resolved: -
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],   Name: somethinggmail.com,   Issue: Invalid email,    How Resolved: -
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],   Name: somethinggmail.com,   Issue: Invalid email,    How Resolved: -
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],   Name: somethinggmail.com,   Issue: Invalid email,    How Resolved: -
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],   Name: somethinggmail.com,   Issue: Invalid email,    How Resolved: -
+Filename: [],   Name: John Van Doe,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],   Name: somethinggmail.com,   Issue: Invalid email,    How Resolved: -
+Filename: [],   Name: John Van Doe,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Jo Ann,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,   Name: Miof Mela,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,   Name: Colene Degli,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Zsa Zsa,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,   Name: Tony Erskine,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,   Name: Durant Dell,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,   Name: Lester Weddeburn -,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],   Name: somethinggmail.com,   Issue: Invalid email,    How Resolved: -
+Filename: [],   Name: John Van Doe,   Issue: Ambiguity in sorting names,    How Resolved: Ambiguous names put in first name
+Filename: [],  Name: John Jr Doe,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
