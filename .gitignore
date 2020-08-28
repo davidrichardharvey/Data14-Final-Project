@@ -128,5 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Remove .idea
-.idea
+# .idea
+.idea/
+
+# Private Config
+*private_config.ini

@@ -1,0 +1,1 @@
+""{"LocationID": {"variable type": "INT", "if null": "NOT NULL"}, "LocationName": {"variable type": "VARCHAR(25)", "if null": "NOT NULL"}}
