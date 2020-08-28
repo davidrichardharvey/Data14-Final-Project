@@ -8,26 +8,50 @@ from s3_project.classes.extraction_class import import_files
 from s3_project.Config.config_manager import find_variable
 
 
-def split_names(object_dict):
-    # This method splits name into first_name and last_name,
-    # if there's more than 2 names, every name but the last goes into the first_name column,
-    # and the ones with more than 2 names get appended to a text file.
-    name_list = object_dict['name'].split(' ')
-    if len(name_list) > 2:
-        object_dict['first_name'] = " ".join(name_list[:-1])
-        object_dict['last_name'] = name_list[-1]
-        object_dict.pop('name')
-    elif len(name_list) == 2:
-        object_dict['first_name'] = name_list[0]
-        object_dict['last_name'] = name_list[-1]
-        object_dict.pop('name')
-    return object_dict
+# This method splits name into first_name and last_name,
+# if there's more than 2 names, every name but the last goes into the first_name column,
+# and the ones with more than 2 names get appended to a text file.
+# def split_names(object_dict):
+#     name_list = object_dict['name'].split(' ')
+#     if len(name_list) > 2:
+#         object_dict['first_name'] = " ".join(name_list[:-1])
+#         object_dict['last_name'] = name_list[-1]
+#         object_dict.pop('name')
+#     elif len(name_list) == 2:
+#         object_dict['first_name'] = name_list[0]
+#         object_dict['last_name'] = name_list[-1]
+#         object_dict.pop('name')
+#     return object_dict
 
 
-def append_file(file):
-    # This method appends a text file.
-    with open(find_variable("issues", "ISSUE FILES"), "a") as ai:
-        ai.writelines(f"{file}\n")
+def apply_split_name(object_dict):
+        name = object_dict['name']
+        object_dict['first_name'] = split_name(name)[0]
+        object_dict['last_name'] = split_name(name)[1]
+        object_dict.pop('name')
+
+
+def split_name(name):
+    common_last_names = find_variable("common_last_names", "LAST NAMES")
+    split_name = name.title().split()
+    first_name = ''
+    last_name = ''
+    for name in split_name:
+        if name in common_last_names:
+            first_name = ' '.join(split_name[:split_name.index(name)])
+            last_name = ' '.join(split_name[split_name.index(name):])
+            return [first_name, last_name]
+        else:
+            first_name = ' '.join(split_name[:-1])
+            last_name = split_name[-1]
+    return [first_name, last_name]
+
+
+def append_file(file, object_dict):
+    # This method appends a text file the files with more than 2 names which are not names in the config file.
+    if " " in list(object_dict['first_name']):
+        with open(find_variable("issues", "ISSUE FILES"), "a") as ai:
+            ai.writelines(f"Filename is:{file}  first name: {object_dict['first_name']}  last name: {object_dict['last_name']}\n")
 
 
 def date_format(object_dict):
@@ -79,15 +103,15 @@ class ApplicantInfoClean:
             body = s3_object['Body'].read()
             object_dict = json.loads(body)
             if len(object_dict['name'].split(' ')) > 2:
-                append_file(file)
+                apply_split_name(object_dict)
+                append_file(file, object_dict)
             if 'tech_self_score' not in object_dict.keys():
                 object_dict['tech_self_score'] = 0
-            split_names(object_dict)
             date_format(object_dict)
             boolean_values(object_dict)
             talent_json_list.append(object_dict)
         self.df_talent_json = create_dataframe(talent_json_list)
-        return talent_json_list
+        return self.df_talent_json
 
 
 talent_applicant_info = ApplicantInfoClean()
