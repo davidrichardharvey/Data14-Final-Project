@@ -35,7 +35,7 @@ class JoinCleanData:
         unique_values[np.nan] = np.nan
         #print(unique_values)
         df[column_name] = df[column_name].map(unique_values.get)
-        return df, pd.DataFrame(primary_key_table, columns=['city'])
+        return df, pd.DataFrame(primary_key_table, columns=[column_name])
 
 
 
