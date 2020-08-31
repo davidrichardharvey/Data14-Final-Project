@@ -1,6 +1,5 @@
 import json
 import boto3
-import os
 import pandas as pd
 from datetime import datetime
 
@@ -69,8 +68,6 @@ def change_boolean(object_dict):
     object_dict['financial_support_self'] = boolean_values(object_dict['financial_support_self'])
     object_dict['geo_flex'] = boolean_values(object_dict['geo_flex'])
     return object_dict
-    # return [object_dict['result'], object_dict['self_development'], object_dict['financial_support_self'],
-    #         object_dict['geo_flex']]
 
 
 class ApplicantInfoClean:
