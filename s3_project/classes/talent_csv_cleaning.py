@@ -4,7 +4,6 @@ import os
 import pandas as pd
 from datetime import datetime
 
-
 from s3_project.classes.extraction_class import import_files
 from s3_project.Config.config_manager import find_variable
 
@@ -18,7 +17,7 @@ class TalentCsv:
         self.running_cleaner_methods()
 
     def running_cleaner_methods(self):
-        # Iterating through list of csv's, accessing the Body to enable cleaning
+        # Iterating through list of CSVs, accessing the body to enable cleaning
         for index in self.files:
             obj = import_files.s3_client.get_object(
                 Bucket=import_files.bucket_name,
@@ -41,9 +40,8 @@ class TalentCsv:
             df = self.concat_dates(df, 'invited_date', 'month')
             df['invited_by'] = df['invited_by'].apply(self.change_invited_by)
             df = df[['first_name', 'last_name', 'gender', 'dob', 'email', 'city', 'address', 'postcode', 'phone_number',
-                                                                        'uni', 'degree', 'invited_date', 'invited_by']]
+                     'uni', 'degree', 'invited_date', 'invited_by']]
             self.df_talent_csv = self.df_talent_csv.append(df, ignore_index=True)
-
 
     def cleaning_phone_numbers(self, phone):
         # Takes a phone number as an argument, changes format to fit our requirements
@@ -103,7 +101,7 @@ class TalentCsv:
             return date
 
     def concat_dates(self, df, day, month_year):
-        # This takes in a data-frame, with the name of two columns and returns the data-frame with a concatenated
+        # This takes in a data-frame, with the name of two columns and returns the dataframe with a concatenated
         # and formatted date
         df[day] = df[day].fillna(0)
         df[month_year] = df[month_year].fillna(0)
@@ -135,7 +133,6 @@ class TalentCsv:
                                   f"How Resolved: -\n")
                 return False
             return True
-
 
     def replace_degree(self, degree):
         # This method checks and converts the degree to the desired format

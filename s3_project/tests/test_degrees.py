@@ -1,7 +1,9 @@
 from s3_project.classes.talent_csv_cleaning import TalentCsv
 test = TalentCsv()
 
+
 def test_degrees():
+    # Check that the degree types are being reformatted appropriately
     assert test.replace_degree("1st") == "1"
     assert test.replace_degree("3rd") == "3"
     assert test.replace_degree("Pass") == "p"

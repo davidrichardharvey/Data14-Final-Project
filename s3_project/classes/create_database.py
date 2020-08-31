@@ -31,18 +31,22 @@ class ProjectDatabase:
         return self.cursor.execute(sql_query)
 
     def create_table_no_keys(self):
-        # Creates a table without any primary or foreign keys from a dictionary containing the table dictionaries
+        # Creates a table without any primary or foreign keys from the table dictionaries
         print(f"Creating Tables")
         for table in self.tables:
             all_lines = []
             schema = table['Schema']
             columns = schema.keys()
+
+            # Adds each line needed in the SQL query to a list
             for column in columns:
                 line = f"{column} {schema[column]['variable type']} {schema[column]['if null']}"
                 if 'PK' in schema[column].keys():
                     line = f"{line} {schema[column]['PK']}"
                 all_lines.append(line)
 
+            # Writes the query. If there is an issue making the table (e.g. it already exists in the database, it is
+            # added to a list and printed using a try-except clause. Adds the schema to a JSON file
             query = f"""
                     USE SpartaGlobal
                     CREATE TABLE {table['Name']}
@@ -63,12 +67,14 @@ class ProjectDatabase:
             print("Successfully created tables")
 
     def get_schemas(self):
+        # Looks up the schema for each of the tables in the config file
         print('Getting Schemas')
         tables = find_variable('all_tables', 'TABLE SCHEMAS').split(', ')
         for table in tables:
             self.tables.append({'Name': table, 'Schema': ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))})
 
     def create_jsons(self):
+        # Creates a JSON file specifying the schema for the tables
         for table in self.tables:
             self.schemas.append(table['Schema'])
             if table['Name'] not in self.existing_tables:
@@ -111,14 +117,14 @@ class ProjectDatabase:
             self.add_primary_keys(table)
             self.add_foreign_keys(table)
 
-        # Prints a message based on the number of issues involving assigning primary keys
+        # Prints a message stating any tables with an issue assigning primary keys
         if len(self.pk_issues) > 0:
             print(f"\nPrimary keys could not be added to these tables: {', '.join(self.pk_issues)}\n"
                   f"They may already have been assigned.\n")
         else:
             print("Successfully added primary keys to tables")
 
-        # Prints a message based on the number of issues involving assigning foreign keys
+        # Prints a message for the issues involving assigning foreign keys
         if len(self.pk_issues) > 1:
             print(f"\nForeign keys could not be added to these tables: {', '.join(self.fk_issues)}\n"
                   f"They may already have been assigned.\n")
