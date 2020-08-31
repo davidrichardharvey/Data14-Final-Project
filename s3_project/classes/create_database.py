@@ -66,4 +66,3 @@ class ProjectDatabase:
 
 
 new = ProjectDatabase()
-
