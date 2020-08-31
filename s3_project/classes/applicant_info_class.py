@@ -89,9 +89,11 @@ class ApplicantInfoClean:
             if len(object_dict['name'].split(' ')) > 2:
                 apply_split_name(object_dict)
                 append_file(file, object_dict)
-                print(f"{file} names being split")
+            else:
+                apply_split_name(object_dict)
             if 'tech_self_score' not in object_dict.keys():
                 object_dict['tech_self_score'] = 0
+            print(f"{file} is being cleaned")
             date_format(object_dict)
             boolean_values(object_dict)
             talent_json_list.append(object_dict)
