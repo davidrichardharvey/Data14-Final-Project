@@ -1,1 +1,0 @@
-""{"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "AUTO_INCREMENT"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}

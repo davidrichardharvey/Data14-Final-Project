@@ -20,15 +20,14 @@ class ProjectDatabase:
         self.cursor = self.sparta.cursor()
         self.tables = []
         self.schemas = []
+        self.existing_tables = []
         self.get_schemas()
-        self.create_jsons()
 
     def _sql_query(self, sql_query):
         return self.cursor.execute(sql_query)
 
     def create_table_no_keys(self):
         # Creates a table without any primary or foreign keys from a dictionary containing the table dictionaries
-        existing_tables = []
         for table in self.tables:
             all_lines = []
             schema = table['Schema']
@@ -47,10 +46,12 @@ class ProjectDatabase:
             try:
                 self.sparta.commit()
             except pyodbc.Error:
-                existing_tables.append(table['Name'])
-        if len(existing_tables) > 0:
-            print(f"\n\nThese tables could not be added: {', '.join(existing_tables)}"
+                self.existing_tables.append(table['Name'])
+        self.create_jsons()
+        if len(self.existing_tables) > 0:
+            print(f"\n\nThese tables could not be added: {', '.join(self.existing_tables)}"
                   f"\nThey may already exist in the database; please drop them before trying again")
+
 
     def get_schemas(self):
         print('Getting Schemas')
@@ -59,11 +60,13 @@ class ProjectDatabase:
             self.tables.append({'Name': table, 'Schema': ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))})
 
     def create_jsons(self):
-        print('Creating JSONs')
         for table in self.tables:
             self.schemas.append(table['Schema'])
-            create_table_schema(table, 'database_schema.json')
+            if table['Name'] not in self.existing_tables:
+                create_table_schema(table, 'database_schema.json')
+
+    def add_keys(self):
+        print('Assigning Table Keys')
 
 
 new = ProjectDatabase()
-print(new.tables)
