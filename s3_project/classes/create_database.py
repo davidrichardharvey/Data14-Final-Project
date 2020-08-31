@@ -29,8 +29,8 @@ class ProjectDatabase:
     def create_table_no_keys(self):
         # Creates a table without any primary or foreign keys from a dictionary containing the table dictionaries
         existing_tables = []
-        all_lines = []
         for table in self.tables:
+            all_lines = []
             schema = table['Schema']
             columns = schema.keys()
             for column in columns:
@@ -66,3 +66,4 @@ class ProjectDatabase:
 
 
 new = ProjectDatabase()
+print(new.tables)
