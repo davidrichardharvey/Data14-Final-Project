@@ -28,9 +28,9 @@ class ProjectDatabase:
 
     def create_table_no_keys(self):
         # Creates a table without any primary or foreign keys from a dictionary containing the table dictionaries
+        existing_tables = []
         all_lines = []
         for table in self.tables:
-            print(1)
             schema = table['Schema']
             columns = schema.keys()
             for column in columns:
@@ -43,8 +43,14 @@ class ProjectDatabase:
             query += ',\n'.join(all_lines)
             query += ');'
             print(f"Creating Table: {table['Name']}")
-        self._sql_query(query)
-        self.sparta.commit()
+            self._sql_query(query)
+            try:
+                self.sparta.commit()
+            except pyodbc.Error:
+                existing_tables.append(table['Name'])
+        if len(existing_tables) > 0:
+            print(f"\n\nThese tables could not be added: {', '.join(existing_tables)}"
+                  f"\nThey may already exist in the database; please drop them before trying again")
 
     def get_schemas(self):
         print('Getting Schemas')

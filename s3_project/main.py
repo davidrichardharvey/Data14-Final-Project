@@ -1,7 +1,3 @@
-import pandas as pd
-pd.set_option('display.max_rows', talent_txt.to_dataframe().shape[0]+1)
-
-
 # from s3_project.classes.cleaning_txt import talent_txt
 # from s3_project.classes.academy_class import academy_dataframe
 # from s3_project.classes.talent_csv_cleaning import monthly_talent_info
