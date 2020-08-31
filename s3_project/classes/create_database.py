@@ -24,6 +24,8 @@ class ProjectDatabase:
         self.pk_issues = []
         self.fk_issues = []
         self.get_schemas()
+        self.create_table_no_keys()
+        self.add_keys()
 
     def _sql_query(self, sql_query):
         return self.cursor.execute(sql_query)
@@ -88,6 +90,7 @@ class ProjectDatabase:
             self.pk_issues.append(table['Name'])
 
     def add_foreign_keys(self, table):
+        # Alters the tables to assign foreign keys
         for column in table['Schema']:
             column_details = table['Schema'][column]
             if 'FK' in column_details.keys():
