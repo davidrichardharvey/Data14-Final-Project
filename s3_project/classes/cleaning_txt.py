@@ -7,10 +7,9 @@ from s3_project.Config.config_manager import find_variable
 
 
 class TextFiles:
-
     def __init__(self):
         self.s3_client = boto3.client('s3')
-        self.bucket_name = 'data14-engineering-project'
+        self.bucket_name = find_variable('bucket_name')
         self.files = import_files.talent_txt_list
         self.file_contents = []
         self.iterate_txt()
@@ -26,6 +25,7 @@ class TextFiles:
         self.to_dataframe()
 
     def iterate_txt(self):
+        # Splits a text file by row and adds the information to a list
         for i in self.files:
             s3_object = self.s3_client.get_object(Bucket=self.bucket_name, Key=i)
             body = s3_object['Body'].read()
@@ -85,8 +85,9 @@ class TextFiles:
             if " " in list(name['first_name']):
                 with open(find_variable("issues", "ISSUE FILES"), "a") as text_file:
                     text_file.writelines(
-                        f"FileName: Sparta Day {' '.join(name['date'].split()[1:])}.txt   Name:{name['first_name']} {name['last_name']}"
-                        f"    Issue: Ambiguity in sorting names   How Resolved: Ambiguous names put in first name\n")
+                        f"FileName: Sparta Day {' '.join(name['date'].split()[1:])}.txt,  "
+                        f"Name:{name['first_name']} {name['last_name']},  "
+                        f"Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name\n")
 
     def date_format(self):
         # Formats the date into YYYY/mm/dd format
