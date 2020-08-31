@@ -7,4 +7,4 @@ def test_file_created():
     test_name = 'John Van Doe'
     file = []
     test.flag_name(test_name, file)
-    assert os.path.exists('C:/Users/sunny/Data14-Final-Project/s3_project/issues.txt')
+    assert os.path.exists('./issues.txt')

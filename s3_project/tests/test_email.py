@@ -13,4 +13,4 @@ def test_file_created():
     test_email = 'somethinggmail.com'
     file = []
     test.email_valid(test_email, file)
-    assert os.path.exists('C:/Users/sunny/Data14-Final-Project/s3_project/issues.txt')
+    assert os.path.exists('./issues.txt')

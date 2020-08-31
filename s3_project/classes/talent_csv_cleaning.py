@@ -29,12 +29,10 @@ class TalentCsv:
             for email in df['email']:
                 self.email_valid(email, index)
             for name in df['name']:
-                if len(splitting_first_names(name).split()) > 1:
+                if len(self.splitting_first_names(name).split()) > 1:
                     self.flag_name(name, index)
             df['first_name'] = df['name'].apply(self.splitting_first_names)
             df['last_name'] = df['name'].apply(self.splitting_last_names)
-            for name in df['first_name']:
-                self.flag_name(name, index)
             df['gender'] = df['gender'].apply(self.formatting_gender)
             df['dob'] = df['dob'].apply(self.dob_formatting)
             df['address'] = df['address'].apply(self.format_address)
@@ -66,9 +64,9 @@ class TalentCsv:
             name_split = name.title().split()
             common_last_names = find_variable('common_last_names', 'LAST NAMES')
             first_name = ''
-            for each in name_split:
-                if each.title() in common_last_names:
-                    first_name = ' '.join(name_split[:name_split.index(each.title())])
+            for name in name_split:
+                if name.title() in common_last_names and name_split.index(name) != 0:
+                    first_name = ' '.join(name_split[:name_split.index(name.title())])
                     return first_name
                 else:
                     first_name = ' '.join(name_split[:-1]).title()
@@ -80,9 +78,9 @@ class TalentCsv:
             common_last_names = find_variable('common_last_names', 'LAST NAMES')
             common_suffixes = find_variable('common_suffixes', 'LAST NAMES')
             last_name = ''
-            for each in name_split:
-                if each.title() in common_last_names:
-                    return ' '.join(name_split[name_split.index(each.title()):])
+            for name in name_split:
+                if name.title() in common_last_names and name_split.index(name) != 0:
+                    return ' '.join(name_split[name_split.index(name.title()):])
                 else:
                     last_name = name_split[-2:].title() if name_split[-1] in common_suffixes else name_split[-1]
             return last_name
@@ -120,7 +118,7 @@ class TalentCsv:
         # This flags the name if there are more than two first names
         if len(name.split(' ')) > 1:
             with open(find_variable('issues', "ISSUE FILES"), "a") as ai:
-                ai.writelines(f"Filename: {file},   Name: {name.title()},   Issue: Ambiguity in sorting names,    "
+                ai.writelines(f"Filename: {file},  Name: {name.title()},  Issue: Ambiguity in sorting names,  "
                               f"How Resolved: Ambiguous names put in first name\n")
 
     def format_address(self, address):
@@ -133,7 +131,7 @@ class TalentCsv:
         if type(email) is str:
             if '@' not in email:
                 with open(find_variable('issues', "ISSUE FILES"), "a") as ai:
-                    ai.writelines(f"Filename: {file},   Name: {email},   Issue: Invalid email,    "
+                    ai.writelines(f"Filename: {file},  Name: {email},  Issue: Invalid email,  "
                                   f"How Resolved: -\n")
                 return False
             return True
