@@ -43,3 +43,4 @@ def test_file_verify():
     # Test for a file in academy csv list
     for file in test.academy_csv_list:
         assert file.find("Business_20_2019-02-11.csv")
+

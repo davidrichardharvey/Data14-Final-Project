@@ -12,3 +12,4 @@ def test_phone_number():
 
     assert test_number.cleaning_phone_numbers("01234567890") == "+44 123 456 7890"
     assert test_number.cleaning_phone_numbers("01234567890") == "+44 123 456 7890"
+
