@@ -28,6 +28,9 @@ class TalentCsv:
             df = df.drop(columns='id')
             for email in df['email']:
                 self.email_valid(email, index)
+            for name in df['name']:
+                if len(splitting_first_names(name).split()) > 1:
+                    self.flag_name(name, index)
             df['first_name'] = df['name'].apply(self.splitting_first_names)
             df['last_name'] = df['name'].apply(self.splitting_last_names)
             for name in df['first_name']:
@@ -73,7 +76,7 @@ class TalentCsv:
 
     def splitting_last_names(self, name):
         if type(name) is str:
-            name_split = name.title().split()
+            name_split = name.replace('.', '').title().split()
             common_last_names = find_variable('common_last_names', 'LAST NAMES')
             common_suffixes = find_variable('common_suffixes', 'LAST NAMES')
             last_name = ''
@@ -82,7 +85,7 @@ class TalentCsv:
                     return ' '.join(name_split[name_split.index(each.title()):])
                 else:
                     last_name = name_split[-2:].title() if name_split[-1] in common_suffixes else name_split[-1]
-            return last_name.replace('.', '')
+            return last_name
 
     def formatting_gender(self, gender):
         # This assigns the gender to a single letter M or F
