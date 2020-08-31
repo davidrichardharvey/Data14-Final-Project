@@ -30,7 +30,7 @@ class TextFiles:
             body = s3_object['Body'].read()
             strbody = body.decode('utf-8').splitlines()
             self.file_contents.append({'date': strbody[0], 'location': strbody[1], 'results': strbody[3:]})
-            print(f"{i} is being cleaned")
+            print(f"Getting data from {i}")
 
 
     def split_name_results(self):
@@ -44,7 +44,6 @@ class TextFiles:
                                     , 'date': item["date"], 'location': item["location"]
                                     , 'psyc': person_split[psyc_index + 1].strip(','),
                                       'pres': person_split[psyc_index + 3].strip("',")})
-        #print("Cleaning - names are being split from the results")
 
     def apply_split_name(self):
         for item in self.results:
@@ -52,7 +51,6 @@ class TextFiles:
             item['first_name'] = self.split_name(name)[0]
             item['last_name'] = self.split_name(name)[1]
             item.pop('name')
-        #print("Cleaning - first and last names are being split")
 
     def split_name(self, name):
         common_last_names = find_variable("common_last_names", "LAST NAMES")
@@ -83,7 +81,6 @@ class TextFiles:
             item['psychometric_max'] = int(psyc[1])
             item['presentation'] = int(pres[0])
             item['presentation_max'] = int(pres[1].strip("']").strip('"'))
-        #print("Cleaning - scores are being split")
 
     def two_names_txt(self):
         # Append the 2 name names to a text file
@@ -99,12 +96,10 @@ class TextFiles:
         for item in self.results:
             date = datetime.strptime(item['date'], '%A %d %B %Y').strftime('%Y/%m/%d')
             item['date'] = date
-        #print("Cleaning - Dates are being formatted")
 
     def to_dataframe(self):
         # Turns dictionary into a dataframe
         self.df = pd.DataFrame(self.results)
         return self.df
-
 
 talent_txt = TextFiles()
