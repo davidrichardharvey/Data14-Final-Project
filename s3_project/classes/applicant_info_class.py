@@ -8,22 +8,6 @@ from s3_project.classes.extraction_class import import_files
 from s3_project.Config.config_manager import find_variable
 
 
-# This method splits name into first_name and last_name,
-# if there's more than 2 names, every name but the last goes into the first_name column,
-# and the ones with more than 2 names get appended to a text file.
-# def split_names(object_dict):
-#     name_list = object_dict['name'].split(' ')
-#     if len(name_list) > 2:
-#         object_dict['first_name'] = " ".join(name_list[:-1])
-#         object_dict['last_name'] = name_list[-1]
-#         object_dict.pop('name')
-#     elif len(name_list) == 2:
-#         object_dict['first_name'] = name_list[0]
-#         object_dict['last_name'] = name_list[-1]
-#         object_dict.pop('name')
-#     return object_dict
-
-
 def apply_split_name(object_dict):
         name = object_dict['name']
         object_dict['first_name'] = split_name(name)[0]

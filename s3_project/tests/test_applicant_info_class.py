@@ -1,4 +1,4 @@
-from s3_project.classes.applicant_info_class import split_names
+from s3_project.classes.applicant_info_class import split_name
 from s3_project.classes.applicant_info_class import date_format
 from s3_project.classes.applicant_info_class import boolean_values
 from s3_project.classes.applicant_info_class import change_boolean
@@ -12,11 +12,11 @@ dict_3 = {'name': 'Harry James Daniel Peter', 'date': '12//08//2012', 'result': 
 
 # Tests that the names are split up correctly
 def test_split_names():
-    split_names(dict_1)
-    split_names(dict_2)
-    split_names(dict_3)
+    split_name(dict_1)
+    split_name(dict_2)
+    split_name(dict_3)
     assert dict_1['first_name'] == 'Shaun'
-    assert dict_2['first_name'] == 'Vincent van'
+    assert dict_2['last_name'] == 'van Goph'
     assert dict_3['last_name'] == 'Peter'
 
 # Tests if the dates are in the correct format
