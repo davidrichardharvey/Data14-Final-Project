@@ -19,23 +19,25 @@ class TextFiles:
         self.results = []
         self.split_name_results()
         self.apply_split_name()
-        self.split_list = []
         self.get_scores()
         self.two_names_txt()
-        self.final_list = []
         self.date_format()
+        self.df = ""
         self.to_dataframe()
 
-    #Gets the information from the body of the txt file
+
     def iterate_txt(self):
+        # Gets the information from the body of the txt file
         for i in self.files:
             s3_object = self.s3_client.get_object(Bucket=self.bucket_name, Key=i)
             body = s3_object['Body'].read()
             strbody = body.decode('utf-8').splitlines()
             self.file_contents.append({'date': strbody[0], 'location': strbody[1], 'results': strbody[3:]})
+            print(f"{i} is being cleaned")
 
-    # splits the name and results string to first_name, last_name, psychometric, presentation
+
     def split_name_results(self):
+        # Splits the name and results string to first_name, last_name, psychometric, presentation
         for item in self.file_contents:
             split = str(item['results']).split("',")
             for person in split:
@@ -45,7 +47,7 @@ class TextFiles:
                                     , 'date': item["date"], 'location': item["location"]
                                     , 'psyc': person_split[psyc_index + 1].strip(','),
                                       'pres': person_split[psyc_index + 3].strip("',")})
-        print(self.results)
+        #print("Cleaning - names are being split from the results")
 
     def apply_split_name(self):
         for item in self.results:
@@ -53,6 +55,7 @@ class TextFiles:
             item['first_name'] = self.split_name(name)[0]
             item['last_name'] = self.split_name(name)[1]
             item.pop('name')
+        #print("Cleaning - first and last names are being split")
 
     def split_name(self, name):
         common_last_names = find_variable("common_last_names", "LAST NAMES")
@@ -70,40 +73,47 @@ class TextFiles:
         return [first_name, last_name]
 
 
-    # splits the presentation and psychometric scores into score and max scores, also formats the name to title casing
+
     def get_scores(self):
+        # Splits the presentation and psychometric scores into score and max scores, also formats the name to title casing
         for item in self.results:
             psyc = item['psyc'].split('/')
             pres = item['pres'].split('/')
             name_filter = filter(lambda x: x.isalpha() or x.isspace(), item['first_name'])
             name_clean = "".join(name_filter)
-            self.split_list.append({'first_name': name_clean.title(), 'last_name': item['last_name'].title().strip(']')
-                                       , 'date': item['date'], 'location': item['location'], 'psychometrics': int(psyc[0])
-                                       , 'psychometric_max': int(psyc[1]), 'presentation': int(pres[0])
-                                       , 'presentation_max': int(pres[1].strip("']").strip('"'))})
+            item.pop('pres')
+            item.pop('psyc')
+            item['first_name'] = name_clean.title()
+            item['psychometric'] = int(psyc[0])
+            item['psychometric_max'] = int(psyc[1])
+            item['presentation'] = int(pres[0])
+            item['presentation_max'] = int(pres[1].strip("']").strip('"'))
+        #print("Cleaning - scores are being split")
 
-    # append the 2 name names to a text file
+
     def two_names_txt(self):
-        for name in self.split_list:
+        # Append the 2 name names to a text file
+        for name in self.results:
             if " " in list(name['first_name']):
                 with open(find_variable("issues", "ISSUE FILES"), "a") as text_file:
                     text_file.writelines(f"FileName: Sparta Day {' '.join(name['date'].split()[1:])}.txt   Name:{name['first_name']} {name['last_name']}" 
                                           f"    Issue: Ambiguity in sorting names   How Resolved: Ambiguous names put in first name\n")
 
-    # formats the date into YYYY/mm/dd format
-    def date_format(self):
-        for item in self.split_list:
-            date = datetime.strptime(item['date'], '%A %d %B %Y').strftime('%Y/%m/%d')
-            self.final_list.append({'first_name': item['first_name'], 'last_name': item['last_name'], 'date': date
-                                    ,'location': item['location'], 'psychometrics': item['psychometrics']
-                                    , 'psychometric_max': item['psychometric_max'],'presentation': item['presentation']
-                                    , 'presentation_max': item['presentation_max']})
-        #print(self.final_list)
 
-    # turns dictionary into a dataframe
+    def date_format(self):
+        # Formats the date into YYYY/mm/dd format
+        for item in self.results:
+            date = datetime.strptime(item['date'], '%A %d %B %Y').strftime('%Y/%m/%d')
+            item['date'] = date
+        #print("Cleaning - Dates are being formatted")
+
+
+
+
     def to_dataframe(self):
-        df = pd.DataFrame(self.final_list)
-        return df
+        # Turns dictionary into a dataframe
+        self.df = pd.DataFrame(self.results)
+        return self.df
 
 
 talent_txt = TextFiles()
