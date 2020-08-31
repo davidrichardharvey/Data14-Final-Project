@@ -21,6 +21,7 @@ class ExtractFromS3:
 
     def get_data(self):
         # Method to separate objects into lists in preparation for cleaning
+        print("Importing files from S3")
         for obj in self.contents:  # Iterating through each object in each bucket
             object_key = obj.key
             if object_key.startswith('Talent'):
