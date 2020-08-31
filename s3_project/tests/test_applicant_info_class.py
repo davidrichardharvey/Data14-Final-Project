@@ -5,7 +5,7 @@ from s3_project.classes.applicant_info_class import change_boolean
 from s3_project.classes.applicant_info_class import create_dataframe
 dict_1 = {'name': 'Shaun Blake', 'date': '01/02/2019', 'result': 'Pass', 'self_development': 'No',
           'financial_support_self': 'Yes', 'geo_flex': 'Yes'}
-dict_2 = {'name': 'Vincent van Goph', 'date': '23//01/2020', 'result': 'Fail', 'self_development': 'Yes',
+dict_2 = {'name': 'Vincent Van Goph', 'date': '23//01/2020', 'result': 'Fail', 'self_development': 'Yes',
           'financial_support_self': 'No', 'geo_flex': 'Yes'}
 dict_3 = {'name': 'Harry James Daniel Peter', 'date': '12//08//2012', 'result': 'Pass', 'self_development': 'Yes',
           'financial_support_self': 'Yes', 'geo_flex': 'Yes'}
@@ -16,7 +16,7 @@ def test_split_names():
     split_name(dict_2)
     split_name(dict_3)
     assert dict_1['first_name'] == 'Shaun'
-    assert dict_2['last_name'] == 'van Goph'
+    assert dict_2['last_name'] == 'Van Goph'
     assert dict_3['last_name'] == 'Peter'
 
 # Tests if the dates are in the correct format

@@ -35,7 +35,7 @@ def append_file(file, object_dict):
     # This method appends a text file the files with more than 2 names which are not names in the config file.
     if " " in list(object_dict['first_name']):
         with open(find_variable("issues", "ISSUE FILES"), "a") as ai:
-            ai.writelines(f"Filename is:{file}  first name: {object_dict['first_name']}  last name: {object_dict['last_name']}\n")
+            ai.writelines(f"Filename is: {file}  first name: {object_dict['first_name']}  last name: {object_dict['last_name']} date: {object_dict['date']}\n")
 
 
 def date_format(object_dict):
@@ -89,6 +89,7 @@ class ApplicantInfoClean:
             if len(object_dict['name'].split(' ')) > 2:
                 apply_split_name(object_dict)
                 append_file(file, object_dict)
+                print(f"{file} names being split")
             if 'tech_self_score' not in object_dict.keys():
                 object_dict['tech_self_score'] = 0
             date_format(object_dict)
