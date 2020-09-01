@@ -129,7 +129,8 @@ dmypy.json
 .pyre/
 
 # .idea
-.idea/
+.idea
 
 # Private Config
 *private_config.ini
+

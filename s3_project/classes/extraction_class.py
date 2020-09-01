@@ -11,6 +11,7 @@ class ExtractFromS3:
         self.bucket_name = find_variable('bucket_name')
         self.bucket = self.s3_resource.Bucket(self.bucket_name)
         self.contents = self.bucket.objects.all()
+
         # Creating lists for storing separated file names
         self.academy_csv_list = []
         self.talent_csv_list = []
@@ -20,17 +21,18 @@ class ExtractFromS3:
 
     def get_data(self):
         # Method to separate objects into lists in preparation for cleaning
+        print("Importing files from S3")
         for obj in self.contents:  # Iterating through each object in each bucket
             object_key = obj.key
             if object_key.startswith('Talent'):
-                if object_key.endswith('.csv'):  # To retrieve csv files in the Talent bucket
+                if object_key.endswith('.csv'):  # To retrieve csv files in the Talent folder
                     self.talent_csv_list.append(object_key)
-                elif object_key.endswith('.json'):  # To retrieve json files in the Talent bucket
+                elif object_key.endswith('.json'):  # To retrieve json files in the Talent folder
                     self.talent_json_list.append(object_key)
-                elif object_key.endswith('.txt'):  # To retrieve txt files in the Talent bucket
+                elif object_key.endswith('.txt'):  # To retrieve txt files in the Talent folder
                     self.talent_txt_list.append(object_key)
             elif object_key.startswith('Academy'):
-                if object_key.endswith('.csv'):  # To retrieve csv files in the Academy bucket
+                if object_key.endswith('.csv'):  # To retrieve csv files in the Academy folder
                     self.academy_csv_list.append(object_key)
 
 
