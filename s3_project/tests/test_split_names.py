@@ -1,19 +1,19 @@
 from s3_project.classes.academy_class import Academy
 import pandas as pd
-import os
 
 test = Academy()
 
 
 def test_split_names():
     # Create a test dataframe to run through the method
-    d = {'input_col': ['Vikram Lennon', 'Cadi Ryder', 'Bianca Oneil', 'Brenden Romero',
+    data = {'input_col': ['Vikram Lennon', 'Cadi Ryder', 'Bianca Oneil', 'Brenden Romero',
                        'Elyse Rivers', 'Jolyon Gross', 'John Jr Doe']}
-    df = pd.DataFrame(data=d)
+    df = pd.DataFrame(data)
     file_name = []
+
     # Run df through the method
     df = test.split_names('input_col', 'f_name_column_name', 'l_name_column_name', df, file_name)
-    print(df)
+
     # Create an expected dataframe to match the test dataframe to
     expected_d = {'input_col': ['Vikram Lennon', 'Cadi Ryder', 'Bianca Oneil', 'Brenden Romero',
                                 'Elyse Rivers', 'Jolyon Gross', 'John Jr Doe'],

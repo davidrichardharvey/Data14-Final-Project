@@ -22,7 +22,6 @@ class Academy:
         # Splits a name column into first and last names then adds it to the dataframe
         first_names = []
         last_names = []
-        common_last_names = find_variable('common_last_names', 'LAST NAMES').split(',')
         for index, row in df.iterrows():
             name_split = row[input_col].split()
             first_name, last_name = self.find_last_names(name_split)
@@ -50,12 +49,12 @@ class Academy:
         return df
 
     def get_cleaned_df(self):
-        # Iterates through the file names and adds their re-formated data to a dataframe
+        # Iterates through the file names and adds their re-formatted data to a dataframe
         df_list = []
         for file_name in self.files:
             print(f"Getting data from {file_name}")
             s3_object = self.s3_client.get_object(
-                Bucket='data14-engineering-project',
+                Bucket=find_variable('bucket_name'),
                 Key=file_name)
             df = pd.read_csv(s3_object['Body'])
             file_name_split = file_name.split('_')

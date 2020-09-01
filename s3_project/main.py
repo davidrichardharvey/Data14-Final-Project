@@ -4,18 +4,10 @@ from s3_project.classes.academy_class import academy_dataframe
 # from s3_project.classes.applicant_info_class import talent_applicant_info
 #
 #
-# print(f"Applicant Info Data Frame: {talent_applicant_info.create_dataframe(talent_applicant_info.clean_files())}")
-# print(f"Talent Text Files Data Frame: {talent_txt.to_dataframe()}")
-# print(f"Academy Data Frame: {academy_dataframe.cleaned_df}")
+# print(f"Applicant Info Data Frame: {talent_applicant_info.df_talent_json}")
+# print(f"Talent Text Files Data Frame: {talent_txt.df}")
+print(f"Academy Data Frame: {academy_dataframe.cleaned_df}")
 # print(f"Monthly Talent Data Frame: {monthly_talent_info.df_talent_csv}")
-
-
-# For testing, follow template:
-# from s3_project.tests.test_extraction import test_extraction, test_check_files, test_file_verify, test_greater_than_one, test
-# test_extraction()
-# test_file_verify()
-# test_check_files()
-# test_greater_than_one()
 
 
 # from s3_project.classes.create_database import new
