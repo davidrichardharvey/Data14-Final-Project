@@ -54,7 +54,7 @@ class Academy:
         for file_name in self.files:
             print(f"Getting data from {file_name}")
             s3_object = self.s3_client.get_object(
-                Bucket='data14-engineering-project',
+                Bucket=find_variable('bucket_name'),
                 Key=file_name)
             df = pd.read_csv(s3_object['Body'])
             file_name_split = file_name.split('_')
