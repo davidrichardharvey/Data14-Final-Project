@@ -10,7 +10,7 @@ def test_male():
 
 
 def test_female():
-    # Testing different ways of male to see if they all return "M"
+    # Testing different ways of male to see if they all return "F"
     assert test_gender.formatting_gender("female") == "F"
     assert test_gender.formatting_gender("Female") == "F"
     assert test_gender.formatting_gender("FEMALE") == "F"
