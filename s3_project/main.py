@@ -10,3 +10,4 @@ print(f"Academy Data Frame: {academy_dataframe.cleaned_df}")
 print(f"Monthly Talent Data Frame: {monthly_talent_info.df_talent_csv}")
 
 new.create_table_no_keys()
+
