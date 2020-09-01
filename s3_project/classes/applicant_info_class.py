@@ -85,6 +85,8 @@ class ApplicantInfoClean:
             object_dict = date_format(object_dict)
             object_dict = change_boolean(object_dict)
             talent_json_list.append(object_dict)
+            if file_count == 500:
+                break
         self.df_talent_json = pd.DataFrame(talent_json_list)
 
 
