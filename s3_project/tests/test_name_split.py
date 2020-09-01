@@ -18,3 +18,4 @@ def test_last_name():
     assert test.splitting_last_names('John DOE') == 'Doe'
     assert test.splitting_last_names('John Van Doe') == 'Van Doe'
     assert test.splitting_last_names('John Van De Doe') == 'Van De Doe'
+    
