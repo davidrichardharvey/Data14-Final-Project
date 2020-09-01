@@ -14,3 +14,4 @@ def test_female():
     assert test_gender.formatting_gender("female") == "F"
     assert test_gender.formatting_gender("Female") == "F"
     assert test_gender.formatting_gender("FEMALE") == "F"
+    
