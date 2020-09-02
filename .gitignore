@@ -130,3 +130,7 @@ dmypy.json
 
 # .idea
 .idea
+
+# Private Config
+*private_config.ini
+
