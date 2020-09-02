@@ -5,4 +5,4 @@
 
 import pandas as pd
 
-print(pd.read_pickle("./merged_dataframe.pkl"))
+# print(pd.read_pickle("./merged_dataframe.pkl"))
