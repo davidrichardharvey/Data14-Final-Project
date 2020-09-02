@@ -19,4 +19,4 @@ class JoinCleanData:
                                     self.academy_scores_csv)
 
 
-clean_data = JoinCleanData()
+merged_dfs = JoinCleanData()
