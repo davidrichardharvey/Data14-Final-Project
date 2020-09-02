@@ -46,6 +46,7 @@ class Academy:
             for kpi in behaviours:
                 column_names.append(f'{kpi}_W{week}')
         df = df.reindex(columns=column_names)
+        df['course_length'] = course_duration
         return df
 
     def get_cleaned_df(self):

@@ -6,7 +6,7 @@ from s3_project.Config.config_manager import find_hidden_variable
 
 
 class ProjectDatabase:
-    def __init__(self):
+    def __init__(self, if_run=False):
         self.server = find_hidden_variable('server')
         self.database = find_hidden_variable('database')
         self.username = find_hidden_variable('username')
@@ -18,14 +18,12 @@ class ProjectDatabase:
         self.connection_string += f"PWD={self.password}"
         self.sparta = pyodbc.connect(self.connection_string)
         self.cursor = self.sparta.cursor()
+        self.should_run = if_run
         self.tables = []
         self.existing_tables = []
         self.schemas = []
         self.pk_issues = []
         self.fk_issues = []
-        self.get_schemas()
-        self.create_table_no_keys()
-        self.add_keys()
 
     def _sql_query(self, sql_query):
         return self.cursor.execute(sql_query)
@@ -130,6 +128,12 @@ class ProjectDatabase:
                   f"They may already have been assigned.\n")
         else:
             print("Successfully added foreign keys to tables")
+
+    def create_tables(self):
+        if self.should_run:
+            self.get_schemas()
+            self.create_table_no_keys()
+            self.add_keys()
 
 
 new = ProjectDatabase()
