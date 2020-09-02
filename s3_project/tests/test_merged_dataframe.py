@@ -1,4 +1,4 @@
-from s3_project.classes.joining_class import JoinCleanData
+from s3_project.functions import first_merge, second_merge, third_merge
 import pandas as pd
 
 monthly_applicant_1 = {'first_name': 'Charlotte', 'last_name': 'Kings', 'gender': 'F', 'dob': '1997/08/17',
