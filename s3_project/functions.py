@@ -24,12 +24,13 @@ def second_merge(df1_2, df3):
                           left_on=["first_name", "last_name", 'invited_date'],
                           right_on=['first_name', 'last_name', 'date'])
 
+    df3.to_pickle("./applicant_info.pkl")
     # Iterates through the data frame to find instances where names are repeated
     all_names = []
     duplicates = []
     for index, row in merged_df2.iterrows():
         name = f"{row[0]} {row[1]}"
-        if name in all_names:
+        if name in all_names and name not in duplicates:
             duplicates.append(name)
         all_names.append(name)
     merged_df2['names'] = all_names
@@ -42,41 +43,57 @@ def second_merge(df1_2, df3):
     split_on_merge = []
     for person in duplicates:
         name_df = merged_df2[merged_df2['names'] == person]
+        new_dict = {}
 
         # Checking the dates to see whether or not to keep different instances
         birth_dates = list(name_df['dob'])
         unis = list(name_df['uni'])
+        unique_birth_dates = []
+        unique_unis = []
         same_person = False
         for each in range(0, len(birth_dates)):
-            if len(birth_dates) == len(unis) > 0:
-                if birth_dates.count(birth_dates[0]) == len(birth_dates) and unis.count(unis[0]):
-                    same_person = True
+            if not pd.isna(birth_dates[each]) and birth_dates[each] not in unique_birth_dates:
+                unique_birth_dates.append(birth_dates[each])
+            if not pd.isna(unis[each]) and unis[each] not in unique_unis:
+                unique_unis.append(unis[each])
+            if len(unique_unis) == len(unique_birth_dates) == 1:
+                same_person = True
 
         # If the person is the same person, need to merge their information
         if same_person:
-            name_dict = name_df.to_dict()
-            new_dict = {}
-            for column in name_dict:
-                new_dict[column] = ''
-                index = list(name_dict[column].keys()) 
-                for entry in index:
-                    if new_dict[column] == '':
-                        new_dict[column] = name_dict[column][entry]
-                    else:
-                        try:
-                            if not pd.isna(name_dict[column][entry]):
-                                new_dict[column] = name_dict[column][entry]
-                        except ValueError:
-                            col_entry = name_dict[column][entry]
-                            if column in ['first_name', 'last_name']:
-                                new_dict[column] = col_entry[list(col_entry.keys())[0]]
-                            if not pd.isna(pd.Series(name_dict[column][entry])).all():
-                                if column in ['strengths', 'weaknesses']:
-                                    new_dict[column] = col_entry
-                                else:
-                                    new_dict[column] = col_entry[list(col_entry.keys())[0]]
-
+            column_number = 0
+            for column in name_df.columns:
+                for index, row in name_df.iterrows():
+                    value = row[column_number]
+                    try:
+                        is_null = pd.isna(value).all()
+                    except AttributeError:
+                        is_null = pd.isna(value)
+                    if not is_null:
+                        new_dict[column] = value
+                column_number += 1
             split_on_merge.append(new_dict)
+                # new_dict[list(name_df.columns)[column_number]] =
+                # row[column_number]
+                # new_dict[column] = ''
+                # index = list(name_dict[column].keys())
+                # for entry in index:
+                #     if new_dict[column] == '':
+                #         new_dict[column] = name_dict[column][entry]
+                #     else:
+                #         try:
+                #             if not pd.isna(name_dict[column][entry]):
+                #                 new_dict[column] = name_dict[column][entry]
+                #         except ValueError:
+                #             col_entry = name_dict[column][entry]
+                #             if column in ['first_name', 'last_name']:
+                #                 new_dict[column] = col_entry[list(col_entry.keys())[0]]
+                #             if not pd.isna(pd.Series(name_dict[column][entry])).all():
+                #                 if column in ['strengths', 'weaknesses']:
+                #                     new_dict[column] = col_entry
+                #                 else:
+                #                     new_dict[column] = col_entry[list(col_entry.keys())[0]]
+
 
         # Producing a dictionary from the data frame of people with the same name
         else:
@@ -84,20 +101,24 @@ def second_merge(df1_2, df3):
 
     # Creating data frames from list of dictionaries corresponding to the data in the table twice
     same_name_df = pd.concat(same_name)
+    print(same_name_df)
     split_on_merge_df = pd.DataFrame(split_on_merge)
+    print(split_on_merge_df)
+    print(new_df)
 
     # Altering the columns to remove the redundant columns and rename some to be more appropriate
     new_df = new_df.append([same_name_df, split_on_merge_df], sort=False)
     new_df.drop(['date_x', 'date_y', 'names'], inplace=True, axis=1)
     new_df.rename(columns={'invited_date': 'date'}, inplace=True)
     print(new_df.columns)
-    # new_df.to_pickle("./dummy.pkl")
+    new_df.to_pickle("./dummy.pkl")
     return new_df
 
 
 def third_merge(merged_df, new_df):
     # Merges the candidate scores onto the existing data frame
     print("Merging candidate scores onto the data frame")
+    print(merged_df)
     all_candidates = []
     duplicates = []
     for index, row in merged_df.iterrows():
@@ -154,4 +175,5 @@ def all_merges(df1, df2, df3, df4):
     merge1 = first_merge(df1, df2)
     merge2 = second_merge(merge1, df3)
     final_df = third_merge(merge2, df4)
+    final_df.to_pickle("./merged_dataframe.pkl")
     return final_df
