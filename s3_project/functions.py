@@ -10,22 +10,21 @@ def create_table_schema(table: dict, file_name: str = None):
 
 
 def first_merge(df1, df2):
+    # Merges the monthly applicant info data frame onto the applicant info data frame
     print("Merging monthly applicant info onto the applicant info table")
-    # Merges the monthly applicant info dataframe onto the applicant info dataframe
     merged_df1 = pd.merge(df1, df2, how='outer', left_on=["first_name", "last_name", 'invited_date'],
                           right_on=['first_name', 'last_name', 'date'])
-    print(merged_df1.columns)
     return merged_df1
 
 
 def second_merge(df1_2, df3):
+    # Merges the previously merged data frame onto the sparta day text file data frame
     print("Merging each individual's JSON files onto the data frame")
-    # Merges the previously merged dataframe onto the sparta day text file dataframe
     merged_df2 = pd.merge(df1_2, df3, how='outer',
                           left_on=["first_name", "last_name", 'invited_date'],
                           right_on=['first_name', 'last_name', 'date'])
 
-    # Iterates through the dataframe to find instances where names are repeated
+    # Iterates through the data frame to find instances where names are repeated
     all_names = []
     duplicates = []
     for index, row in merged_df2.iterrows():
@@ -35,10 +34,10 @@ def second_merge(df1_2, df3):
         all_names.append(name)
     merged_df2['names'] = all_names
 
-    # Creating a dataframe for those that were not repeated
+    # Creating a data frame for those that were not repeated
     new_df = merged_df2[~merged_df2['names'].isin(duplicates)]
 
-    # Creating separate dataframes for split entries and people with shared names
+    # Creating separate data frames for split entries and people with shared names
     same_name = []
     split_on_merge = []
     for person in duplicates:
@@ -59,7 +58,7 @@ def second_merge(df1_2, df3):
             new_dict = {}
             for column in name_dict:
                 new_dict[column] = ''
-                index = list(name_dict[column].keys())
+                index = list(name_dict[column].keys()) 
                 for entry in index:
                     if new_dict[column] == '':
                         new_dict[column] = name_dict[column][entry]
@@ -68,38 +67,44 @@ def second_merge(df1_2, df3):
                             if not pd.isna(name_dict[column][entry]):
                                 new_dict[column] = name_dict[column][entry]
                         except ValueError:
+                            col_entry = name_dict[column][entry]
                             if column in ['first_name', 'last_name']:
-                                new_dict[column] = name_dict[column][entry][name_dict[column][entry].keys()[0]]
+                                new_dict[column] = col_entry[list(col_entry.keys())[0]]
                             if not pd.isna(pd.Series(name_dict[column][entry])).all():
                                 if column in ['strengths', 'weaknesses']:
-                                    new_dict[column] = name_dict[column][entry]
+                                    new_dict[column] = col_entry
                                 else:
-                                    new_dict[column] = name_dict[column][entry][list(name_dict[column][entry].keys())[0]]
+                                    new_dict[column] = col_entry[list(col_entry.keys())[0]]
 
             split_on_merge.append(new_dict)
 
-        # Producing a dictionary from the dataframe of people with the same name
+        # Producing a dictionary from the data frame of people with the same name
         else:
-            same_name.append(name_df.to_dict())
+            same_name.append(name_df)
 
-    # Creating dataframes from list of dictionaries corresponding to the data in the table twice
-    same_name_df = pd.DataFrame(same_name)
+    # Creating data frames from list of dictionaries corresponding to the data in the table twice
+    same_name_df = pd.concat(same_name)
     split_on_merge_df = pd.DataFrame(split_on_merge)
 
     # Altering the columns to remove the redundant columns and rename some to be more appropriate
     new_df = new_df.append([same_name_df, split_on_merge_df], sort=False)
     new_df.drop(['date_x', 'date_y', 'names'], inplace=True, axis=1)
     new_df.rename(columns={'invited_date': 'date'}, inplace=True)
-    print(merged_df2.columns)
+    print(new_df.columns)
+    # new_df.to_pickle("./dummy.pkl")
     return new_df
 
 
 def third_merge(merged_df, new_df):
+    # Merges the candidate scores onto the existing data frame
     print("Merging candidate scores onto the data frame")
     all_candidates = []
+    duplicates = []
     for index, row in merged_df.iterrows():
         name = f"{row[0]} {row[1]}"
         name = name.strip()
+        if name in all_candidates:
+            duplicates.append(name)
         all_candidates.append(name)
     merged_df['names'] = all_candidates
 
@@ -111,17 +116,17 @@ def third_merge(merged_df, new_df):
         passing_candidates.append(name)
     new_df['names'] = passing_candidates
 
-
-    print(all_candidates)
-    # Slicing the dataframes based on whether or not the applicant's name is in the list of names of those who passed
+    # Slicing the data frames based on whether or not the applicant's name is in the list of names of those who passed
     unambiguous_df = merged_df[~merged_df['names'].isin(passing_candidates)]
 
-    # Creates a new dataframe for each of the passing candidates and adds it to the final dataframe
-    combined_df = []
+    # Creates a new data frame for each of the passing candidates and adds it to the final data frame
+    score_df_list = []
     for name in passing_candidates:
         name_df = merged_df[merged_df['names'] == name]
         if len(name_df) > 1:
-            name_df = name_df[name_df['result']]
+            if not pd.isna(name_df['result']).any():
+                print(name_df['result'])
+                name_df = name_df[name_df['result']]
             if len(name_df) > 1:
                 with open('issues.txt', 'a') as write_file:
                     write_file.write(f"Name: {name},  Issue: Unable to process candidate due to repeated name,  "
@@ -135,11 +140,14 @@ def third_merge(merged_df, new_df):
                                  f"differentiate,  How Resolved: Dropped candidate from data to be added. To "
                                  f"insert the candidate into the database, please insert their details directly")
         elif len(name_scores) == len(name_df) == 1:
-            print(name_df)
-            unambiguous_df.append(pd.merge(name_df, name_scores, how='outer', left_on='names', right_on='names'))
-            combined_df.append(pd.merge(name_df, name_scores, how='outer', left_on='names', right_on='names'))
-    print(unambiguous_df.drop(columns='names'))
-    return unambiguous_df.drop(columns='names')
+            score_df_list.append(pd.merge(name_df, name_scores, how='outer', left_on='names', right_on='names'))
+
+    score_df = pd.concat(score_df_list)
+    score_df.rename(columns={'first_name_x': 'first_name', 'last_name_x': 'last_name'}, inplace=True)
+    score_df.drop(['first_name_y', 'last_name_y', 'names'], axis=1, inplace=True)
+
+    result = pd.concat([unambiguous_df, score_df])
+    return result
 
 
 def all_merges(df1, df2, df3, df4):
@@ -147,38 +155,3 @@ def all_merges(df1, df2, df3, df4):
     merge2 = second_merge(merge1, df3)
     final_df = third_merge(merge2, df4)
     return final_df
-
-    # # Creates a dictionary for each column where the value is a list of all column enties in the merged dataframe
-    # merged_df_dict = {'join_col': []}
-    # for column in merged_df.columns:
-    #     merged_df_dict[column] = []
-    #     for entry in merged_df.to_dict()[column]:
-    #         merged_df_dict[column].append(merged_df.to_dict()[column][entry])
-    #
-    # # Creates a dictionary of with values that correspond to rows in the new dataframe
-    # new_df_dict = {'join_col2': {'name': [], 'start_date': ''}}
-    # for column in new_df.columns:
-    #     new_df_dict[column] = []
-    #     for entry in new_df.to_dict()[column]:
-    #         new_df_dict[column].append(merged_df.to_dict()[column][entry])
-    #     if column in ['first_name', 'last_name']:
-    #         new_df_dict['join_col2'].append()
-    #
-    #
-    #
-    # final_df_template = []
-    # for row_number in range(0, len(merged_df_as_dict['first_name'])):
-    #     if merged_df_as_dict['first_name'][row_number] == new_df_as_dict['first_name'][row_number] and \
-    #        merged_df_as_dict['last_name'][row_number] == new_df_as_dict['last_name'][row_number] and \
-    #        merged_df_as_dict['date'] < new_df_as_dict['start_date'] and merged_df_as_dict['result']:
-    #         final_df_template.append()
-    #
-    # # Join the 2 dataframes on the index provided
-    # new_df.join(merged_df.set_index('names'), on='names')
-    # return new_df.drop(['names'], axis=1)
-
-
-# charlotte_dict = {...}
-# katie_dict = {...}
-
-#df1 = pd.DataFrame([charlotte_dict, katie_dict])

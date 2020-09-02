@@ -17,4 +17,3 @@ Filename: Talent/Sept2019Applicants.csv,  Name: Lester Weddeburn - Scrimgeour,  
 Filename: Talent/10705.json,  Name: Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
 Filename: Talent/11340.json,  Name: Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
 Filename: Talent/11705.json,  Name: Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
-Filename: Talent/12160.json,  Name: Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
