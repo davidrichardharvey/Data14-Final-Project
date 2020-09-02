@@ -1,21 +1,25 @@
 import pandas as pd
 import pyodbc
 import urllib
+import ast
 from sqlalchemy import create_engine
 
-#from s3_project.classes.talent_csv_cleaning import monthly_talent_info
-#from s3_project.classes.applicant_info_class import talent_applicant_info
-from s3_project.classes.academy_class import academy_dataframe
-#from s3_project.classes.cleaning_txt import talent_txt
-from s3_project.Config.config_manager import find_hidden_variable
-
+# from s3_project.classes.joining_class import merged_dfs
+# from s3_project.Config.config_manager import find_hidden_variable
+from s3_project.Config.config_manager import find_variable
 
 class IdentifierDF:
     def __init__(self):
-        #self.df = monthly_talent_info.df_talent_csv
-        #self.df = talent_applicant_info.df_talent_json
-        #self.df = df = pd.read_pickle('applicant_info.pkl')
-        self.df = academy_dataframe.cleaned_df
+        self.df = pd.read_pickle('merged_dataframe.pkl')
+        self.Cities = self.df[['city']]
+        self.Course_Interests = self.df[['course_interest']]
+        self.Courses = self.df[['course_name', 'course_start_date', 'course_length']]
+        self.Degrees = self.df[['degree']]
+        self.Locations = self.df[['location']]
+        self.Staff_Roles = pd.DataFrame({'role': ['Trainer', 'Talent']})
+        self.Strengths = self.df[['strengths']]
+        self.Universities = self.df[['uni']]
+        self.Weaknesses = self.df[['weaknesses']]
         # self.server = find_hidden_variable('server')
         # self.database = find_hidden_variable('database')
         # self.username = find_hidden_variable('username')
@@ -25,10 +29,12 @@ class IdentifierDF:
         # self.connection_string += f"DATABASE={self.database};"
         # self.connection_string += f"UID={self.username};"
         # self.connection_string += f"PWD={self.password}"
-        self.sparta = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=Project;")
+        self.sparta = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=Project4;")
         self.cursor = self.sparta.cursor()
-        self.params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=Project;")
+        self.params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=Project4;")
         self.engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.params)
+        self.input_tables_to_sql()
+        self.apply_reassign()
 
     def _sql_query(self, sql_query):
         return self.cursor.execute(sql_query)
@@ -37,12 +43,7 @@ class IdentifierDF:
     def df_to_sql(self, df, sql_table):
         df.to_sql(sql_table, con=self.engine, index=False, if_exists='append', chunksize=1000)
 
-    def apply_all(self, sql_id, sql_column, df_column, df, table):
-        id_dict = self.get_id(sql_id, sql_column, table)
-        df[df_column] = df[df_column].map(id_dict)
-        df = df.rename(columns={df_column: sql_id})
-        return df
-
+    # This method gets the ID's from the database for later use
     def get_id(self, sql_id, sql_column_name, table):
         fk_key_dict = {}
         query = f"SELECT {sql_id}, {sql_column_name} FROM {table};"
@@ -52,8 +53,9 @@ class IdentifierDF:
 
     # This method returns unique items from a column which only contains lists
     def values_from_list(self, column_name, df):
+        df_notnull = df[df[column_name].notna()]
         list_append = []
-        for each in df[column_name]:
+        for each in df_notnull[column_name]:
             for item in each:
                 if item not in list_append:
                     list_append.append(item)
@@ -70,46 +72,84 @@ class IdentifierDF:
         id_df = pd.DataFrame(unique_values, columns=[sql_column_name])
         return id_df
 
-    # This returns a data-frame for identifier tables using a specified column and also checks that the values are
-    # unique in the database
+    # This method creates a dataframes for a column and ensures they are only unique values
     def identifier_df(self, sql_id, sql_column_name, df_column_name, df, table):
         df_notnull = df[df[df_column_name].notna()]
-        unique_values = pd.unique(df_notnull[df_column_name])
+        unique_values = df_notnull.drop_duplicates([df_column_name])
         column_name_dict = self.get_id(sql_id, sql_column_name, table)
-        unique_values = pd.Series(unique_values)
-        for index, each in unique_values.iteritems():
+        unique_values = unique_values.reset_index(drop=True)
+        unique_series = unique_values[df_column_name]
+        for index, each in unique_series.iteritems():
             if each in column_name_dict.keys():
                 unique_values = unique_values.drop(index=index)
-        id_df = pd.DataFrame(unique_values, columns=[sql_column_name])
+        id_df = pd.DataFrame(unique_values)
+        column_keys = find_variable(table, 'TABLE SCHEMAS')
+        column_keys = list(ast.literal_eval(column_keys).keys())
+        df_keys = df.columns
+        column_map_dict = {}
+        for i in range(len(df_keys)):
+            column_map_dict[df_keys[i]] = column_keys[i+1]
+        id_df = id_df.rename(columns=column_map_dict)
         return id_df
 
-    # This method inputs all the data for identifier tables into the SQL database
-    def input_sql_tables(self):
-        df = self.df
-        course_df = self.df[['course_name', 'course_start_date']]
-        # list_of_tables = [['location_id', 'location', 'location', 'Locations'],
-        #                   ['course_type_id', 'course_type', 'course_interest', 'Course_Interests'],
-        #                   ['degree_id', 'degree', 'degree', 'Degrees'],
-        #                   ['uni_id', 'uni', 'uni', 'Universities'],
-        #                   ['city_id', 'city', 'city', 'Cities'],
-        #                   ['role_id', 'role', 'role', 'Staff_Roles']
-        #                   ]
-        # strengths_weaknesses = [['keyword_id', 'keyword', 'strengths', 'Strengths'],
-        #                         ['keyword_id', 'keyword', 'weaknesses', 'Weaknesses']]
-        # list_of_tables = [['course_type_id', 'course_type', 'course_interest', 'Course_Interests']]
-        # strengths_weaknesses = [['keyword_id', 'keyword', 'strengths', 'Strengths'],
-        #                         ['keyword_id', 'keyword', 'weaknesses', 'Weaknesses']]
-        # for each in list_of_tables:
-        #     id_df = self.identifier_df(each[0], each[1], each[2], df, each[3])
-        #     self.df_to_sql(id_df, each[3])
-        #     self.apply_all(each[0], each[1], each[2], df, each[3])
-        # print(df)
-        # for each in strengths_weaknesses:
-        #     idsw_df = self.identifier_list_tables(each[0], each[1], each[2], df, each[3])
-        #     self.df_to_sql(idsw_df, each[3])
-        #     #self.apply_all(each[0], each[1], each[2], df, each[3])
-        courses_df = self.identifier_df('course_id', 'course_name', 'course_name', course_df, 'Courses')
-        self.df_to_sql(courses_df, 'Courses')
+    # This loads all the data to SQL
+    def input_tables_to_sql(self):
+        id_tables = ['Locations', 'Universities', 'Degrees', 'Course_Interests', 'Cities', 'Courses', 'Staff_Roles', 'Strengths', 'Weaknesses']
+        df_list = [self.Locations, self.Universities, self.Degrees, self.Course_Interests, self.Cities, self.Courses, self.Staff_Roles, self.Strengths, self.Weaknesses]
+        for i in range(len(id_tables)):
+            column_keys = find_variable(id_tables[i], 'TABLE SCHEMAS')
+            column_keys = list(ast.literal_eval(column_keys).keys())
+            df = df_list[i]
+            df_column = df.columns[0]
+            sql_id = column_keys[0]
+            sql_column = column_keys[1]
+            if id_tables[i] == 'Strengths' or id_tables[i] == 'Weaknesses':
+                id_df = self.identifier_list_tables(sql_id, sql_column, df_column, df, id_tables[i])
+                print(f"Loading {id_tables[i]} table into database")
+                self.df_to_sql(id_df, id_tables[i])
+            else:
+                id_df = self.identifier_df(sql_id, sql_column, df_column, df, id_tables[i])
+                print(f"Loading {id_tables[i]} table into database")
+                self.df_to_sql(id_df, id_tables[i])
+        print('9 tables have loaded.')
+
+    # This method reads the keys from the database and maps onto a column
+    def reassign_values(self, sql_id, sql_column, df_column, df, table):
+        id_dict = self.get_id(sql_id, sql_column, table)
+        df[df_column] = df[df_column].map(id_dict)
+        df = df.rename(columns={df_column: sql_id})
+        return df
+
+    # This methods reassigns every element in the weaknesses column to foreign keys
+    def reassign_weaknesses(self, df_column):
+        id_dict = self.get_id('keyword_id', 'keyword', 'Weaknesses')
+        list_of_keywords = []
+        if type(df_column) is not float:
+            for item in df_column:
+                value = id_dict.get(item)
+                list_of_keywords.append(value)
+        return list_of_keywords
+
+    # This methods reassigns every element in the strengths column to foreign keys
+    def reassign_strengths(self, df_column):
+        id_dict = self.get_id('keyword_id', 'keyword', 'Strengths')
+        list_of_keywords = []
+        if type(df_column) is not float:
+            for item in df_column:
+                value = id_dict.get(item)
+                list_of_keywords.append(value)
+        return list_of_keywords
+
+    # This method reads the keys from the database and assigns the foreign key value to the appropriate columns
+    def apply_reassign(self):
+        self.df = self.reassign_values('location_id', 'location', 'location', self.df, 'Locations')
+        self.df = self.reassign_values('city_id', 'city', 'city', self.df, 'Cities')
+        self.df = self.reassign_values('course_type_id', 'course_type', 'course_interest', self.df, 'Course_Interests')
+        self.df = self.reassign_values('course_id', 'course_name', 'course_name', self.df, 'Courses')
+        self.df = self.reassign_values('degree_id', 'degree', 'degree', self.df, 'Degrees')
+        self.df = self.reassign_values('uni_id', 'uni', 'uni', self.df, 'Universities')
+        self.df['strengths'] = self.df['strengths'].apply(self.reassign_strengths)
+        self.df['weaknesses'] = self.df['weaknesses'].apply(self.reassign_weaknesses)
 
 
 testing = IdentifierDF()
