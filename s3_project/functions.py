@@ -101,16 +101,12 @@ def second_merge(df1_2, df3):
 
     # Creating data frames from list of dictionaries corresponding to the data in the table twice
     same_name_df = pd.concat(same_name)
-    print(same_name_df)
     split_on_merge_df = pd.DataFrame(split_on_merge)
-    print(split_on_merge_df)
-    print(new_df)
 
     # Altering the columns to remove the redundant columns and rename some to be more appropriate
     new_df = new_df.append([same_name_df, split_on_merge_df], sort=False)
     new_df.drop(['date_x', 'date_y', 'names'], inplace=True, axis=1)
     new_df.rename(columns={'invited_date': 'date'}, inplace=True)
-    print(new_df.columns)
     new_df.to_pickle("./dummy.pkl")
     return new_df
 
@@ -118,7 +114,6 @@ def second_merge(df1_2, df3):
 def third_merge(merged_df, new_df):
     # Merges the candidate scores onto the existing data frame
     print("Merging candidate scores onto the data frame")
-    print(merged_df)
     all_candidates = []
     duplicates = []
     for index, row in merged_df.iterrows():
@@ -146,7 +141,6 @@ def third_merge(merged_df, new_df):
         name_df = merged_df[merged_df['names'] == name]
         if len(name_df) > 1:
             if not pd.isna(name_df['result']).any():
-                print(name_df['result'])
                 name_df = name_df[name_df['result']]
             if len(name_df) > 1:
                 with open('issues.txt', 'a') as write_file:
@@ -155,7 +149,6 @@ def third_merge(merged_df, new_df):
                                      f"into the database, please insert their details directly")
         name_scores = new_df[new_df['names'] == name]
         if len(name_scores) > 1:
-            print(name_scores)
             with open('issues.txt', 'a') as write_file:
                 write_file.write(f"Name: {name},  Issue: Multiple trainees with same name, cannot find a way to"
                                  f"differentiate,  How Resolved: Dropped candidate from data to be added. To "
