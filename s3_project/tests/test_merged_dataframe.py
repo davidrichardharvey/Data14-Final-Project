@@ -156,3 +156,4 @@ df_third_merge = pd.DataFrame([third_merge_1, third_merge_2])
 def test_third_merge():
     # Merge Monthly Applicant csv files, Sparta Day txt files and applicant info json files with Stream Group csv files
     assert sorted(third_merge(df_second_merge, df_stream_group)) == sorted(df_third_merge)
+    
