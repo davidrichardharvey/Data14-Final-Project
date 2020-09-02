@@ -121,7 +121,6 @@ def third_merge(merged_df, new_df):
     for name in passing_candidates:
         name_df = merged_df[merged_df['names'] == name]
         if len(name_df) > 1:
-            print(name_df)
             name_df = name_df[name_df['result']]
             if len(name_df) > 1:
                 with open('issues.txt', 'a') as write_file:
@@ -130,11 +129,13 @@ def third_merge(merged_df, new_df):
                                      f"into the database, please insert their details directly")
         name_scores = new_df[new_df['names'] == name]
         if len(name_scores) > 1:
+            print(name_scores)
             with open('issues.txt', 'a') as write_file:
                 write_file.write(f"Name: {name},  Issue: Multiple trainees with same name, cannot find a way to"
                                  f"differentiate,  How Resolved: Dropped candidate from data to be added. To "
                                  f"insert the candidate into the database, please insert their details directly")
         elif len(name_scores) == len(name_df) == 1:
+            print(name_df)
             unambiguous_df.append(pd.merge(name_df, name_scores, how='outer', left_on='names', right_on='names'))
             combined_df.append(pd.merge(name_df, name_scores, how='outer', left_on='names', right_on='names'))
     print(unambiguous_df.drop(columns='names'))
