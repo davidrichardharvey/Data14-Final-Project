@@ -1,4 +1,5 @@
-from s3_project.joining_class import JoinCleanData
+from s3_project.functions import first_merge, second_merge, third_merge
+import pandas as pd
 
 monthly_applicant_1 = {'first_name': 'Charlotte', 'last_name': 'Kings', 'gender': 'F', 'dob': '1997/08/17',
                        'email': '1@2.com', 'city': 'London', 'address': '64 Zoo Lane', 'postcode': 'CV12 4BU',
@@ -8,29 +9,33 @@ monthly_applicant_2 = {'first_name': 'Katie', 'last_name': 'McDonnell', 'gender'
                        'email': '1@2000.com', 'city': 'Edinburgh ', 'address': '53 Spot Street', 'postcode': 'ED9 5BH',
                        'phone_number': '+44 89 7592 8936', 'uni': 'Liverpool', 'degree': '1',
                        'invited_date': '2018/08/17', 'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra'}
+df_monthly_applicant = pd.DataFrame([monthly_applicant_1, monthly_applicant_2])
+
+
 sparta_day_1 = {'date': '2018/10/14', 'location': 'London', 'first_name': 'Charlotte', 'last_name': 'Kings',
                 'psychometric': 63, 'psychometric_max': 100, 'presentation': 24, 'presentation_max': 32}
 sparta_day_2 = {'date': '2018/08/17', 'location': 'London', 'first_name': 'Katie', 'last_name': 'McDonnell',
                 'psychometric': 85, 'psychometric_max': 100, 'presentation': 16, 'presentation_max': 32}
+df_sparta_day = pd.DataFrame([sparta_day_1, sparta_day_2])
+
 first_merge_1 = {'first_name': 'Charlotte', 'last_name': 'Kings', 'gender': 'F', 'dob': '1997/08/17',
                  'email': '1@2.com',
                  'city': 'London', 'address': '64 Zoo Lane', 'postcode': 'CV12 4BU', 'phone_number': '+44 24 7662 7366',
                  'uni': 'Bath', 'degree': '1', 'invited_date': '2018/10/14', 'inv_by_firstname': 'Paula',
-                 'inv_by_lastname': 'Kedra', 'location': 'London', 'psychometric': 63, 'psychometric_max': 100,
-                 'presentation': 24, 'presentation_max': 32}
+                 'inv_by_lastname': 'Kedra','date': '2018/10/14','location': 'London', 'psychometric': 63,
+                 'psychometric_max': 100, 'presentation': 24, 'presentation_max': 32}
 first_merge_2 = {'first_name': 'Katie', 'last_name': 'McDonnell', 'gender': 'F', 'dob': '1997/09/01',
                  'email': '1@5.com',
                  'city': 'Edinburgh ', 'address': '53 Spot Street', 'postcode': 'ED9 5BH',
                  'phone_number': '+44 89 7592 8936', 'uni': 'Liverpool', 'degree': '1', 'invited_date': '2018/08/17',
-                 'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra', 'location': 'London', 'psychometric': 85,
-                 'psychometric_max': 100, 'presentation': 16, 'presentation_max': 32}
+                 'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra','date': '2018/08/17', 'location': 'London',
+                 'psychometric': 85, 'psychometric_max': 100, 'presentation': 16, 'presentation_max': 32}
+df_first_merge = pd.DataFrame([first_merge_1, first_merge_2])
 
 
 def test_first_merge():
     # Merge Monthly Applicant csv files and Sparta Day txt files
-    assert first_merge(monthly_applicant_1, sparta_day_1) == first_merge_1
-    assert first_merge(monthly_applicant_2, sparta_day_2) == first_merge_2
-
+    assert sorted(first_merge(df_monthly_applicant, df_sparta_day)) == sorted(df_first_merge)
 
 app_info_1 = {'date': '2018/10/14', 'tech_self_score': {'C#': 6, 'Java': 5, 'R': 2, 'JavaScript': 2},
               'strengths': ['Charisma'], 'weaknesses': ['Introverted', 'Distracted'], 'self_development': True,
@@ -40,28 +45,30 @@ app_info_2 = {'date': '2018/08/17', 'tech_self_score': {'Java': 5, 'R': 2, 'Java
               'strengths': ['Confident', 'Friendly'], 'weaknesses': ['Impulsive', 'Distracted'],
               'self_development': True, 'geo_flex': False, 'financial_support_self': True, 'result': True,
               'course_interest': 'engineering', 'first_name': 'Katie', 'last_name': 'McDonnell'}
+df_app_info = pd.DataFrame([app_info_1, app_info_2])
+
 second_merge_1 = {'first_name': 'Charlotte', 'last_name': 'Kings', 'gender': 'F', 'dob': '1997/08/17',
                   'email': '1@2.com', 'city': 'London', 'address': '64 Zoo Lane', 'postcode': 'CV12 4BU',
-                  'phone_number': '+44 24 7662 7366', 'uni': 'Bath', 'degree': '1', 'invited_date': '2018/10/14',
-                  'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra', 'location': 'London', 'psychometric': 63,
-                  'psychometric_max': 100, 'presentation': 24, 'presentation_max': 32,
+                  'phone_number': '+44 24 7662 7366', 'uni': 'Bath', 'degree': '1',
+                  'date': '2018/10/14', 'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra', 'location': 'London',
+                  'psychometric': 63, 'psychometric_max': 100, 'presentation': 24, 'presentation_max': 32,
                   'tech_self_score': {'C#': 6, 'Java': 5, 'R': 2, 'JavaScript': 2}, 'strengths': ['Charisma'],
                   'weaknesses': ['Introverted', 'Distracted'], 'self_development': True, 'geo_flex': False,
                   'financial_support_self': True, 'result': True, 'course_interest': 'engineering'}
 second_merge_2 = {'first_name': 'Katie', 'last_name': 'McDonnell', 'gender': 'F', 'dob': '1997/09/01',
                   'email': '1@5.com', 'city': 'Edinburgh ', 'address': '53 Spot Street', 'postcode': 'ED9 5BH',
-                  'phone_number': '+44 89 7592 8936', 'uni': 'Liverpool', 'degree': '1', 'invited_date': '2018/08/17',
-                  'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra', 'location': 'London', 'psychometric': 85,
-                  'psychometric_max': 100, 'presentation': 16, 'presentation_max': 32,
+                  'phone_number': '+44 89 7592 8936', 'uni': 'Liverpool', 'degree': '1',
+                  'date': '2018/08/17', 'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra', 'location': 'London',
+                  'psychometric': 85, 'psychometric_max': 100, 'presentation': 16, 'presentation_max': 32,
                   'tech_self_score': {'Java': 5, 'R': 2, 'JavaScript': 2}, 'strengths': ['Confident', 'Friendly'],
                   'weaknesses': ['Impulsive', 'Distracted'], 'self_development': True, 'geo_flex': False,
                   'financial_support_self': True, 'result': True, 'course_interest': 'engineering'}
+df_second_merge = pd.DataFrame([second_merge_1, second_merge_2])
 
 
 def test_second_merge():
     # Merge Monthly Applicant csv files and Sparta Day txt files with applicant info json files
-    assert second_merge(first_merge_1, app_info_1) == second_merge_1
-    assert second_merge(first_merge_2, app_info_2) == second_merge_2
+    assert sorted(second_merge(df_first_merge, df_app_info)) == sorted(df_second_merge)
 
 
 stream_group_1 = {'first_name': 'Charlotte', 'last_name': 'Kings', 'trainer_first_name': 'David',
@@ -83,15 +90,28 @@ stream_group_2 = {'first_name': 'Katie', 'last_name': 'McDonnell', 'trainer_firs
                   'trainer_last_name': 'Harvey', 'course_name': 'Data_22', 'course_start_date': '2019/05/15',
                   'Analytic_W1': 5, 'Independent_W1': 3, 'Determined_W1': 4, 'Professional_W1': 2, 'Studious_W1': 4,
                   'Imaginative_W1': 6, 'Analytic_W2': 3, 'Independent_W2': 5, 'Determined_W2': 2, 'Professional_W2': 6,
-                  'Studious_W2': 5, 'Imaginative_W2': 3}
+                  'Studious_W2': 5, 'Imaginative_W2': 3, 'Analytic_W3': 'NaN', 'Independent_W3': 'NaN',
+                  'Determined_W3': 'NaN', 'Professional_W3': 'NaN', 'Studious_W3': 'NaN', 'Imaginative_W3': 'NaN',
+                  'Analytic_W4': 'NaN', 'Independent_W4': 'NaN', 'Determined_W4': 'NaN', 'Professional_W4': 'NaN',
+                  'Studious_W4': 'NaN', 'Imaginative_W4': 'NaN', 'Analytic_W5': 'NaN', 'Independent_W5': 'NaN',
+                  'Determined_W5': 'NaN', 'Professional_W5': 'NaN', 'Studious_W5': 'NaN', 'Imaginative_W5': 'NaN',
+                  'Analytic_W6': 'NaN', 'Independent_W6': 'NaN', 'Determined_W6': 'NaN', 'Professional_W6': 'NaN',
+                  'Studious_W6': 'NaN', 'Imaginative_W6': 'NaN', 'Analytic_W7': 'NaN', 'Independent_W7': 'NaN',
+                  'Determined_W7': 'NaN', 'Professional_W7': 'NaN', 'Studious_W7': 'NaN', 'Imaginative_W7': 'NaN',
+                  'Analytic_W8': 'NaN', 'Independent_W8': 'NaN', 'Determined_W8': 'NaN',  'Professional_W8': 'NaN',
+                  'Studious_W8': 'NaN', 'Imaginative_W8': 'NaN', 'Analytic_W9': 'NaN', 'Independent_W9': 'NaN',
+                  'Determined_W9': 'NaN', 'Professional_W9': 'NaN', 'Studious_W9': 'NaN', 'Imaginative_W9': 'NaN',
+                  'Analytic_W10': 'NaN', 'Independent_W10': 'NaN', 'Determined_W10': 'NaN', 'Professional_W10': 'NaN',
+                  'Studious_W10': 'NaN','Imaginative_W10': 'NaN'}
+df_stream_group = pd.DataFrame([stream_group_1, stream_group_2])
 third_merge_1 = {'first_name': 'Charlotte', 'last_name': 'Kings', 'gender': 'F', 'dob': '1997/08/17',
                  'email': '1@2.com', 'city': 'London', 'address': '64 Zoo Lane', 'postcode': 'CV12 4BU',
-                 'phone_number': '+44 24 7662 7366', 'uni': 'Bath', 'degree': '1', 'invited_date': '2018/10/14',
+                 'phone_number': '+44 24 7662 7366', 'uni': 'Bath', 'degree': '1', 'date': '2018/10/14',
                  'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra', 'location': 'London', 'psychometric': 63,
                  'psychometric_max': 100, 'presentation': 24, 'presentation_max': 32,
-                 'tech_self_score': {'C#': 6, 'Java': 5, 'R': 2, 'JavaScript': 2},
-                 'strengths': ['Charisma'], 'weaknesses': ['Introverted', 'Distracted'], 'self_development': True,
-                 'geo_flex': False, 'financial_support_self': True, 'result': True, 'course_interest': 'engineering',
+                 'tech_self_score': {'C#': 6, 'Java': 5, 'R': 2, 'JavaScript': 2}, 'strengths': ['Charisma'],
+                 'weaknesses': ['Introverted', 'Distracted'], 'self_development': True, 'geo_flex': False,
+                 'financial_support_self': True, 'result': True, 'course_interest': 'engineering',
                  'trainer_first_name': 'David', 'trainer_last_name': 'Harvey', 'course_name': 'Data_22',
                  'course_start_date': '2019/05/15', 'Analytic_W1': 5, 'Independent_W1': 8, 'Determined_W1': 6,
                  'Professional_W1': 5, 'Studious_W1': 4, 'Imaginative_W1': 6, 'Analytic_W2': 3, 'Independent_W2': 5,
@@ -108,7 +128,7 @@ third_merge_1 = {'first_name': 'Charlotte', 'last_name': 'Kings', 'gender': 'F',
                  'Professional_W10': 6, 'Studious_W10': 7, 'Imaginative_W10': 8}
 third_merge_2 = {'first_name': 'Katie', 'last_name': 'McDonnell', 'gender': 'F', 'dob': '1997/09/01',
                  'email': '1@5.com', 'city': 'Edinburgh ', 'address': '53 Spot Street', 'postcode': 'ED9 5BH',
-                 'phone_number': '+44 89 7592 8936', 'uni': 'Liverpool', 'degree': '1', 'invited_date': '2018/08/17',
+                 'phone_number': '+44 89 7592 8936', 'uni': 'Liverpool', 'degree': '1', 'date': '2018/08/17',
                  'inv_by_firstname': 'Paula', 'inv_by_lastname': 'Kedra', 'location': 'London', 'psychometric': 85,
                  'psychometric_max': 100, 'presentation': 16, 'presentation_max': 32,
                  'tech_self_score': {'Java': 5, 'R': 2, 'JavaScript': 2}, 'strengths': ['Confident', 'Friendly'],
@@ -117,10 +137,22 @@ third_merge_2 = {'first_name': 'Katie', 'last_name': 'McDonnell', 'gender': 'F',
                  'trainer_first_name': 'David', 'trainer_last_name': 'Harvey', 'course_name': 'Data_22',
                  'course_start_date': '2019/05/15', 'Analytic_W1': 5, 'Independent_W1': 3, 'Determined_W1': 4,
                  'Professional_W1': 2, 'Studious_W1': 4, 'Imaginative_W1': 6, 'Analytic_W2': 3, 'Independent_W2': 5,
-                 'Determined_W2': 2, 'Professional_W2': 6, 'Studious_W2': 5, 'Imaginative_W2': 3}
+                 'Determined_W2': 2, 'Professional_W2': 6, 'Studious_W2': 5, 'Imaginative_W2': 3,'Analytic_W3': 'NaN',
+                 'Independent_W3': 'NaN', 'Determined_W3': 'NaN', 'Professional_W3': 'NaN', 'Studious_W3': 'NaN',
+                 'Imaginative_W3': 'NaN', 'Analytic_W4': 'NaN', 'Independent_W4': 'NaN', 'Determined_W4': 'NaN',
+                 'Professional_W4': 'NaN', 'Studious_W4': 'NaN', 'Imaginative_W4': 'NaN', 'Analytic_W5': 'NaN',
+                 'Independent_W5': 'NaN', 'Determined_W5': 'NaN', 'Professional_W5': 'NaN', 'Studious_W5': 'NaN',
+                 'Imaginative_W5': 'NaN', 'Analytic_W6': 'NaN', 'Independent_W6': 'NaN', 'Determined_W6': 'NaN',
+                 'Professional_W6': 'NaN', 'Studious_W6': 'NaN', 'Imaginative_W6': 'NaN', 'Analytic_W7': 'NaN',
+                 'Independent_W7': 'NaN', 'Determined_W7': 'NaN', 'Professional_W7': 'NaN', 'Studious_W7': 'NaN',
+                 'Imaginative_W7': 'NaN', 'Analytic_W8': 'NaN', 'Independent_W8': 'NaN', 'Determined_W8': 'NaN',
+                 'Professional_W8': 'NaN', 'Studious_W8': 'NaN', 'Imaginative_W8': 'NaN', 'Analytic_W9': 'NaN',
+                 'Independent_W9': 'NaN', 'Determined_W9': 'NaN', 'Professional_W9': 'NaN', 'Studious_W9': 'NaN',
+                 'Imaginative_W9': 'NaN', 'Analytic_W10': 'NaN', 'Independent_W10': 'NaN', 'Determined_W10': 'NaN',
+                 'Professional_W10': 'NaN', 'Studious_W10': 'NaN', 'Imaginative_W10': 'NaN'}
+df_third_merge = pd.DataFrame([third_merge_1, third_merge_2])
 
 
 def test_third_merge():
     # Merge Monthly Applicant csv files, Sparta Day txt files and applicant info json files with Stream Group csv files
-    assert third_merge(second_merge_1, stream_group_1) == third_merge_1
-    assert third_merge(second_merge_2, stream_group_2) == third_merge_2
+    assert sorted(third_merge(df_second_merge, df_stream_group)) == sorted(df_third_merge)
