@@ -97,5 +97,5 @@ class TextFiles:
             self.results[file] = two_names_txt(self.results[file])
             self.results[file] = date_format(self.results[file])
 
-talent_txt = TextFiles()
 
+talent_txt = TextFiles()
