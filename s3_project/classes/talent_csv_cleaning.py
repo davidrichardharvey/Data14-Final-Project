@@ -1,6 +1,4 @@
-import json
 import boto3
-import os
 import pandas as pd
 from datetime import datetime
 
@@ -151,6 +149,3 @@ class TalentCsv:
             return name_dict[name]
         else:
             return name
-
-
-monthly_talent_info = TalentCsv()

@@ -1,13 +1,18 @@
-from s3_project.classes.cleaning_txt import talent_txt
-from s3_project.classes.academy_class import academy_dataframe
-from s3_project.classes.talent_csv_cleaning import monthly_talent_info
-from s3_project.classes.applicant_info_class import talent_applicant_info
-from s3_project.classes.create_database import new
+# Imports the class to create the structure for the database. Can run the class by specifying 'to_create' = True upon
+# instantiation, or by running the .run_methods()
 
-print(f"Applicant Info Data Frame: {talent_applicant_info.df_talent_json}")
-print(f"Talent Text Files Data Frame: {talent_txt.df}")
-print(f"Academy Data Frame: {academy_dataframe.cleaned_df}")
-print(f"Monthly Talent Data Frame: {monthly_talent_info.df_talent_csv}")
+from s3_project.classes.create_database import ProjectDatabase
+new = ProjectDatabase(to_create=False)
 
-new.create_table_no_keys()
 
+# # To move to top of joining tables:
+# from s3_project.classes.applicant_info_class import ApplicantInfoClean
+# from s3_project.classes.academy_class import Academy
+# from s3_project.classes.talent_csv_cleaning import TalentCsv
+# from s3_project.classes.cleaning_txt import TextFiles
+#
+#
+# talent_applicant_info = ApplicantInfoClean()
+# academy_dataframe = Academy()
+# monthly_talent_info = TalentCsv()
+# talent_txt = TextFiles()
