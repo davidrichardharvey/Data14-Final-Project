@@ -73,38 +73,26 @@ def second_merge(df1_2, df3):
                         new_dict[column] = value
                 column_number += 1
             split_on_merge.append(new_dict)
-                # new_dict[list(name_df.columns)[column_number]] =
-                # row[column_number]
-                # new_dict[column] = ''
-                # index = list(name_dict[column].keys())
-                # for entry in index:
-                #     if new_dict[column] == '':
-                #         new_dict[column] = name_dict[column][entry]
-                #     else:
-                #         try:
-                #             if not pd.isna(name_dict[column][entry]):
-                #                 new_dict[column] = name_dict[column][entry]
-                #         except ValueError:
-                #             col_entry = name_dict[column][entry]
-                #             if column in ['first_name', 'last_name']:
-                #                 new_dict[column] = col_entry[list(col_entry.keys())[0]]
-                #             if not pd.isna(pd.Series(name_dict[column][entry])).all():
-                #                 if column in ['strengths', 'weaknesses']:
-                #                     new_dict[column] = col_entry
-                #                 else:
-                #                     new_dict[column] = col_entry[list(col_entry.keys())[0]]
-
 
         # Producing a dictionary from the data frame of people with the same name
         else:
             same_name.append(name_df)
 
     # Creating data frames from list of dictionaries corresponding to the data in the table twice
-    same_name_df = pd.concat(same_name)
-    split_on_merge_df = pd.DataFrame(split_on_merge)
+    same_name_df_exists = False
+    split_on_merge_df_exists = False
+    if len(same_name) != 0:
+        same_name_df = pd.concat(same_name)
+        same_name_df_exists = True
+    if len(split_on_merge) != 0:
+        split_on_merge_df = pd.DataFrame(split_on_merge)
+        split_on_merge_df_exists = True
 
     # Altering the columns to remove the redundant columns and rename some to be more appropriate
-    new_df = new_df.append([same_name_df, split_on_merge_df], sort=False)
+    if same_name_df_exists:
+        new_df = new_df.append([same_name_df], sort=False)
+    if split_on_merge_df_exists:
+        new_df = new_df.append([split_on_merge_df], sort=False)
     new_df.drop(['date_x', 'date_y', 'names'], inplace=True, axis=1)
     new_df.rename(columns={'invited_date': 'date'}, inplace=True)
     new_df.to_pickle("./dummy.pkl")
@@ -161,6 +149,7 @@ def third_merge(merged_df, new_df):
     score_df.drop(['first_name_y', 'last_name_y', 'names'], axis=1, inplace=True)
 
     result = pd.concat([unambiguous_df, score_df])
+    result.drop(['names'], axis=1, inplace=True)
     return result
 
 
