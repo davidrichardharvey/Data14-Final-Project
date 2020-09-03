@@ -11,20 +11,22 @@ import ast
 import pyodbc
 from sqlalchemy import create_engine
 
-academy_dataframe = Academy()
-monthly_talent_info = TalentCsv()
-talent_txt = TextFiles()
-talent_applicant_info = ApplicantInfoClean()
+# academy_dataframe = Academy()
+# monthly_talent_info = TalentCsv()
+# talent_txt = TextFiles()
+# talent_applicant_info = ApplicantInfoClean()
 
 
 class JoinCleanData:
     def __init__(self):
-        self.sparta_day_txt = talent_txt.df
-        self.monthly_applicant_csv = monthly_talent_info.df_talent_csv
-        self.academy_scores_csv = academy_dataframe.cleaned_df
-        self.applicant_info_json = talent_applicant_info.df_talent_json
-        self.merged_df = all_merges(self.monthly_applicant_csv, self.sparta_day_txt, self.applicant_info_json,
-                                    self.academy_scores_csv)
+        # self.sparta_day_txt = talent_txt.df
+        # self.monthly_applicant_csv = monthly_talent_info.df_talent_csv
+        # self.academy_scores_csv = academy_dataframe.cleaned_df
+        # self.applicant_info_json = talent_applicant_info.df_talent_json
+        # self.merged_df = all_merges(self.monthly_applicant_csv, self.sparta_day_txt, self.applicant_info_json,
+        #                             self.academy_scores_csv)
+        self.merged_df = pd.read_pickle('merged_dataframe.pkl')
+        self.staff_roles_dict = {'trainer': 1, 'talent_team': 2}  # should go in config??
         self.Cities = self.merged_df[['city']]
         self.Course_Interests = self.merged_df[['course_interest']]
         self.Courses = self.merged_df[['course_name', 'course_start_date', 'course_length']]
@@ -36,35 +38,39 @@ class JoinCleanData:
         self.Weaknesses = self.merged_df[['weaknesses']]
 
         # Establishing connection to server
-        self.server = find_hidden_variable('server')
-        self.database = find_hidden_variable('database')
-        self.username = find_hidden_variable('username')
-        self.password = find_hidden_variable('password')
-        self.connection_string = "DRIVER={SQL Server};"
-        self.connection_string += f"SERVER={self.server};"
-        self.connection_string += f"DATABASE={self.database};"
-        self.connection_string += f"UID={self.username};"
-        self.connection_string += f"PWD={self.password}"
-        self.sparta = pyodbc.connect(self.connection_string)
-        self.cursor = self.sparta.cursor()
+        self.__server = find_hidden_variable('server')
+        self.__database = find_hidden_variable('database')
+        self.__username = find_hidden_variable('username')
+        self.__password = find_hidden_variable('password')
+        self.__connection_string = "DRIVER={SQL Server};"
+        self.__connection_string += f"SERVER={self.__server};"
+        self.__connection_string += f"DATABASE={self.__database};"
+        self.__connection_string += f"UID={self.__username};"
+        self.__connection_string += f"PWD={self.__password}"
+        self.__sparta = pyodbc.connect(self.__connection_string)
+        self.__cursor = self.__sparta.cursor()
 
-        self.params = urllib.parse.quote_plus(self.connection_string)
-        self.engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.params)
+        self.__params = urllib.parse.quote_plus(self.__connection_string)
+        self.__engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.__params)
         self.input_tables_to_sql()
         self.apply_reassign()
 
+    def _sql_id_query(self, sql_query):
+        return self.__cursor.execute(sql_query)
+
     def _sql_query(self, sql_query):
-        return self.cursor.execute(sql_query)
+        self.__cursor.execute(sql_query)
+        #self.__sparta.commit()  # remove when needed
 
     def df_to_sql(self, df, sql_table):
         # This method writes the df to the SQL database
-        df.to_sql(sql_table, con=self.engine, index=False, if_exists='append', chunksize=1000)
+        df.to_sql(sql_table, con=self.__engine, index=False, if_exists='append', chunksize=1000)
 
     def get_id(self, sql_id, sql_column_name, table):
         # This method gets the ID's from the database for later use
         fk_key_dict = {}
         query = f"SELECT {sql_id}, {sql_column_name} FROM {table};"
-        for index, value in self._sql_query(query):
+        for index, value in self._sql_id_query(query):
             fk_key_dict[value] = index
         return fk_key_dict
 
@@ -124,12 +130,12 @@ class JoinCleanData:
                 id_df = self.identifier_list_tables(sql_id, sql_column, df_column, df, id_tables[i])
                 print(f"Loading {id_tables[i]} table into database")
                 self.df_to_sql(id_df, id_tables[i])
-                self.sparta.commit()
+                self.__sparta.commit()
             else:
                 id_df = self.identifier_df(sql_id, sql_column, df_column, df, id_tables[i])
                 print(f"Loading {id_tables[i]} table into database")
                 self.df_to_sql(id_df, id_tables[i])
-                self.sparta.commit()
+                self.__sparta.commit()
         print('9 tables have successfully loaded')
 
     def reassign_values(self, sql_id, sql_column, df_column, df, table):
@@ -178,3 +184,87 @@ class JoinCleanData:
         print('Reassigning values to weaknesses column')
         self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
         print('Reassignment completed')
+
+    def staff_roles_load(self):
+        table = 'Staff_Roles'
+        table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
+        table_fields = list(table_schema.keys())
+        table_fields.pop(0)
+        col = table_fields[0].strip("'")
+        column = f"({col})"
+        values = ''
+        for role in self.staff_roles_dict:
+            tup = f"('{role}')"
+            values += tup
+            values += ', '
+        values = values[:-2]
+        #print(values)
+        query = f"""
+                INSERT INTO {table} {column}
+                VALUES {values};
+                """
+        self._sql_query(query)
+        query = f"SELECT * FROM {table};"
+        return self._sql_query(query)
+
+    def staff_table_load(self, df):
+        table = 'Staff'
+        table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
+        table_fields = list(table_schema.keys())
+        table_fields.pop(0)
+        col_join = ', '.join(table_fields)
+        columns = f"({col_join})"
+
+        trainers = df[['trainer_first_name', 'trainer_last_name']]
+        trainers['role_id'] = self.staff_roles_dict['trainer']
+        trainers.rename({'trainer_first_name': 'first_name', 'trainer_last_name': 'last_name'}, axis=1, inplace=True)
+        talent = df[['inv_by_firstname', 'inv_by_lastname']]
+        talent['role_id'] = self.staff_roles_dict['talent_team']
+        talent.rename({'inv_by_firstname': 'first_name', 'inv_by_lastname': 'last_name'}, axis=1, inplace=True)
+        df_joined = pd.concat([trainers, talent])
+        df_joined = df_joined.dropna()
+        print(df_joined)
+        unique_df = df_joined.drop_duplicates(keep='first', inplace=False, ignore_index=True)
+        print(unique_df)
+
+        values = ''
+        for i in range(len(unique_df)):
+            tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', {unique_df.loc[i, 'role_id']})"
+            values += tup
+            values += ', '
+        values = values[:-2]
+        print(values)
+        query = f"INSERT INTO {table} {columns} VALUES {values};"
+        self._sql_query(query)
+        query = f"SELECT * FROM {table};"
+        return self._sql_query(query)
+
+    def assign_fk_staff(self, df):
+        table = 'Staff'
+        list_entries = []
+        fk_dict_trainers = {}
+        fk_dict_talent = {}
+        my_dict = self.staff_roles_dict
+        for key, value in my_dict.items():
+            role_id = value
+            query = f"SELECT staff_id, first_name, last_name FROM Staff WHERE role_id = {role_id};"
+            records = self.__cursor.execute(query)
+            all_values = records.fetchall()
+            print(all_values)
+
+            list_entries.append(all_values)
+        print(list_entries)
+
+        for entry in list_entries[0]:
+            fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
+        for entry in list_entries[1]:
+            fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
+
+        df['trainers_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
+        df['trainers_id'] = df['trainers_id'].map(fk_dict_trainers)
+        #print(df[['trainer_first_name', 'trainers_id']])
+
+        df['talent_id'] = df['inv_by_firstname'].map(str) + ' ' + df['inv_by_lastname'].map(str)
+        df['talent_id'] = df['talent_id'].map(fk_dict_talent)
+        #print(df[['inv_by_firstname', 'talent_id']])
+        return df[['trainers_id', 'talent_id']]
