@@ -77,3 +77,4 @@ class Academy:
         first_name = name_split[:min(starting_last_name)]
         last_name = name_split[min(starting_last_name):] + [suffix]
         return [first_name, last_name]
+

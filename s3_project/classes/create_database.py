@@ -6,6 +6,7 @@ from s3_project.Config.config_manager import find_hidden_variable
 
 
 class ProjectDatabase:
+
     def __init__(self, to_create: bool = False):
         self.__server = find_hidden_variable('server')
         self.__database = find_hidden_variable('database')
