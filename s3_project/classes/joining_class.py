@@ -75,7 +75,7 @@ class JoinCleanData:
         fk_key_dict = {}
         query = f"SELECT {sql_id}, {sql_column_name} FROM {table};"
         for index, value in self._sql_id_query(query):
-            fk_key_dict[value] = index
+            fk_key_dict[value] = int(float(index))
         return fk_key_dict
 
     def values_from_list(self, column_name, df):
@@ -183,11 +183,11 @@ class JoinCleanData:
         self.merged_df = self.reassign_values('degree_id', 'degree', 'degree', self.merged_df, 'Degrees')
         print('Reassigning values to uni column')
         self.merged_df = self.reassign_values('uni_id', 'uni', 'uni', self.merged_df, 'Universities')
-        print('Reassigning values to strengths column')
-        self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
-        print('Reassigning values to weaknesses column')
-        self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
-        print('Reassignment completed')
+        # print('Reassigning values to strengths column')
+        # self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
+        # print('Reassigning values to weaknesses column')
+        # self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
+        # print('Reassignment completed')
 
     def staff_roles_load(self):
         table = 'Staff_Roles'
@@ -214,20 +214,31 @@ class JoinCleanData:
 
     def candidates_load(self, df):
         table = 'Candidates'
-        candidates = df[['first_name', 'last_name', 'gender', 'uni_id', 'degree_id', 'invited_by',
-                         'self_development', 'geo_flex', 'financial_support_self', 'result']]
-        candidates = candidates.rename(columns={'financial_support_self': 'self_finance', 'self_development': 'self_dev'})
+        table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
+        table_fields = list(table_schema.keys())
+        table_fields.pop(0)
+        col_join = ', '.join(table_fields)
+        columns = f"({col_join})"
+        candidates = df[['first_name', 'last_name', 'gender', 'uni_id', 'degree_id', 'talent_id',
+                         'self_development', 'geo_flex', 'financial_support_self', 'result', 'course_type_id']]
+        candidates = candidates.rename(columns={'financial_support_self': 'self_finance', 'self_development': 'self_dev', 'course_type_id':'course_interest_id'})
         unique_df = candidates.drop_duplicates(keep='first', inplace=False, ignore_index=True)
+        unique_df = unique_df.fillna(-1)
         values = ''
-        for i in range(len(unique_df)):
+        # unique_df.drop()
+        # unique_df['last_name'] = unique_df[unique_df['last_name']!='O\'Brien'].reset_index(drop=True)
+        unique_df['last_name'] = unique_df['last_name'].map(lambda x: x.replace("'", ' '))
+        for i in range(1000):
+            print(unique_df.loc[i, 'first_name'], unique_df.loc[i, 'last_name'])
             tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', '{unique_df.loc[i, 'gender']}', "\
-                  f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'invited_by']}', "\
-                  f"'{unique_df.loc[i, 'self_development']}', '{unique_df.loc[i, 'geo_flex']}', " \
-                  f"'{unique_df.loc[i, 'financial_support_self']}', '{unique_df.loc[i, 'result']}')"
+                  f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'talent_id']}', "\
+                  f"'{unique_df.loc[i, 'self_dev']}', '{unique_df.loc[i, 'geo_flex']}', " \
+                  f"'{unique_df.loc[i, 'self_finance']}', '{unique_df.loc[i, 'result']}', '{unique_df.loc[i, 'course_interest_id']}')"
             values += tup
             values += ', '
-        values = values.replace(values[-1], '')
-        values = values[:-1]
+        # values = values.replace(values[-1], '')
+        values = values[:-2]
+        #print(values)
         query = f"INSERT INTO {table} {columns} VALUES {values}"
         self._sql_query(query)
         query = f"SELECT * FROM {table}"
@@ -241,10 +252,10 @@ class JoinCleanData:
         col_join = ', '.join(table_fields)
         columns = f"({col_join})"
         trainers = df[['trainer_first_name', 'trainer_last_name']]
-        trainers['role_id'] = self.staff_roles_dict['trainer']
+        trainers['role_id'] = self.staff_roles_dict['Trainer']
         trainers.rename({'trainer_first_name': 'first_name', 'trainer_last_name': 'last_name'}, axis=1, inplace=True)
         talent = df[['inv_by_firstname', 'inv_by_lastname']]
-        talent['role_id'] = self.staff_roles_dict['talent_team']
+        talent['role_id'] = self.staff_roles_dict['Talent']
         talent.rename({'inv_by_firstname': 'first_name', 'inv_by_lastname': 'last_name'}, axis=1, inplace=True)
         df_joined = pd.concat([trainers, talent])
         df_joined = df_joined.dropna()
@@ -279,9 +290,9 @@ class JoinCleanData:
         print(list_entries)
 
         for entry in list_entries[0]:
-            fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
+            fk_dict_trainers[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
         for entry in list_entries[1]:
-            fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
+            fk_dict_talent[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
 
         df['trainers_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
         df['trainers_id'] = df['trainers_id'].map(fk_dict_trainers)

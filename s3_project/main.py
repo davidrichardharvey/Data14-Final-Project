@@ -17,5 +17,8 @@ df = test.merged_df
 test.staff_roles_load()
 test.staff_table_load(df)
 print(test.assign_fk_staff(df))
+
+print(test.merged_df.loc[test.merged_df['first_name']=='Brien'])
 test.candidates_load(df)
 
+print(test.merged_df.loc[test.merged_df['last_name']=='Brien'])
