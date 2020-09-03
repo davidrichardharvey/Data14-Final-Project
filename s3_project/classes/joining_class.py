@@ -1,12 +1,14 @@
-import pandas as pd
-# from s3_project.classes.cleaning_txt import
+from s3_project.functions import all_merges
+from s3_project.classes.academy_class import Academy
+from s3_project.classes.talent_csv_cleaning import TalentCsv
+from s3_project.classes.cleaning_txt import TextFiles
+from s3_project.classes.applicant_info_class import ApplicantInfoClean
 
 
-from s3_project.classes.cleaning_txt import talent_txt
-from s3_project.classes.academy_class import academy_dataframe
-from s3_project.classes.talent_csv_cleaning import monthly_talent_info
-from s3_project.classes.applicant_info_class import talent_applicant_info
-from s3_project.functions import first_merge, second_merge, third_merge, all_merges
+academy_dataframe = Academy()
+monthly_talent_info = TalentCsv()
+talent_txt = TextFiles()
+talent_applicant_info = ApplicantInfoClean()
 
 
 class JoinCleanData:
@@ -17,6 +19,3 @@ class JoinCleanData:
         self.applicant_info_json = talent_applicant_info.df_talent_json
         self.merged_df = all_merges(self.monthly_applicant_csv, self.sparta_day_txt, self.applicant_info_json,
                                     self.academy_scores_csv)
-
-
-merged_dfs = JoinCleanData()

@@ -1,10 +1,8 @@
-import json
 import boto3
-import os
 import pandas as pd
 from datetime import datetime
 
-from s3_project.classes.extraction_class import import_files
+from s3_project.extraction import import_files
 from s3_project.Config.config_manager import find_variable
 
 
@@ -151,6 +149,3 @@ class TalentCsv:
             return name_dict[name]
         else:
             return name
-
-
-monthly_talent_info = TalentCsv()

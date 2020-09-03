@@ -24,7 +24,6 @@ def second_merge(df1_2, df3):
                           left_on=["first_name", "last_name", 'invited_date'],
                           right_on=['first_name', 'last_name', 'date'])
 
-    df3.to_pickle("./applicant_info.pkl")
     # Iterates through the data frame to find instances where names are repeated
     all_names = []
     duplicates = []
@@ -89,7 +88,6 @@ def second_merge(df1_2, df3):
     # Altering the columns to remove the redundant columns and rename some to be more appropriate
     new_df.drop(['date_x', 'date_y', 'names'], inplace=True, axis=1)
     new_df.rename(columns={'invited_date': 'date'}, inplace=True)
-    new_df.to_pickle("./dummy.pkl")
     return new_df
 
 
@@ -148,8 +146,17 @@ def third_merge(merged_df, new_df):
 
 
 def all_merges(df1, df2, df3, df4):
+    # Creating pickle files for data frames
+    df1.to_pickle("./monthly_applicant_csv.pkl")
+    df2.to_pickle("./sparta_day_txt.pkl")
+    df3.to_pickle("./applicant_info.pkl")
+    df4.to_pickle("./academy_scores_csv.pkl")
+
+    # Running the merges to produce the final data frame
     merge1 = first_merge(df1, df2)
     merge2 = second_merge(merge1, df3)
     final_df = third_merge(merge2, df4)
+
+    # Saving the merged data frame as a pickle file
     final_df.to_pickle("./merged_dataframe.pkl")
     return final_df

@@ -1,5 +1,4 @@
 from s3_project.classes.talent_csv_cleaning import TalentCsv
-
 test_number = TalentCsv()
 
 
