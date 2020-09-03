@@ -17,7 +17,7 @@ talent_txt = TextFiles()
 talent_applicant_info = ApplicantInfoClean()
 
 
-class JoinCleanData():
+class JoinCleanData:
     def __init__(self):
         self.sparta_day_txt = talent_txt.df
         self.monthly_applicant_csv = monthly_talent_info.df_talent_csv
