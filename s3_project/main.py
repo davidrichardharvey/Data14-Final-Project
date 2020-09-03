@@ -27,3 +27,4 @@ df = pd.DataFrame(candidates_dummy)
 
 test.staff_roles_load()
 test.staff_table_load(df)
+test.assign_fk_staff(candidates_dummy)

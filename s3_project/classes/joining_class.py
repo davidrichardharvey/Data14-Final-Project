@@ -104,19 +104,21 @@ class JoinCleanData():
         for key in self.staff_roles_dict:
             role_id = self.staff_roles_dict[key]
             query = f"SELECT staff_id, first_name, last_name FROM {table} WHERE role_id = {role_id}"
-            list_entries.append(list(self._sql_query(query)))
-        for entry in list_entries[0]:
-            fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
-        for entry in list_entries[1]:
-            fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
-
-        df['trainer_id'] = np.nan(len(df))
-        df['talent_id'] = np.nan(len(df))
-        for i in range(len(df)):
-            trainer_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
-            df.loc[i, 'trainer_id'] = trainer_id
-            talent_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
-            df.loc[i, 'talent_id'] = talent_id
+            print(self._sql_query(query))
+            #list_entries.append(list(self._sql_query(query)))
+        #print(list_entries)
+        # for entry in list_entries[0]:
+        #     fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
+        # for entry in list_entries[1]:
+        #     fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
+        #
+        # df['trainer_id'] = np.nan(len(df))
+        # df['talent_id'] = np.nan(len(df))
+        # for i in range(len(df)):
+        #     trainer_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
+        #     df.loc[i, 'trainer_id'] = trainer_id
+        #     talent_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
+        #     df.loc[i, 'talent_id'] = talent_id
 
 
 #clean_data = JoinCleanData()
