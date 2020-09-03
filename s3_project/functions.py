@@ -147,10 +147,10 @@ def third_merge(merged_df, new_df):
 
 def all_merges(df1, df2, df3, df4):
     # Creating pickle files for data frames
-    df1.to_pickle("./monthly_applicant_csv")
+    df1.to_pickle("./monthly_applicant_csv.pkl")
     df2.to_pickle("./sparta_day_txt.pkl")
     df3.to_pickle("./applicant_info.pkl")
-    df4.to_pickle("./academy_scores_csv")
+    df4.to_pickle("./academy_scores_csv.pkl")
 
     # Running the merges to produce the final data frame
     merge1 = first_merge(df1, df2)
