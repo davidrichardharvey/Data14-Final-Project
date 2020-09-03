@@ -3,3 +3,6 @@ pandas
 pytest
 numpy
 pyodbc
+
+setuptools
+sqlalchemy
