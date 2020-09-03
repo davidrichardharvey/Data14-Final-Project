@@ -79,3 +79,4 @@ class Academy:
 
 
 academy_dataframe = Academy()
+

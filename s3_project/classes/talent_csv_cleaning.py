@@ -39,8 +39,10 @@ class TalentCsv:
             df['degree'] = df['degree'].apply(self.replace_degree)
             df = self.concat_dates(df, 'invited_date', 'month')
             df['invited_by'] = df['invited_by'].apply(self.change_invited_by)
+            df['inv_by_firstname'] = df['invited_by'].apply(self.splitting_first_names)
+            df['inv_by_lastname'] = df['invited_by'].apply(self.splitting_last_names)
             df = df[['first_name', 'last_name', 'gender', 'dob', 'email', 'city', 'address', 'postcode', 'phone_number',
-                     'uni', 'degree', 'invited_date', 'invited_by']]
+                     'uni', 'degree', 'invited_date', 'inv_by_firstname', 'inv_by_lastname']]
             self.df_talent_csv = self.df_talent_csv.append(df, ignore_index=True)
 
     def cleaning_phone_numbers(self, phone):

@@ -23,9 +23,9 @@ class ProjectDatabase:
         self.schemas = []
         self.pk_issues = []
         self.fk_issues = []
-        self.get_schemas()
+        #self.get_schemas()
         self.create_table_no_keys()
-        self.add_keys()
+        #self.add_keys()
 
     def _sql_query(self, sql_query):
         return self.cursor.execute(sql_query)
@@ -132,4 +132,4 @@ class ProjectDatabase:
             print("Successfully added foreign keys to tables")
 
 
-new = ProjectDatabase()
+#new = ProjectDatabase()
