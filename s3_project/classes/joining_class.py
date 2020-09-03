@@ -46,7 +46,8 @@ class JoinCleanData(ProjectDatabase):
     def staff_roles_load(self):
         table = 'Staff_Roles'
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
-        table_fields = tuple(table_schema.keys())
+        #table_fields = tuple(table_schema.keys())
+        table_fields = list(table_schema.keys())
         entries = ''
         for role in self.staff_roles_dict:
             tup = f"({role})"
@@ -99,27 +100,27 @@ class JoinCleanData(ProjectDatabase):
         query = f"SELECT * FROM {table};"
         return self._sql_query(query)
 
-    # def assign_fk_staff(self, df):
-    #     table = 'Staff'
-    #     list_entries = []
-    #     fk_dict_trainers = {}
-    #     fk_dict_talent = {}
-    #     for key in self.staff_roles_dict:
-    #         role_id = self.staff_roles_dict[key]
-    #         query = f"SELECT staff_id, first_name, last_name FROM {table} WHERE role_id = {role_id}"
-    #         list_entries.append(list(self._sql_query(query)))
-    #     for entry in list_entries[0]:
-    #         fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
-    #     for entry in list_entries[1]:
-    #         fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
-    #
-    #     df['trainer_id'] = np.nan(len(df))
-    #     df['talent_id'] = np.nan(len(df))
-    #     for i in range(len(df)):
-    #         trainer_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
-    #         df.loc[i, 'trainer_id'] = trainer_id
-    #         talent_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
-    #         df.loc[i, 'talent_id'] = talent_id
+    def assign_fk_staff(self, df):
+        table = 'Staff'
+        list_entries = []
+        fk_dict_trainers = {}
+        fk_dict_talent = {}
+        for key in self.staff_roles_dict:
+            role_id = self.staff_roles_dict[key]
+            query = f"SELECT staff_id, first_name, last_name FROM {table} WHERE role_id = {role_id}"
+            list_entries.append(list(self._sql_query(query)))
+        for entry in list_entries[0]:
+            fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
+        for entry in list_entries[1]:
+            fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
+
+        df['trainer_id'] = np.nan(len(df))
+        df['talent_id'] = np.nan(len(df))
+        for i in range(len(df)):
+            trainer_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
+            df.loc[i, 'trainer_id'] = trainer_id
+            talent_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
+            df.loc[i, 'talent_id'] = talent_id
 
 
 #clean_data = JoinCleanData()

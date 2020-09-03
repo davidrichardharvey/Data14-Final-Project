@@ -26,4 +26,4 @@ candidates_dummy = [{'trainer_first_name': 'Evie', 'trainer_last_name': 'Demetri
 df = pd.DataFrame(candidates_dummy)
 
 #test.staff_roles_load()
-test.staff_table_load(df)
+print(list(test.staff_table_load(df)))
