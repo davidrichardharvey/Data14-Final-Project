@@ -1,30 +1,19 @@
-# from s3_project.classes.cleaning_txt import talent_txt
-# from s3_project.classes.academy_class import academy_dataframe
-# from s3_project.classes.talent_csv_cleaning import monthly_talent_info
-# from s3_project.classes.applicant_info_class import talent_applicant_info
-#
-#
-# print(f"Applicant Info Data Frame: {talent_applicant_info.df_talent_json}")
-# print(f"Talent Text Files Data Frame: {talent_txt.df}")
-# print(f"Academy Data Frame: {academy_dataframe.cleaned_df}")
-# print(f"Monthly Talent Data Frame: {monthly_talent_info.df_talent_csv}")
-
-
-# from s3_project.classes.create_database import new
-# new.create_table_no_keys()
-
-
+# Imports the class to create the structure for the database. Can run the class by specifying 'to_create' = True upon
+# instantiation, or by running the .run_methods()
+from s3_project.classes.create_database import ProjectDatabase
 from s3_project.classes.joining_class import JoinCleanData
+
+# new = ProjectDatabase(to_create=False)  # Change value to true to create database
+# merged_dfs = JoinCleanData()
+
 import pandas as pd
+print(pd.read_pickle("./merged_dataframe.pkl").columns)
+
 
 test = JoinCleanData()
 
-candidates_dummy = [{'trainer_first_name': 'Evie', 'trainer_last_name': 'Demetriou', 'inv_by_firstname': 'Juxhen', 'inv_by_lastname': 'Bica'},
-                    {'trainer_first_name': 'Evdokia', 'trainer_last_name': 'Deme', 'inv_by_firstname': 'Juxh', 'inv_by_lastname': 'Bic'},
-                    {'trainer_first_name': 'Ev', 'trainer_last_name': 'Dem', 'inv_by_firstname': 'Jux', 'inv_by_lastname': 'Bc'},
-                    {'trainer_first_name': 'Evie', 'trainer_last_name': 'Demetriou', 'inv_by_firstname': 'J', 'inv_by_lastname': 'B'}]
-df = pd.DataFrame(candidates_dummy)
-
+df = test.merged_df
 test.staff_roles_load()
 test.staff_table_load(df)
-test.assign_fk_staff(candidates_dummy)
+print(test.assign_fk_staff(df))
+

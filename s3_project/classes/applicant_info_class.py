@@ -2,7 +2,7 @@ import json
 import boto3
 import pandas as pd
 from datetime import datetime
-from s3_project.classes.extraction_class import import_files
+from s3_project.extraction import import_files
 from s3_project.Config.config_manager import find_variable
 
 
@@ -86,6 +86,3 @@ class ApplicantInfoClean:
             object_dict = change_boolean(object_dict)
             talent_json_list.append(object_dict)
         self.df_talent_json = pd.DataFrame(talent_json_list)
-
-
-talent_applicant_info = ApplicantInfoClean()
