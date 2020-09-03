@@ -218,6 +218,21 @@ class JoinCleanData:
             table_df = pd.DataFrame(columns=columns)
             return table_df
 
+    def create_staff_roles(self):
+        staff_roles_dict = {'role_id': [1, 2], 'role': ['trainer', 'talent_team']}
+        staff_roles_df = pd.DataFrame(staff_roles_dict)
+        staff_df = self.creating_table_df('Staff')
+        trainers = staff_df[staff_df['role_id'] == '1']
+        talent_team = staff_df[staff_df['role_id'] == '2']
+        new_trainers = pd.concat([self.merged_df['inv_by_firstname'], self.merged_df['inv_by_lastname']], axis=1)
+        new_trainers['role_id'] = 1
+
+        new_talent = pd.concat([self.merged_df['trainer_first_name'], self.merged_df['trainer_last_name']], axis=1)
+        new_talent['role_id'] = 2
+        print(new_talent)
+
+
+
     def create_tools_slice(self, table_df):
         # Returns a table for all the information in the data frame corresponding to the tools scores
         new_info = []
@@ -273,7 +288,6 @@ class JoinCleanData:
         # Filters out the rows that contain null values in non-nullable columns
         for column in not_null_columns:
             new_info_df = new_info_df[~pd.isna(new_info_df[column])]
-
 
         new_df = pd.concat([table_df, new_info_df]).drop_duplicates().reset_index(drop=True)
         return new_df
