@@ -5,15 +5,14 @@ import numpy as np
 #from s3_project.classes.talent_csv_cleaning import monthly_talent_info
 #from s3_project.classes.applicant_info_class import talent_applicant_info
 
-from s3_project.classes.create_database import ProjectDatabase
+from s3_project.classes.create_database import new
 from s3_project.Config.config_manager import find_variable
 from s3_project.Config.config_manager import find_hidden_variable
 import ast
 
 
-class JoinCleanData(ProjectDatabase):
+class JoinCleanData():
     def __init__(self):
-        super().__init__()
         #self.talent_txt_df = talent_txt.df
         #self.monthly_talent_df = monthly_talent_info.df_talent_csv
         #self.academy_df = academy_dataframe.cleaned_df
@@ -40,24 +39,27 @@ class JoinCleanData(ProjectDatabase):
     #     df[column_name] = df[column_name].map(unique_values.get)
     #     return df, pd.DataFrame(primary_key_table, columns=[column_name])
 
-    # def _sql_query(self, sql_query):
-    #     return new.cursor.execute(sql_query)
+    def _sql_query(self, sql_query):
+        new.cursor.execute(sql_query)
+        new.sparta.commit()
 
     def staff_roles_load(self):
         table = 'Staff_Roles'
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
-        #table_fields = tuple(table_schema.keys())
         table_fields = list(table_schema.keys())
-        entries = ''
+        table_fields.pop(0)
+        col = table_fields[0].strip("'")
+        column = f"({col})"
+        values = ''
         for role in self.staff_roles_dict:
-            tup = f"({role})"
-            entries += tup
-            while role != list(self.staff_roles_dict.keys())[-1]:
-                entries += ', '
-        print(entries)
+            tup = f"('{role}')"
+            values += tup
+            values += ', '
+        values = values[:-2]
+        print(values)
         query = f"""
-                INSERT INTO {table} {table_fields}
-                VALUES {entries}; 
+                INSERT INTO {table} {column}
+                VALUES {values};
                 """
         self._sql_query(query)
         query = f"SELECT * FROM {table};"
@@ -68,11 +70,8 @@ class JoinCleanData(ProjectDatabase):
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
         table_fields = list(table_schema.keys())
         table_fields.pop(0)
-        print(table_fields)
         col_join = ', '.join(table_fields)
-        print(col_join)
         columns = f"({col_join})"
-        print(columns)
 
         trainers = df[['trainer_first_name', 'trainer_last_name']]
         trainers_filt = trainers[trainers.notna()]
@@ -84,15 +83,12 @@ class JoinCleanData(ProjectDatabase):
         talent_filt.rename({'inv_by_firstname': 'first_name', 'inv_by_lastname': 'last_name'}, axis=1, inplace=True)
         df_joined = pd.concat([trainers_filt, talent_filt])
         unique_df = df_joined.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-        print(unique_df)
 
         values = ''
         for i in range(len(unique_df)):
-            #tup = (unique_df.loc[i, 'first_name'], unique_df.loc[i, 'last_name'])
             tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', {unique_df.loc[i, 'role_id']})"
             values += tup
             values += ', '
-        #values = values.replace(values[-1], '')
         values = values[:-2]
         print(values)
         query = f"INSERT INTO {table} {columns} VALUES {values};"

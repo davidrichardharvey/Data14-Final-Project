@@ -132,4 +132,4 @@ class ProjectDatabase:
             print("Successfully added foreign keys to tables")
 
 
-#new = ProjectDatabase()
+new = ProjectDatabase()
