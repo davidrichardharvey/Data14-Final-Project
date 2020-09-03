@@ -1,5 +1,5 @@
 import boto3
-from ..Config.config_manager import find_variable
+from s3_project.Config.config_manager import find_variable
 
 
 class ExtractFromS3:
@@ -17,7 +17,6 @@ class ExtractFromS3:
         self.talent_csv_list = []
         self.talent_json_list = []
         self.talent_txt_list = []
-        self.get_data()  # Running the method to extract files from S3
 
     def get_data(self):
         # Method to separate objects into lists in preparation for cleaning
@@ -34,6 +33,3 @@ class ExtractFromS3:
             elif object_key.startswith('Academy'):
                 if object_key.endswith('.csv'):  # To retrieve csv files in the Academy folder
                     self.academy_csv_list.append(object_key)
-
-
-import_files = ExtractFromS3()

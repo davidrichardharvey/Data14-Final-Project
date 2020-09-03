@@ -1,6 +1,6 @@
 import pandas as pd
 import boto3
-from s3_project.classes.extraction_class import import_files
+from s3_project.extraction import import_files
 from s3_project.Config.config_manager import find_variable
 
 
@@ -19,7 +19,7 @@ class Academy:
                                  f",  How Resolved: Ambiguous names put in first name\n")
 
     def split_names(self, input_col, f_name_column_name, l_name_column_name, df, file_name):
-        # Splits a name column into first and last names then adds it to the dataframe
+        # Splits a name column into first and last names then adds it to the data frame
         first_names = []
         last_names = []
         for index, row in df.iterrows():
@@ -33,8 +33,8 @@ class Academy:
         df[l_name_column_name] = last_names
         return df
 
-    def reformat_dataframe(self, df, file_name):
-        # Re-formats the dataframes to place the scores at the end of the dataframe and apply the name splits
+    def reformat_data_frame(self, df, file_name):
+        # Re-formats the data frames to place the scores at the end of the data frame and apply the name splits
         behaviours = ["Analytic", "Independent", "Determined", "Professional", "Studious", "Imaginative"]
         course_duration = (len(list(df.columns)) - 4) / len(behaviours)
         course_weeks = range(1, int(course_duration) + 1)
@@ -46,10 +46,11 @@ class Academy:
             for kpi in behaviours:
                 column_names.append(f'{kpi}_W{week}')
         df = df.reindex(columns=column_names)
+        df['course_length'] = course_duration
         return df
 
     def get_cleaned_df(self):
-        # Iterates through the file names and adds their re-formatted data to a dataframe
+        # Iterates through the file names and adds their re-formatted data to a data frame
         df_list = []
         for file_name in self.files:
             print(f"Getting data from {file_name}")
@@ -60,7 +61,7 @@ class Academy:
             file_name_split = file_name.split('_')
             df['course_name'] = f"{file_name_split[0].split('/')[1]}{file_name_split[1]}"
             df['course_start_date'] = file_name_split[2].split('.')[0].replace('-', '/')
-            df_list.append(self.reformat_dataframe(df, file_name))
+            df_list.append(self.reformat_data_frame(df, file_name))
         return pd.concat(df_list)
 
     def find_last_names(self, name_split):
@@ -76,6 +77,3 @@ class Academy:
         first_name = name_split[:min(starting_last_name)]
         last_name = name_split[min(starting_last_name):] + [suffix]
         return [first_name, last_name]
-
-
-academy_dataframe = Academy()

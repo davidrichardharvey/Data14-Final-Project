@@ -1,5 +1,4 @@
 from s3_project.classes.academy_class import Academy
-
 test = Academy()
 
 

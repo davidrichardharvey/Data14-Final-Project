@@ -1,6 +1,5 @@
 from s3_project.classes.academy_class import Academy
 import pandas as pd
-
 test = Academy()
 
 

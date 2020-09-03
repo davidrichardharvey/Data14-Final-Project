@@ -1,6 +1,5 @@
 from s3_project.classes.cleaning_txt import TextFiles
 import os
-
 test = TextFiles()  # Tests for the TextFiles class designed to clean all the talent txt files
 
 

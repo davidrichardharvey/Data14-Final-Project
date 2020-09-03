@@ -1,4 +1,4 @@
-from s3_project.classes.extraction_class import ExtractFromS3
+from s3_project.extraction import ExtractFromS3
 test = ExtractFromS3()
 
 
