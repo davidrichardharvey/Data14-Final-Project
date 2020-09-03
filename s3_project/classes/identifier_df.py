@@ -4,13 +4,13 @@ import urllib
 import ast
 from sqlalchemy import create_engine
 
-# from s3_project.classes.joining_class import merged_dfs
-# from s3_project.Config.config_manager import find_hidden_variable
+from s3_project.classes.joining_class import merged_dfs
+from s3_project.Config.config_manager import find_hidden_variable
 from s3_project.Config.config_manager import find_variable
 
 class IdentifierDF:
     def __init__(self):
-        self.df = pd.read_pickle('merged_dataframe.pkl')
+        self.df = merged_dfs.merged_df
         self.Cities = self.df[['city']]
         self.Course_Interests = self.df[['course_interest']]
         self.Courses = self.df[['course_name', 'course_start_date', 'course_length']]
@@ -20,18 +20,18 @@ class IdentifierDF:
         self.Strengths = self.df[['strengths']]
         self.Universities = self.df[['uni']]
         self.Weaknesses = self.df[['weaknesses']]
-        # self.server = find_hidden_variable('server')
-        # self.database = find_hidden_variable('database')
-        # self.username = find_hidden_variable('username')
-        # self.password = find_hidden_variable('password')
-        # self.connection_string = "DRIVER={SQL Server};"
-        # self.connection_string += f"SERVER={self.server};"
-        # self.connection_string += f"DATABASE={self.database};"
-        # self.connection_string += f"UID={self.username};"
-        # self.connection_string += f"PWD={self.password}"
-        self.sparta = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=Project4;")
+        self.server = find_hidden_variable('server')
+        self.database = find_hidden_variable('database')
+        self.username = find_hidden_variable('username')
+        self.password = find_hidden_variable('password')
+        self.connection_string = "DRIVER={SQL Server};"
+        self.connection_string += f"SERVER={self.server};"
+        self.connection_string += f"DATABASE={self.database};"
+        self.connection_string += f"UID={self.username};"
+        self.connection_string += f"PWD={self.password}"
+        self.sparta = pyodbc.connect(self.connection_string)
         self.cursor = self.sparta.cursor()
-        self.params = urllib.parse.quote_plus("DRIVER={ODBC Driver 17 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=Project4;")
+        self.params = urllib.parse.quote_plus(self.connection_string)
         self.engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.params)
         self.input_tables_to_sql()
         self.apply_reassign()
@@ -142,6 +142,7 @@ class IdentifierDF:
 
     # This method reads the keys from the database and assigns the foreign key value to the appropriate columns
     def apply_reassign(self):
+        print('Reassigning values in dataframe')
         self.df = self.reassign_values('location_id', 'location', 'location', self.df, 'Locations')
         self.df = self.reassign_values('city_id', 'city', 'city', self.df, 'Cities')
         self.df = self.reassign_values('course_type_id', 'course_type', 'course_interest', self.df, 'Course_Interests')
@@ -150,6 +151,7 @@ class IdentifierDF:
         self.df = self.reassign_values('uni_id', 'uni', 'uni', self.df, 'Universities')
         self.df['strengths'] = self.df['strengths'].apply(self.reassign_strengths)
         self.df['weaknesses'] = self.df['weaknesses'].apply(self.reassign_weaknesses)
+        print('')
 
 
 testing = IdentifierDF()

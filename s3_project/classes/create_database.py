@@ -7,16 +7,16 @@ from s3_project.Config.config_manager import find_hidden_variable
 
 class ProjectDatabase:
     def __init__(self):
-        # self.server = find_hidden_variable('server')
-        # self.database = find_hidden_variable('database')
-        # self.username = find_hidden_variable('username')
-        # self.password = find_hidden_variable('password')
-        # self.connection_string = "DRIVER={SQL Server};"
-        # self.connection_string += f"SERVER={self.server};"
-        # self.connection_string += f"DATABASE={self.database};"
-        # self.connection_string += f"UID={self.username};"
-        # self.connection_string += f"PWD={self.password}"
-        self.sparta = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=Project;")
+        self.server = find_hidden_variable('server')
+        self.database = find_hidden_variable('database')
+        self.username = find_hidden_variable('username')
+        self.password = find_hidden_variable('password')
+        self.connection_string = "DRIVER={SQL Server};"
+        self.connection_string += f"SERVER={self.server};"
+        self.connection_string += f"DATABASE={self.database};"
+        self.connection_string += f"UID={self.username};"
+        self.connection_string += f"PWD={self.password}"
+        self.sparta = pyodbc.connect(self.connection_string)
         self.cursor = self.sparta.cursor()
         self.tables = []
         self.existing_tables = []
@@ -48,7 +48,7 @@ class ProjectDatabase:
             # Writes the query. If there is an issue making the table (e.g. it already exists in the database, it is
             # added to a list and printed using a try-except clause. Adds the schema to a JSON file
             query = f"""
-                    USE Project4
+                    USE SpartaGlobal
                     CREATE TABLE {table['Name']}
                     (
                     """
