@@ -2,7 +2,7 @@ import boto3
 import pandas as pd
 from datetime import datetime
 
-from s3_project.classes.extraction_class import import_files
+from s3_project.extraction import import_files
 from s3_project.Config.config_manager import find_variable
 
 
@@ -96,6 +96,3 @@ class TextFiles:
             self.results[file] = get_scores(self.results[file])
             self.results[file] = two_names_txt(self.results[file])
             self.results[file] = date_format(self.results[file])
-
-
-talent_txt = TextFiles()

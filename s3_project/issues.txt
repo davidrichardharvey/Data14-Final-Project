@@ -1,0 +1,61 @@
+Filename: Talent/10705.json,  Name: Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/11340.json,  Name: Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/11705.json,  Name: Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/12160.json,  Name: Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/13154.json,  Name: Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,  Name: Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,  Name: Miof Mela Woodland,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,  Name: Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,  Name: Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,  Name: Tony Erskine Sandys,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,  Name: Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Nov2019Applicants.csv,  Name: La Verne Shasnan,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Oct2019Applicants.csv,  Name: De Witt O'Dowd,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,  Name: Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 12 December 2019.txt,  Name:Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 16 July 2019.txt,  Name:Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 19 December 2019.txt,  Name:Miof Mela Woodland,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 26 September 2019.txt,  Name:Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 28 March 2019.txt,  Name:Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 29 October 2019.txt,  Name:De Witt O'Dowd,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 5 February 2019.txt,  Name:Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Name: Muhammad Linn,  Issue: Unable to process candidate due to repeated name,  How Resolved: Dropped candidate from data to be added. To insert the candidate  into the database, please insert their details directlyName: Levy Standage,  Issue: Unable to process candidate due to repeated name,  How Resolved: Dropped candidate from data to be added. To insert the candidate  into the database, please insert their details directlyFilename: Talent/10705.json,  Name: Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/11340.json,  Name: Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/11705.json,  Name: Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/12160.json,  Name: Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/13154.json,  Name: Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,  Name: Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,  Name: Miof Mela Woodland,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,  Name: Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,  Name: Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,  Name: Tony Erskine Sandys,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,  Name: Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Nov2019Applicants.csv,  Name: La Verne Shasnan,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Oct2019Applicants.csv,  Name: De Witt O'Dowd,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,  Name: Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 12 December 2019.txt,  Name:Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 16 July 2019.txt,  Name:Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 19 December 2019.txt,  Name:Miof Mela Woodland,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 26 September 2019.txt,  Name:Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 28 March 2019.txt,  Name:Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 29 October 2019.txt,  Name:De Witt O'Dowd,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 5 February 2019.txt,  Name:Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Name: Muhammad Linn,  Issue: Unable to process candidate due to repeated name,  How Resolved: Dropped candidate from data to be added. To insert the candidate  into the database, please insert their details directlyName: Levy Standage,  Issue: Unable to process candidate due to repeated name,  How Resolved: Dropped candidate from data to be added. To insert the candidate  into the database, please insert their details directlyFilename: Talent/10705.json,  Name: Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/11340.json,  Name: Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/11705.json,  Name: Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,  Name: Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Dec2019Applicants.csv,  Name: Miof Mela Woodland,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Feb2019Applicants.csv,  Name: Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,  Name: Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/July2019Applicants.csv,  Name: Tony Erskine Sandys,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/March2019Applicants.csv,  Name: Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Nov2019Applicants.csv,  Name: La Verne Shasnan,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Oct2019Applicants.csv,  Name: De Witt O'Dowd,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+Filename: Talent/Sept2019Applicants.csv,  Name: Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 12 December 2019.txt,  Name:Jo Ann Beeke,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 16 July 2019.txt,  Name:Zsa Zsa Rounsefull,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 19 December 2019.txt,  Name:Miof Mela Woodland,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 26 September 2019.txt,  Name:Lester Weddeburn - Scrimgeour,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 28 March 2019.txt,  Name:Durant Dell 'Orto,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 29 October 2019.txt,  Name:De Witt O'Dowd,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
+FileName: Sparta Day 5 February 2019.txt,  Name:Colene Degli Antoni,  Issue: Ambiguity in sorting names,  How Resolved: Ambiguous names put in first name
