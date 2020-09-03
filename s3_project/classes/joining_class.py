@@ -1,8 +1,8 @@
-from s3_project.functions import all_merges
-from s3_project.classes.academy_class import Academy
-from s3_project.classes.talent_csv_cleaning import TalentCsv
-from s3_project.classes.cleaning_txt import TextFiles
-from s3_project.classes.applicant_info_class import ApplicantInfoClean
+# from s3_project.functions import all_merges
+# from s3_project.classes.academy_class import Academy
+# from s3_project.classes.talent_csv_cleaning import TalentCsv
+# from s3_project.classes.cleaning_txt import TextFiles
+# from s3_project.classes.applicant_info_class import ApplicantInfoClean
 
 import pandas as pd
 import numpy as np
@@ -57,7 +57,7 @@ class JoinCleanData:
             values += tup
             values += ', '
         values = values[:-2]
-        print(values)
+        #print(values)
         query = f"""
                 INSERT INTO {table} {column}
                 VALUES {values};
@@ -75,18 +75,17 @@ class JoinCleanData:
         columns = f"({col_join})"
 
         trainers = df[['trainer_first_name', 'trainer_last_name']]
-        #trainers_filt = trainers[pd.isna(trainers['trainer_first_name'])]
         trainers['role_id'] = self.staff_roles_dict['trainer']
         trainers.rename({'trainer_first_name': 'first_name', 'trainer_last_name': 'last_name'}, axis=1, inplace=True)
         talent = df[['inv_by_firstname', 'inv_by_lastname']]
-        #talent_filt = talent[talent.notna()]
         talent['role_id'] = self.staff_roles_dict['talent_team']
         talent.rename({'inv_by_firstname': 'first_name', 'inv_by_lastname': 'last_name'}, axis=1, inplace=True)
         df_joined = pd.concat([trainers, talent])
-        df_joined = df_joined[df_joined['first_name'].isin(['nan', 'None'])]
+        df_joined = df_joined.dropna()
         print(df_joined)
         unique_df = df_joined.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-        #print(trainers_filt[pd.isna(trainers_filt['first_name'])])
+        print(unique_df)
+
         values = ''
         for i in range(len(unique_df)):
             tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', {unique_df.loc[i, 'role_id']})"
@@ -120,22 +119,14 @@ class JoinCleanData:
         for entry in list_entries[1]:
             fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
 
+        df['trainers_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
+        df['trainers_id'] = df['trainers_id'].map(fk_dict_trainers)
+        #print(df[['trainer_first_name', 'trainers_id']])
 
-        # for i in range(len(df)):
-
-        df['trainers_names'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
-        df['trainers_names'] = df['trainers_names'].map(fk_dict_trainers)
-        print(df[['trainer_first_name','trainers_names']])
-        # df['trainer_id'] = np.zeros(len(df))
-        # df['talent_id'] = np.zeros(len(df))
-        # print(df.loc[1, 'trainer_first_name'])
-        # for i in range(len(df)):
-        #     print(df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name'])
-        #     trainer_id = fk_dict_trainers[df.loc[i, 'trainer_first_name'] + ' ' + df.loc[i, 'trainer_last_name']]
-        #     df.loc[i, 'trainer_id'] = trainer_id
-        #     talent_id = fk_dict_trainers[df.loc[i, 'inv_by_firstname'] + ' ' + df.loc[i, 'inv_by_lastname']]
-        #     df.loc[i, 'talent_id'] = talent_id
-        # return df[['trainer_id', 'talent_id']]
+        df['talent_id'] = df['inv_by_firstname'].map(str) + ' ' + df['inv_by_lastname'].map(str)
+        df['talent_id'] = df['talent_id'].map(fk_dict_talent)
+        #print(df[['inv_by_firstname', 'talent_id']])
+        return df[['trainers_id', 'talent_id']]
 
 
 
