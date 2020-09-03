@@ -1,8 +1,8 @@
-from s3_project.functions import all_merges
-from s3_project.classes.academy_class import Academy
-from s3_project.classes.talent_csv_cleaning import TalentCsv
-from s3_project.classes.cleaning_txt import TextFiles
-from s3_project.classes.applicant_info_class import ApplicantInfoClean
+# from s3_project.functions import all_merges
+# from s3_project.classes.academy_class import Academy
+# from s3_project.classes.talent_csv_cleaning import TalentCsv
+# from s3_project.classes.cleaning_txt import TextFiles
+# from s3_project.classes.applicant_info_class import ApplicantInfoClean
 from s3_project.Config.config_manager import find_hidden_variable
 from s3_project.Config.config_manager import find_variable
 import pandas as pd
@@ -26,13 +26,13 @@ class JoinCleanData:
         # self.merged_df = all_merges(self.monthly_applicant_csv, self.sparta_day_txt, self.applicant_info_json,
         #                             self.academy_scores_csv)
         self.merged_df = pd.read_pickle('merged_dataframe.pkl')
-        self.staff_roles_dict = {'trainer': 1, 'talent_team': 2}  # should go in config??
+        self.staff_roles_dict = {'Trainer': 1, 'Talent': 2}  # should go in config??
         self.Cities = self.merged_df[['city']]
         self.Course_Interests = self.merged_df[['course_interest']]
         self.Courses = self.merged_df[['course_name', 'course_start_date', 'course_length']]
         self.Degrees = self.merged_df[['degree']]
         self.Locations = self.merged_df[['location']]
-        self.Staff_Roles = pd.DataFrame({'role': ['Trainer', 'Talent']})
+        # self.Staff_Roles = pd.DataFrame({'role': ['Trainer', 'Talent']})
         self.Strengths = self.merged_df[['strengths']]
         self.Universities = self.merged_df[['uni']]
         self.Weaknesses = self.merged_df[['weaknesses']]
@@ -60,7 +60,7 @@ class JoinCleanData:
 
     def _sql_query(self, sql_query):
         self.__cursor.execute(sql_query)
-        #self.__sparta.commit()  # remove when needed
+        self.__sparta.commit()  # remove when needed
 
     def df_to_sql(self, df, sql_table):
         # This method writes the df to the SQL database
@@ -117,8 +117,8 @@ class JoinCleanData:
 
     def input_tables_to_sql(self):
         # This loads all the data to SQL
-        id_tables = ['Locations', 'Universities', 'Degrees', 'Course_Interests', 'Cities', 'Courses', 'Staff_Roles', 'Strengths', 'Weaknesses']
-        df_list = [self.Locations, self.Universities, self.Degrees, self.Course_Interests, self.Cities, self.Courses, self.Staff_Roles, self.Strengths, self.Weaknesses]
+        id_tables = ['Locations', 'Universities', 'Degrees', 'Course_Interests', 'Cities', 'Courses', 'Strengths', 'Weaknesses']
+        df_list = [self.Locations, self.Universities, self.Degrees, self.Course_Interests, self.Cities, self.Courses, self.Strengths, self.Weaknesses]
         for i in range(len(id_tables)):
             column_keys = find_variable(id_tables[i], 'TABLE SCHEMAS')
             column_keys = list(ast.literal_eval(column_keys).keys())
@@ -250,7 +250,7 @@ class JoinCleanData:
             query = f"SELECT staff_id, first_name, last_name FROM Staff WHERE role_id = {role_id};"
             records = self.__cursor.execute(query)
             all_values = records.fetchall()
-            print(all_values)
+            #print(all_values)
 
             list_entries.append(all_values)
         print(list_entries)
