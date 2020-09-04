@@ -72,7 +72,6 @@ class JoinCleanData:
         # This method gets the ID's from the database for later use
         fk_key_dict = {}
         query = f"SELECT {sql_id}, {sql_column_name} FROM {table};"
-        print(query)
         for index, value in self._sql_id_query(query):
             fk_key_dict[value] = index
         return fk_key_dict
@@ -201,7 +200,6 @@ class JoinCleanData:
             values += tup
             values += ', '
         values = values[:-2]
-        #print(values)
         query = f"""
                 INSERT INTO {table} {column}
                 VALUES {values};
@@ -226,9 +224,7 @@ class JoinCleanData:
         talent.rename({'inv_by_firstname': 'first_name', 'inv_by_lastname': 'last_name'}, axis=1, inplace=True)
         df_joined = pd.concat([trainers, talent])
         df_joined = df_joined.dropna()
-        print(df_joined)
         unique_df = df_joined.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-        print(unique_df)
 
         values = ''
         for i in range(len(unique_df)):
@@ -236,7 +232,6 @@ class JoinCleanData:
             values += tup
             values += ', '
         values = values[:-2]
-        print(values)
         query = f"INSERT INTO {table} {columns} VALUES {values};"
         self._sql_query(query)
         query = f"SELECT * FROM {table};"
@@ -253,11 +248,7 @@ class JoinCleanData:
             query = f"SELECT staff_id, first_name, last_name FROM Staff WHERE role_id = {role_id};"
             records = self.__cursor.execute(query)
             all_values = records.fetchall()
-            #print(all_values)
-
             list_entries.append(all_values)
-        print(list_entries)
-
         for entry in list_entries[0]:
             fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
         for entry in list_entries[1]:
@@ -265,11 +256,9 @@ class JoinCleanData:
 
         df['trainer_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
         df['trainer_id'] = df['trainer_id'].map(fk_dict_trainers)
-        #print(df[['trainer_first_name', 'trainers_id']])
 
         df['talent_id'] = df['inv_by_firstname'].map(str) + ' ' + df['inv_by_lastname'].map(str)
         df['talent_id'] = df['talent_id'].map(fk_dict_talent)
-        #print(df[['inv_by_firstname', 'talent_id']])
         return df[['trainer_id', 'talent_id']]
 
     def course_trainer_load(self, df):
@@ -279,7 +268,6 @@ class JoinCleanData:
         crs_trn_unique = crs_trn_filt.drop_duplicates(keep='first', inplace=False, ignore_index=True)
         crs_trn_unique['course_id'] = crs_trn_unique['course_id'].map(lambda x: int(x)).copy()
         crs_trn_unique['trainer_id'] = crs_trn_unique['trainer_id'].map(lambda x: int(x)).copy()
-        print(crs_trn_unique)
         columns = '(course_id, trainer_id)'
         values = ''
         for i in range(len(crs_trn_unique)):
