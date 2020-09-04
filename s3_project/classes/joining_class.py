@@ -11,6 +11,8 @@ import urllib
 import ast
 import pyodbc
 from sqlalchemy import create_engine
+import warnings
+warnings.filterwarnings("ignore")
 
 
 # academy_dataframe = Academy()
@@ -68,7 +70,7 @@ class JoinCleanData:
 
     def _sql_query(self, sql_query):
         self.__cursor.execute(sql_query)
-        self.__sparta.commit()  # remove when needed
+        #self.__sparta.commit()  # remove when needed
 
     def df_to_sql(self, df, sql_table):
         # This method writes the df to the SQL database
@@ -187,11 +189,13 @@ class JoinCleanData:
         self.merged_df = self.reassign_values('degree_id', 'degree', 'degree', self.merged_df, 'Degrees')
         print('Reassigning values to uni column')
         self.merged_df = self.reassign_values('uni_id', 'uni', 'uni', self.merged_df, 'Universities')
-#         print('Reassigning values to strengths column')
-#         self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
-#         print('Reassigning values to weaknesses column')
-#         self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
-#         print('Reassignment completed')
+
+        # print('Reassigning values to strengths column')
+        # self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
+        # print('Reassigning values to weaknesses column')
+        # self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
+        print('Reassignment completed')
+
 
     def staff_roles_load(self):
         table = 'Staff_Roles'
@@ -255,17 +259,36 @@ class JoinCleanData:
             records = self.__cursor.execute(query)
             all_values = records.fetchall()
             list_entries.append(all_values)
-
         for entry in list_entries[0]:
             fk_dict_trainers[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
         for entry in list_entries[1]:
             fk_dict_talent[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
 
-        df['trainers_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
-        df['trainers_id'] = df['trainers_id'].map(fk_dict_trainers)
+
+        df['trainer_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
+        df['trainer_id'] = df['trainer_id'].map(fk_dict_trainers)
+
         df['talent_id'] = df['inv_by_firstname'].map(str) + ' ' + df['inv_by_lastname'].map(str)
         df['talent_id'] = df['talent_id'].map(fk_dict_talent)
-        return df[['trainers_id', 'talent_id']]
+        return df[['trainer_id', 'talent_id']]
+
+    def course_trainer_load(self, df):
+        table = 'course_trainer'
+        crs_trn_df = df[['course_id', 'trainer_id']]
+        crs_trn_filt = crs_trn_df.dropna()
+        crs_trn_unique = crs_trn_filt.drop_duplicates(keep='first', inplace=False, ignore_index=True)
+        crs_trn_unique['course_id'] = crs_trn_unique['course_id'].map(lambda x: int(x)).copy()
+        crs_trn_unique['trainer_id'] = crs_trn_unique['trainer_id'].map(lambda x: int(x)).copy()
+        columns = '(course_id, trainer_id)'
+        values = ''
+        for i in range(len(crs_trn_unique)):
+            tup = f"({crs_trn_unique.loc[i, 'course_id']}, {crs_trn_unique.loc[i, 'trainer_id']})"
+            values += tup
+            values += ', '
+        values = values[:-2]
+        query = f"INSERT INTO {table} {columns} VALUES {values}"
+        self._sql_query(query)
+        self.__sparta.commit()
 
     def candidates_load(self):
         print('Loading Candidates table into database')
@@ -300,15 +323,4 @@ class JoinCleanData:
             self._sql_query(query)
         print('Candidates table loaded in database')
 
-    def assign_fk_candidates(self):
-        df = self.merged_df
-        table = 'Candidates'
-        fk_dict_candidates = {}
-        query = f"SELECT CONCAT(first_name, ' ', last_name), candidate_id FROM {table};"
-        records = self.__cursor.execute(query)
-        all_values = records.fetchall()
-        for candidate in all_values:
-            fk_dict_candidates[candidate[0]] = candidate[1]
-        df['candidate_id'] = df['first_name'] + ' ' + df['last_name']
-        df['candidate_id'] = df['candidate_id'].map(fk_dict_candidates)
-        return df[['candidate_id']]
+   

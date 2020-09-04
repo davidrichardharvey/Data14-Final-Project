@@ -3,8 +3,17 @@
 from s3_project.classes.create_database import ProjectDatabase
 from s3_project.classes.joining_class import JoinCleanData
 
-new = ProjectDatabase(to_create=False)  # Change value to true to create database
-merged_df = JoinCleanData()
+# new = ProjectDatabase(to_create=False)  # Change value to true to create database
+# merged_dfs = JoinCleanData()
 
-# import pandas as pd
-# print(pd.read_pickle("./merged_dataframe.pkl").columns)
+import pandas as pd
+print(pd.read_pickle("./merged_dataframe.pkl").columns)
+
+
+test = JoinCleanData()
+
+df = test.merged_df
+test.staff_roles_load()
+test.staff_table_load(df)
+test.assign_fk_staff(df)
+test.course_trainer_load(df)
