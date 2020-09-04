@@ -10,6 +10,8 @@ import urllib
 import ast
 import pyodbc
 from sqlalchemy import create_engine
+import warnings
+warnings.filterwarnings("ignore")
 
 # academy_dataframe = Academy()
 # monthly_talent_info = TalentCsv()
@@ -60,7 +62,7 @@ class JoinCleanData:
 
     def _sql_query(self, sql_query):
         self.__cursor.execute(sql_query)
-        self.__sparta.commit()  # remove when needed
+        #self.__sparta.commit()  # remove when needed
 
     def df_to_sql(self, df, sql_table):
         # This method writes the df to the SQL database
@@ -70,6 +72,7 @@ class JoinCleanData:
         # This method gets the ID's from the database for later use
         fk_key_dict = {}
         query = f"SELECT {sql_id}, {sql_column_name} FROM {table};"
+        print(query)
         for index, value in self._sql_id_query(query):
             fk_key_dict[value] = index
         return fk_key_dict
@@ -179,10 +182,10 @@ class JoinCleanData:
         self.merged_df = self.reassign_values('degree_id', 'degree', 'degree', self.merged_df, 'Degrees')
         print('Reassigning values to uni column')
         self.merged_df = self.reassign_values('uni_id', 'uni', 'uni', self.merged_df, 'Universities')
-        print('Reassigning values to strengths column')
-        self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
-        print('Reassigning values to weaknesses column')
-        self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
+        # print('Reassigning values to strengths column')
+        # self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
+        # print('Reassigning values to weaknesses column')
+        # self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
         print('Reassignment completed')
 
     def staff_roles_load(self):
@@ -216,10 +219,10 @@ class JoinCleanData:
         columns = f"({col_join})"
 
         trainers = df[['trainer_first_name', 'trainer_last_name']]
-        trainers['role_id'] = self.staff_roles_dict['trainer']
+        trainers['role_id'] = self.staff_roles_dict['Trainer']
         trainers.rename({'trainer_first_name': 'first_name', 'trainer_last_name': 'last_name'}, axis=1, inplace=True)
         talent = df[['inv_by_firstname', 'inv_by_lastname']]
-        talent['role_id'] = self.staff_roles_dict['talent_team']
+        talent['role_id'] = self.staff_roles_dict['Talent']
         talent.rename({'inv_by_firstname': 'first_name', 'inv_by_lastname': 'last_name'}, axis=1, inplace=True)
         df_joined = pd.concat([trainers, talent])
         df_joined = df_joined.dropna()
@@ -260,11 +263,31 @@ class JoinCleanData:
         for entry in list_entries[1]:
             fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
 
-        df['trainers_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
-        df['trainers_id'] = df['trainers_id'].map(fk_dict_trainers)
+        df['trainer_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
+        df['trainer_id'] = df['trainer_id'].map(fk_dict_trainers)
         #print(df[['trainer_first_name', 'trainers_id']])
 
         df['talent_id'] = df['inv_by_firstname'].map(str) + ' ' + df['inv_by_lastname'].map(str)
         df['talent_id'] = df['talent_id'].map(fk_dict_talent)
         #print(df[['inv_by_firstname', 'talent_id']])
-        return df[['trainers_id', 'talent_id']]
+        return df[['trainer_id', 'talent_id']]
+
+    def course_trainer_load(self, df):
+        table = 'course_trainer'
+        crs_trn_df = df[['course_id', 'trainer_id']]
+        crs_trn_filt = crs_trn_df.dropna()
+        crs_trn_unique = crs_trn_filt.drop_duplicates(keep='first', inplace=False, ignore_index=True)
+        crs_trn_unique['course_id'] = crs_trn_unique['course_id'].map(lambda x: int(x)).copy()
+        crs_trn_unique['trainer_id'] = crs_trn_unique['trainer_id'].map(lambda x: int(x)).copy()
+        print(crs_trn_unique)
+        columns = '(course_id, trainer_id)'
+        values = ''
+        for i in range(len(crs_trn_unique)):
+            tup = f"({crs_trn_unique.loc[i, 'course_id']}, {crs_trn_unique.loc[i, 'trainer_id']})"
+            values += tup
+            values += ', '
+        values = values[:-2]
+        query = f"INSERT INTO {table} {columns} VALUES {values}"
+        self._sql_query(query)
+        self.__sparta.commit()
+
