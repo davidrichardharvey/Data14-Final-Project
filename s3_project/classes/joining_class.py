@@ -56,6 +56,12 @@ class JoinCleanData:
         self.__engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.__params)
         self.input_tables_to_sql()
         self.apply_reassign()
+        self.staff_roles_load()
+        self.staff_table_load()
+        self.assign_fk_staff()
+        self.candidates_load()
+        self.assign_fk_candidates()
+
 
     def _sql_id_query(self, sql_query):
         return self.__cursor.execute(sql_query)
@@ -73,8 +79,7 @@ class JoinCleanData:
         fk_key_dict = {}
         query = f"SELECT {sql_id}, {sql_column_name} FROM {table};"
         for index, value in self._sql_id_query(query):
-            fk_key_dict[value] = int(round(float(index), 0))
-        print(fk_key_dict)
+            fk_key_dict[value] = int(float(index))
         return fk_key_dict
 
     def values_from_list(self, column_name, df):
@@ -182,11 +187,6 @@ class JoinCleanData:
         self.merged_df = self.reassign_values('degree_id', 'degree', 'degree', self.merged_df, 'Degrees')
         print('Reassigning values to uni column')
         self.merged_df = self.reassign_values('uni_id', 'uni', 'uni', self.merged_df, 'Universities')
-        # print('Reassigning values to strengths column')
-        # self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
-        # print('Reassigning values to weaknesses column')
-        # self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
-        # print('Reassignment completed')
 
     def staff_roles_load(self):
         table = 'Staff_Roles'
@@ -201,7 +201,6 @@ class JoinCleanData:
             values += tup
             values += ', '
         values = values[:-2]
-        #print(values)
         query = f"""
                 INSERT INTO {table} {column}
                 VALUES {values};
@@ -210,7 +209,8 @@ class JoinCleanData:
         query = f"SELECT * FROM {table};"
         return self._sql_query(query)
 
-    def staff_table_load(self, df):
+    def staff_table_load(self):
+        df = self.merged_df
         table = 'Staff'
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
         table_fields = list(table_schema.keys())
@@ -237,7 +237,8 @@ class JoinCleanData:
         query = f"SELECT * FROM {table};"
         return self._sql_query(query)
 
-    def assign_fk_staff(self, df):
+    def assign_fk_staff(self):
+        df = self.merged_df
         table = 'Staff'
         list_entries = []
         fk_dict_trainers = {}
@@ -248,9 +249,7 @@ class JoinCleanData:
             query = f"SELECT staff_id, first_name, last_name FROM Staff WHERE role_id = {role_id};"
             records = self.__cursor.execute(query)
             all_values = records.fetchall()
-            #print(all_values)
             list_entries.append(all_values)
-        print(list_entries)
 
         for entry in list_entries[0]:
             fk_dict_trainers[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
@@ -259,14 +258,13 @@ class JoinCleanData:
 
         df['trainers_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
         df['trainers_id'] = df['trainers_id'].map(fk_dict_trainers)
-        #print(df[['trainer_first_name', 'trainers_id']])
-
         df['talent_id'] = df['inv_by_firstname'].map(str) + ' ' + df['inv_by_lastname'].map(str)
         df['talent_id'] = df['talent_id'].map(fk_dict_talent)
-        #print(df[['inv_by_firstname', 'talent_id']])
         return df[['trainers_id', 'talent_id']]
 
-    def candidates_load(self, df):
+    def candidates_load(self):
+        print('Loading Candidates table into database')
+        df = self.merged_df
         table = 'Candidates'
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
         table_fields = list(table_schema.keys())
@@ -295,3 +293,17 @@ class JoinCleanData:
             values += tup
             query = f"INSERT INTO {table} {columns} VALUES {values}"
             self._sql_query(query)
+        print('Candidates table loaded in database')
+
+    def assign_fk_candidates(self):
+        df = self.merged_df
+        table = 'Candidates'
+        fk_dict_candidates = {}
+        query = f"SELECT CONCAT(first_name, ' ', last_name), candidate_id FROM {table};"
+        records = self.__cursor.execute(query)
+        all_values = records.fetchall()
+        for candidate in all_values:
+            fk_dict_candidates[candidate[0]] = candidate[1]
+        df['candidate_id'] = df['first_name'] + ' ' + df['last_name']
+        df['candidate_id'] = df['candidate_id'].map(fk_dict_candidates)
+        return df[['candidate_id']]
