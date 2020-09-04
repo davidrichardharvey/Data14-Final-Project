@@ -6,7 +6,7 @@
 
 {"Name": "Sparta_Scores", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Sparta_Days", "sparta_day_id"]}, "psych_percentage": {"variable type": "DECIMAL", "if null": ""}, "pres_percentage": {"variable type": "DECIMAL", "if null": ""}}}
 
-{"Name": "Universities", "Schema": {"uni_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "uni": {"variable type": "VARCHAR(100)", "if null": "NOT NULL"}}}
+{"Name": "Universities", "Schema": {"uni_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "uni": {"variable type": "VARCHAR(50)", "if null": "NOT NULL"}}}
 
 {"Name": "Degrees", "Schema": {"degree_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "degree": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
 
@@ -24,7 +24,7 @@
 
 {"Name": "Trainees", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}}}
 
-{"Name": "Courses", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_name": {"variable type": "VARCHAR(20)", "if null": ""}, "start_date": {"variable type": "DATE", "if null": ""}, "duration": {"variable type": "INT", "if null": ""}}}
+{"Name": "Courses", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_name": {"variable type": "VARCHAR(20)", "if null": ""}, "start_date": {"variable type": "DATE", "if null": ""}, "end_date": {"variable type": "DATE", "if null": ""}}}
 
 {"Name": "Course_Trainer", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}, "trainer_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Staff", "staff_id"]}}}
 
@@ -37,4 +37,3 @@
 {"Name": "Scores", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "week": {"variable type": "INT", "if null": "NOT NULL"}, "analytical": {"variable type": "INT", "if null": "NOT NULL"}, "independent": {"variable type": "INT", "if null": "NOT NULL"}, "determined": {"variable type": "INT", "if null": "NOT NULL"}, "professional": {"variable type": "INT", "if null": "NOT NULL"}, "studious": {"variable type": "INT", "if null": "NOT NULL"}, "imaginative": {"variable type": "INT", "if null": "NOT NULL"}}}
 
 {"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
-
