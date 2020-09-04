@@ -218,10 +218,11 @@ class JoinCleanData:
             table_df = pd.DataFrame(columns=columns)
             return table_df
 
-    def create_tools_slice(self, table_df):
+    def create_tools_slice(self):
         # Returns a table for all the information in the data frame corresponding to the tools scores
         new_info = []
         distinct_tools = []
+        candidates_df = self.creating_table_df('Candidates')
         self.merged_df['candidate_id'] = range(1, 4717)  # Will need to remove and find a way to deal with this. Can't do it yet though because dev is only up to step 2
 
         # Getting a list of all of the tools
@@ -239,16 +240,20 @@ class JoinCleanData:
             for tool in distinct_tools:
                 try:
                     score = self.merged_df['tech_self_score'].to_dict()[row][tool]
+                    new_info.append({'candidate_id': row, 'tool': tool, 'score': score})
                     df_exists = True
                 except TypeError:
                     score = np.nan
                 except KeyError:
                     score = np.nan
-                new_info.append({'candidate_id': row, 'tool': tool, 'score': score})
-            rows_updated += 1
         if df_exists:
             new_df = pd.DataFrame(new_info)
             new_df = new_df[~pd.isna(new_df['score'])]
+            new_df['id_t_s'] = new_df['candidate_id'].map(str) + new_df['tool'] + new_df['score'].map(str)
+            table_df = self.creating_table_df('Tools')
+            table_df['id_t_s'] = table_df['candidate_id'].map(str) + table_df['tool'] + table_df['score'].map(str)
+            new_df = new_df[~new_df['id_t_s'].isin(table_df['id_t_s'])]
+            new_df.drop('id_t_s', inplace=True, axis=1)
             return [True, new_df]
         else:
             return [False]
@@ -273,7 +278,6 @@ class JoinCleanData:
         # Filters out the rows that contain null values in non-nullable columns
         for column in not_null_columns:
             new_info_df = new_info_df[~pd.isna(new_info_df[column])]
-
 
         new_df = pd.concat([table_df, new_info_df]).drop_duplicates().reset_index(drop=True)
         return new_df
