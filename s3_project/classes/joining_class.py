@@ -187,6 +187,11 @@ class JoinCleanData:
         self.merged_df = self.reassign_values('degree_id', 'degree', 'degree', self.merged_df, 'Degrees')
         print('Reassigning values to uni column')
         self.merged_df = self.reassign_values('uni_id', 'uni', 'uni', self.merged_df, 'Universities')
+#         print('Reassigning values to strengths column')
+#         self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
+#         print('Reassigning values to weaknesses column')
+#         self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
+#         print('Reassignment completed')
 
     def staff_roles_load(self):
         table = 'Staff_Roles'
