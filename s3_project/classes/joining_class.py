@@ -1,8 +1,8 @@
 from s3_project.functions import all_merges
-# from s3_project.classes.academy_class import Academy
-# from s3_project.classes.talent_csv_cleaning import TalentCsv
-# from s3_project.classes.cleaning_txt import TextFiles
-# from s3_project.classes.applicant_info_class import ApplicantInfoClean
+from s3_project.classes.academy_class import Academy
+from s3_project.classes.talent_csv_cleaning import TalentCsv
+from s3_project.classes.cleaning_txt import TextFiles
+from s3_project.classes.applicant_info_class import ApplicantInfoClean
 from s3_project.Config.config_manager import find_hidden_variable, find_variable
 
 import pandas as pd
@@ -13,20 +13,20 @@ import numpy as np
 from sqlalchemy import create_engine
 
 
-# academy_dataframe = Academy()
-# monthly_talent_info = TalentCsv()
-# talent_txt = TextFiles()
-# talent_applicant_info = ApplicantInfoClean()
+academy_dataframe = Academy()
+monthly_talent_info = TalentCsv()
+talent_txt = TextFiles()
+talent_applicant_info = ApplicantInfoClean()
 
 
 class JoinCleanData:
     def __init__(self):
-        # self.sparta_day_txt = talent_txt.df
-        # self.monthly_applicant_csv = monthly_talent_info.df_talent_csv
-        # self.academy_scores_csv = academy_dataframe.cleaned_df
-        # self.applicant_info_json = talent_applicant_info.df_talent_json
-        # self.merged_df = all_merges(self.monthly_applicant_csv, self.sparta_day_txt, self.applicant_info_json,
-        #                             self.academy_scores_csv)
+        self.sparta_day_txt = talent_txt.df
+        self.monthly_applicant_csv = monthly_talent_info.df_talent_csv
+        self.academy_scores_csv = academy_dataframe.cleaned_df
+        self.applicant_info_json = talent_applicant_info.df_talent_json
+        self.merged_df = all_merges(self.monthly_applicant_csv, self.sparta_day_txt, self.applicant_info_json,
+                                    self.academy_scores_csv)
 
         self.merged_df = pd.read_pickle('merged_dataframe.pkl')
         self.staff_roles_dict = {'Trainer': 1, 'Talent': 2}
@@ -63,6 +63,7 @@ class JoinCleanData:
         self.assign_fk_staff()
         # self.candidates_load()
         self.assign_fk_candidates()
+        self.create_tools_slice()
 
     def _sql_id_query(self, sql_query):
         return self.__cursor.execute(sql_query)
@@ -396,27 +397,4 @@ class JoinCleanData:
         else:
             return [False]
 
-    def create_slice(self, table_df, auto_inc_col=None, not_null_columns=()):
-        # Creates a new data frame by slicing the large data frame and dropping rows already in the database
-        new_info = []
-        if auto_inc_col:
-            self.merged_df[auto_inc_col] = np.nan  # Creates a column of NaN values for the auto incrementing PK
-
-        # Creates a slice of the data frame
-        for column in table_df.columns:
-            new_column_info = self.merged_df[column]
-            new_info.append(new_column_info)
-        new_info_df = pd.concat(new_info, axis=1)
-
-        # Filters out the rows that already exist in the data
-        for column in table_df.columns:
-            if column != auto_inc_col:
-                new_info_df = new_info_df[~new_info_df[column].isin(table_df[column])]
-
-        # Filters out the rows that contain null values in non-nullable columns
-        for column in not_null_columns:
-            new_info_df = new_info_df[~pd.isna(new_info_df[column])]
-
-        new_df = pd.concat([table_df, new_info_df]).drop_duplicates().reset_index(drop=True)
-        return new_df
 
