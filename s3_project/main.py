@@ -32,6 +32,4 @@ print(test.assign_fk_staff(df))
 # # test.candidates_load(df)
 # #
 # # print(test.merged_df.loc[test.merged_df['last_name']=='Brien'])
-pd.set_option('display.max_rows', None)
-print(test.merged_df['uni_id'])
 test.candidates_load(df)

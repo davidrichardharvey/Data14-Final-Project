@@ -210,40 +210,6 @@ class JoinCleanData:
         query = f"SELECT * FROM {table};"
         return self._sql_query(query)
 
-    def candidates_load(self, df):
-        table = 'Candidates'
-        table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
-        table_fields = list(table_schema.keys())
-        table_fields.pop(0)
-        col_join = ', '.join(table_fields)
-        columns = f"({col_join})"
-        candidates = df[['first_name', 'last_name', 'gender', 'uni_id', 'degree_id', 'talent_id',
-                         'self_development', 'geo_flex', 'financial_support_self', 'result', 'course_type_id']]
-        candidates = candidates.fillna(1)
-        candidates['uni_id'] = candidates['uni_id'].apply(lambda x: int(float(x)))
-        candidates['degree_id'] = candidates['degree_id'].apply(lambda x: int(float(x)))
-        candidates['talent_id'] = candidates['talent_id'].apply(lambda x: int(float(x)))
-        candidates['course_type_id'] = candidates['course_type_id'].apply(lambda x: int(float(x)))
-        print(candidates)
-        unique_df = candidates.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-        unique_df = unique_df.rename(columns={'course_type_id':'course_interest_id', 'self_development':'self_dev',
-                                              'financial_support_self':'self_finance', 'invited_by':'talent_id'})
-        values = ''
-        unique_df['last_name'] = unique_df['last_name'].map(lambda x: x.replace("'", ' '))
-        for i in range(999):
-            tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', '{unique_df.loc[i, 'gender']}', "\
-                  f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'talent_id']}', "\
-                  f"'{unique_df.loc[i, 'self_dev']}', '{unique_df.loc[i, 'geo_flex']}', " \
-                  f"'{unique_df.loc[i, 'self_finance']}', '{unique_df.loc[i, 'result']}', " \
-                  f"'{unique_df.loc[i, 'course_interest_id']}')"
-            values += tup
-            values += ', '
-        values = values[:-2]
-        query = f"INSERT INTO {table} {columns} VALUES {values}"
-        self._sql_query(query)
-        query = f"SELECT * FROM {table}"
-        return self._sql_query(query)
-
     def staff_table_load(self, df):
         table = 'Staff'
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
@@ -259,16 +225,13 @@ class JoinCleanData:
         talent.rename({'inv_by_firstname': 'first_name', 'inv_by_lastname': 'last_name'}, axis=1, inplace=True)
         df_joined = pd.concat([trainers, talent])
         df_joined = df_joined.dropna()
-        print(df_joined)
         unique_df = df_joined.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-        print(unique_df)
         values = ''
         for i in range(len(unique_df)):
             tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', {unique_df.loc[i, 'role_id']})"
             values += tup
             values += ', '
         values = values[:-2]
-        print(values)
         query = f"INSERT INTO {table} {columns} VALUES {values};"
         self._sql_query(query)
         query = f"SELECT * FROM {table};"
@@ -290,9 +253,9 @@ class JoinCleanData:
         print(list_entries)
 
         for entry in list_entries[0]:
-            fk_dict_trainers[entry[1] + ' ' + entry[2]] = int(round(float(entry[0]), 0))
+            fk_dict_trainers[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
         for entry in list_entries[1]:
-            fk_dict_talent[entry[1] + ' ' + entry[2]] = int(round(float(entry[0]), 0))
+            fk_dict_talent[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
 
         df['trainers_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
         df['trainers_id'] = df['trainers_id'].map(fk_dict_trainers)
@@ -302,3 +265,33 @@ class JoinCleanData:
         df['talent_id'] = df['talent_id'].map(fk_dict_talent)
         #print(df[['inv_by_firstname', 'talent_id']])
         return df[['trainers_id', 'talent_id']]
+
+    def candidates_load(self, df):
+        table = 'Candidates'
+        table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
+        table_fields = list(table_schema.keys())
+        table_fields.pop(0)
+        col_join = ', '.join(table_fields)
+        columns = f"({col_join})"
+        candidates = df[['first_name', 'last_name', 'gender', 'uni_id', 'degree_id', 'talent_id',
+                         'self_development', 'geo_flex', 'financial_support_self', 'result', 'course_type_id']]
+        candidates = candidates.fillna(1)
+        candidates['uni_id'] = candidates['uni_id'].apply(lambda x: int(float(x)))
+        candidates['degree_id'] = candidates['degree_id'].apply(lambda x: int(float(x)))
+        candidates['talent_id'] = candidates['talent_id'].apply(lambda x: int(float(x)))
+        candidates['course_type_id'] = candidates['course_type_id'].apply(lambda x: int(float(x)))
+        unique_df = candidates.drop_duplicates(keep='first', inplace=False, ignore_index=True)
+        unique_df = unique_df.rename(columns={'course_type_id':'course_interest_id', 'self_development':'self_dev',
+                                              'financial_support_self':'self_finance', 'invited_by':'talent_id'})
+        unique_df['last_name'] = unique_df['last_name'].map(lambda x: x.replace("'", ' '))
+        unique_df['first_name'] = unique_df['first_name'].map(lambda x: x.replace("'", ' '))
+        for i in range(len(unique_df)):
+            values = ''
+            tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', '{unique_df.loc[i, 'gender']}', "\
+                  f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'talent_id']}', "\
+                  f"'{unique_df.loc[i, 'self_dev']}', '{unique_df.loc[i, 'geo_flex']}', " \
+                  f"'{unique_df.loc[i, 'self_finance']}', '{unique_df.loc[i, 'result']}', " \
+                  f"'{unique_df.loc[i, 'course_interest_id']}')"
+            values += tup
+            query = f"INSERT INTO {table} {columns} VALUES {values}"
+            self._sql_query(query)
