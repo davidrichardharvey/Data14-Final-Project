@@ -28,17 +28,18 @@ class JoinCleanData:
         # self.merged_df = all_merges(self.monthly_applicant_csv, self.sparta_day_txt, self.applicant_info_json,
         #                             self.academy_scores_csv)
 
-        # self.merged_df = pd.read_pickle('merged_dataframe.pkl')
-        # self.staff_roles_dict = {'Trainer': 1, 'Talent': 2}
-        # self.Cities = self.merged_df[['city']]
-        # self.Course_Interests = self.merged_df[['course_interest']]
-        # self.Courses = self.merged_df[['course_name', 'course_start_date', 'course_length']]
-        # self.Degrees = self.merged_df[['degree']]
-        # self.Locations = self.merged_df[['location']]
-        # # self.Staff_Roles = pd.DataFrame({'role': ['Trainer', 'Talent']})
-        # self.Strengths = self.merged_df[['strengths']]
-        # self.Universities = self.merged_df[['uni']]
-        # self.Weaknesses = self.merged_df[['weaknesses']]
+        self.merged_df = pd.read_pickle('merged_dataframe.pkl')
+        self.staff_roles_dict = {'Trainer': 1, 'Talent': 2}
+        self.Cities = self.merged_df[['city']]
+        self.Course_Interests = self.merged_df[['course_interest']]
+        self.Courses = self.merged_df[['course_name', 'course_start_date', 'course_length']]
+        self.Degrees = self.merged_df[['degree']]
+        self.Locations = self.merged_df[['location']]
+        self.Staff_Roles = pd.DataFrame({'role': ['Trainer', 'Talent']})
+        self.Strengths = self.merged_df[['strengths']]
+        self.Universities = self.merged_df[['uni']]
+        self.Weaknesses = self.merged_df[['weaknesses']]
+        #
 
         # Establishing connection to server
         self.__server = find_hidden_variable('server')
@@ -53,16 +54,15 @@ class JoinCleanData:
         self.__sparta = pyodbc.connect(self.__connection_string)
         self.__cursor = self.__sparta.cursor()
 
-        # self.__params = urllib.parse.quote_plus(self.__connection_string)
-        # self.__engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.__params)
-        # self.input_tables_to_sql()
-        # self.apply_reassign()
-        # self.staff_roles_load()
-        # self.staff_table_load()
-        # self.assign_fk_staff()
+        self.__params = urllib.parse.quote_plus(self.__connection_string)
+        self.__engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.__params)
+        self.input_tables_to_sql()
+        self.apply_reassign()
+        self.staff_roles_load()
+        self.staff_table_load()
+        self.assign_fk_staff()
         # self.candidates_load()
-        # self.assign_fk_candidates()
-
+        self.assign_fk_candidates()
 
     def _sql_id_query(self, sql_query):
         return self.__cursor.execute(sql_query)
@@ -120,7 +120,7 @@ class JoinCleanData:
         df_keys = df.columns
         column_map_dict = {}
         for i in range(len(df_keys)):
-            column_map_dict[df_keys[i]] = column_keys[i+1]
+            column_map_dict[df_keys[i]] = column_keys[i + 1]
         id_df = id_df.rename(columns=column_map_dict)
         return id_df
 
@@ -205,18 +205,6 @@ class JoinCleanData:
         # self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
         #
         # print('Reassignment completed')
-
-
-
-
-
-
-=======
-#         print('Reassigning values to strengths column')
-#         self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
-#         print('Reassigning values to weaknesses column')
-#         self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
-#         print('Reassignment completed')
 
     def staff_roles_load(self):
         table = 'Staff_Roles'
@@ -309,14 +297,14 @@ class JoinCleanData:
         candidates['talent_id'] = candidates['talent_id'].apply(lambda x: int(float(x)))
         candidates['course_type_id'] = candidates['course_type_id'].apply(lambda x: int(float(x)))
         unique_df = candidates.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-        unique_df = unique_df.rename(columns={'course_type_id':'course_interest_id', 'self_development':'self_dev',
-                                              'financial_support_self':'self_finance', 'invited_by':'talent_id'})
+        unique_df = unique_df.rename(columns={'course_type_id': 'course_interest_id', 'self_development': 'self_dev',
+                                              'financial_support_self': 'self_finance', 'invited_by': 'talent_id'})
         unique_df['last_name'] = unique_df['last_name'].map(lambda x: x.replace("'", ' '))
         unique_df['first_name'] = unique_df['first_name'].map(lambda x: x.replace("'", ' '))
         for i in range(len(unique_df)):
             values = ''
-            tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', '{unique_df.loc[i, 'gender']}', "\
-                  f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'talent_id']}', "\
+            tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', '{unique_df.loc[i, 'gender']}', " \
+                  f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'talent_id']}', " \
                   f"'{unique_df.loc[i, 'self_dev']}', '{unique_df.loc[i, 'geo_flex']}', " \
                   f"'{unique_df.loc[i, 'self_finance']}', '{unique_df.loc[i, 'result']}', " \
                   f"'{unique_df.loc[i, 'course_interest_id']}')"
@@ -336,15 +324,15 @@ class JoinCleanData:
             fk_dict_candidates[candidate[0]] = candidate[1]
         df['candidate_id'] = df['first_name'] + ' ' + df['last_name']
         df['candidate_id'] = df['candidate_id'].map(fk_dict_candidates)
-        return df[['candidate_id']]
-
-
-
+        self.merged_df = df
+        self.merged_df.set_index('candidate_id', inplace=True)
 
     # Charlie's Code
     def creating_table_df(self, table_name):
         # Creates a data frame with all of the existing data for that table in the database
-        sql_table = list(self._sql_query(f"SELECT * FROM {table_name}"))
+
+        print(self.merged_df)
+        sql_table = list(self._sql_id_query(f"SELECT * FROM {table_name}"))
         sql_table_list = []
         for row in sql_table:
             sql_table_list.append(list(row))
@@ -365,14 +353,10 @@ class JoinCleanData:
             table_df = pd.DataFrame(columns=columns)
             return table_df
 
-
     def create_tools_slice(self):
         # Returns a table for all the information in the data frame corresponding to the tools scores
         new_info = []
         distinct_tools = []
-        candidates_df = self.creating_table_df('Candidates')
-        self.merged_df['candidate_id'] = range(1,
-                                               4717)  # Will need to remove and find a way to deal with this. Can't do it yet though because dev is only up to step 2
 
         # Getting a list of all of the tools
         for row in self.merged_df['tech_self_score']:
@@ -384,29 +368,33 @@ class JoinCleanData:
         # Creating a data frame with all of the scores for the different tools for each candidate
         rows_updated = 0
         df_exists = False
-        for row in self.merged_df['candidate_id']:
-            print(f'Rows Updated: {rows_updated}')
+        for row in self.merged_df.index:
+            if rows_updated % 100 == 0:
+                print(f'Rows Updated: {rows_updated}')
             for tool in distinct_tools:
                 try:
-                    score = self.merged_df['tech_self_score'].to_dict()[row][tool]
+                    score = self.merged_df['tech_self_score'].to_dict()[int(row)][tool]
                     new_info.append({'candidate_id': row, 'tool': tool, 'score': score})
                     df_exists = True
                 except TypeError:
                     score = np.nan
                 except KeyError:
                     score = np.nan
+                except ValueError:
+                    score = np.nan
+            rows_updated += 1
         if df_exists:
             new_df = pd.DataFrame(new_info)
             new_df = new_df[~pd.isna(new_df['score'])]
-            new_df['id_t_s'] = new_df['candidate_id'].map(str) + new_df['tool'] + new_df['score'].map(str)
+            new_df['id_t_s'] = new_df['candidate_id'].map(str).map(lambda x: x.replace('.0', '')) + \
+                               new_df['tool'] + new_df['score'].map(str)
             table_df = self.creating_table_df('Tools')
             table_df['id_t_s'] = table_df['candidate_id'].map(str) + table_df['tool'] + table_df['score'].map(str)
             new_df = new_df[~new_df['id_t_s'].isin(table_df['id_t_s'])]
             new_df.drop('id_t_s', inplace=True, axis=1)
-            return [True, new_df]
+            new_df.to_sql('Tools', con=self.__engine, index=False, if_exists='append', chunksize=rows_updated)
         else:
             return [False]
-
 
     def create_slice(self, table_df, auto_inc_col=None, not_null_columns=()):
         # Creates a new data frame by slicing the large data frame and dropping rows already in the database
@@ -431,3 +419,4 @@ class JoinCleanData:
 
         new_df = pd.concat([table_df, new_info_df]).drop_duplicates().reset_index(drop=True)
         return new_df
+

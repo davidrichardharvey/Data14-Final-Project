@@ -4,7 +4,6 @@ from s3_project.classes.create_database import ProjectDatabase
 from s3_project.classes.joining_class import JoinCleanData
 
 new = ProjectDatabase(to_create=False)  # Change value to true to create database
-merged_df = JoinCleanData()
 
 # new = ProjectDatabase(to_create=False)  # Change value to true to create database
 merged_dfs = JoinCleanData()
