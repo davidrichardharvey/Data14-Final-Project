@@ -38,3 +38,166 @@
 
 {"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
 
+<<<<<<< HEAD
+=======
+{"Name": "Locations", "Schema": {"location_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location": {"variable type": "VARCHAR(25)", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Days", "Schema": {"sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location_id": {"variable type": "INT", "if null": "", "FK": ["Locations", "location_id"]}, "date": {"variable type": "DATE", "if null": ""}}}
+
+{"Name": "Tools", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "tool": {"variable type": "VARCHAR(30)", "if null": "NOT NULL", "PK": ""}, "score": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Scores", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Sparta_Days", "sparta_day_id"]}, "psych_percentage": {"variable type": "DECIMAL", "if null": ""}, "pres_percentage": {"variable type": "DECIMAL", "if null": ""}}}
+
+{"Name": "Universities", "Schema": {"uni_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "uni": {"variable type": "VARCHAR(50)", "if null": "NOT NULL"}}}
+
+{"Name": "Degrees", "Schema": {"degree_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "degree": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Course_Interests", "Schema": {"course_type_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_type": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+{"Name": "Cities", "Schema": {"city_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "city": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Contact_Details", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": ""}, "email": {"variable type": "VARCHAR(100)", "if null": ""}, "phone": {"variable type": "CHAR(16)", "if null": ""}, "city_id": {"variable type": "INT", "if null": ""}, "address": {"variable type": "VARCHAR(50)", "if null": ""}, "postcode": {"variable type": "VARCHAR(8)", "if null": ""}}}
+
+{"Name": "Candidates", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "gender": {"variable type": "CHAR(1)", "if null": ""}, "uni_id": {"variable type": "INT", "if null": "", "FK": ["Universities", "uni_id"]}, "degree_id": {"variable type": "INT", "if null": "", "FK": ["Degrees", "degree_id"]}, "invited_by": {"variable type": "INT", "if null": "", "FK": ["Staff", "staff_id"]}, "self_dev": {"variable type": "BIT", "if null": ""}, "geo_flex": {"variable type": "BIT", "if null": ""}, "self_finance": {"variable type": "BIT", "if null": ""}, "result": {"variable type": "BIT", "if null": ""}, "course_interest_id": {"variable type": "INT", "if null": "", "FK": ["Course_Interests", "course_type_id"]}}}
+
+{"Name": "Candidate_Strengths", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Candidate_Weaknesses", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Trainees", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}}}
+
+{"Name": "Courses", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_name": {"variable type": "VARCHAR(20)", "if null": ""}, "start_date": {"variable type": "DATE", "if null": ""}, "end_date": {"variable type": "DATE", "if null": ""}}}
+
+{"Name": "Course_Trainer", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}, "trainer_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Staff", "staff_id"]}}}
+
+{"Name": "Staff", "Schema": {"staff_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "role_id": {"variable type": "INT", "if null": "NOT NULL", "FK": ["Staff_Roles", "role_id"]}}}
+
+{"Name": "Strengths", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Weaknesses", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Scores", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "week": {"variable type": "INT", "if null": "NOT NULL"}, "analytical": {"variable type": "INT", "if null": "NOT NULL"}, "independent": {"variable type": "INT", "if null": "NOT NULL"}, "determined": {"variable type": "INT", "if null": "NOT NULL"}, "professional": {"variable type": "INT", "if null": "NOT NULL"}, "studious": {"variable type": "INT", "if null": "NOT NULL"}, "imaginative": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+{"Name": "Locations", "Schema": {"location_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location": {"variable type": "VARCHAR(25)", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Days", "Schema": {"sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location_id": {"variable type": "INT", "if null": "", "FK": ["Locations", "location_id"]}, "date": {"variable type": "DATE", "if null": ""}}}
+
+{"Name": "Tools", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "tool": {"variable type": "VARCHAR(30)", "if null": "NOT NULL", "PK": ""}, "score": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Scores", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Sparta_Days", "sparta_day_id"]}, "psych_percentage": {"variable type": "DECIMAL", "if null": ""}, "pres_percentage": {"variable type": "DECIMAL", "if null": ""}}}
+
+{"Name": "Universities", "Schema": {"uni_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "uni": {"variable type": "VARCHAR(50)", "if null": "NOT NULL"}}}
+
+{"Name": "Degrees", "Schema": {"degree_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "degree": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Course_Interests", "Schema": {"course_type_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_type": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+{"Name": "Cities", "Schema": {"city_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "city": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Contact_Details", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": ""}, "email": {"variable type": "VARCHAR(100)", "if null": ""}, "phone": {"variable type": "CHAR(16)", "if null": ""}, "city_id": {"variable type": "INT", "if null": ""}, "address": {"variable type": "VARCHAR(50)", "if null": ""}, "postcode": {"variable type": "VARCHAR(8)", "if null": ""}}}
+
+{"Name": "Candidates", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "gender": {"variable type": "CHAR(1)", "if null": ""}, "uni_id": {"variable type": "INT", "if null": "", "FK": ["Universities", "uni_id"]}, "degree_id": {"variable type": "INT", "if null": "", "FK": ["Degrees", "degree_id"]}, "invited_by": {"variable type": "INT", "if null": "", "FK": ["Staff", "staff_id"]}, "self_dev": {"variable type": "BIT", "if null": ""}, "geo_flex": {"variable type": "BIT", "if null": ""}, "self_finance": {"variable type": "BIT", "if null": ""}, "result": {"variable type": "BIT", "if null": ""}, "course_interest_id": {"variable type": "INT", "if null": "", "FK": ["Course_Interests", "course_type_id"]}}}
+
+{"Name": "Candidate_Strengths", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Candidate_Weaknesses", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Trainees", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}}}
+
+{"Name": "Courses", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_name": {"variable type": "VARCHAR(20)", "if null": ""}, "start_date": {"variable type": "DATE", "if null": ""}, "end_date": {"variable type": "DATE", "if null": ""}}}
+
+{"Name": "Course_Trainer", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}, "trainer_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Staff", "staff_id"]}}}
+
+{"Name": "Staff", "Schema": {"staff_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "role_id": {"variable type": "INT", "if null": "NOT NULL", "FK": ["Staff_Roles", "role_id"]}}}
+
+{"Name": "Strengths", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Weaknesses", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Scores", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "week": {"variable type": "INT", "if null": "NOT NULL"}, "analytical": {"variable type": "INT", "if null": "NOT NULL"}, "independent": {"variable type": "INT", "if null": "NOT NULL"}, "determined": {"variable type": "INT", "if null": "NOT NULL"}, "professional": {"variable type": "INT", "if null": "NOT NULL"}, "studious": {"variable type": "INT", "if null": "NOT NULL"}, "imaginative": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+{"Name": "Locations", "Schema": {"location_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location": {"variable type": "VARCHAR(25)", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Days", "Schema": {"sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location_id": {"variable type": "INT", "if null": "", "FK": ["Locations", "location_id"]}, "date": {"variable type": "DATE", "if null": ""}}}
+
+{"Name": "Tools", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "tool": {"variable type": "VARCHAR(30)", "if null": "NOT NULL", "PK": ""}, "score": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Scores", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Sparta_Days", "sparta_day_id"]}, "psych_percentage": {"variable type": "DECIMAL", "if null": ""}, "pres_percentage": {"variable type": "DECIMAL", "if null": ""}}}
+
+{"Name": "Universities", "Schema": {"uni_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "uni": {"variable type": "VARCHAR(50)", "if null": "NOT NULL"}}}
+
+{"Name": "Degrees", "Schema": {"degree_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "degree": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Course_Interests", "Schema": {"course_type_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_type": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+{"Name": "Cities", "Schema": {"city_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "city": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Contact_Details", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": ""}, "email": {"variable type": "VARCHAR(100)", "if null": ""}, "phone": {"variable type": "CHAR(16)", "if null": ""}, "city_id": {"variable type": "INT", "if null": ""}, "address": {"variable type": "VARCHAR(50)", "if null": ""}, "postcode": {"variable type": "VARCHAR(8)", "if null": ""}}}
+
+{"Name": "Candidates", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "gender": {"variable type": "CHAR(1)", "if null": ""}, "uni_id": {"variable type": "INT", "if null": "", "FK": ["Universities", "uni_id"]}, "degree_id": {"variable type": "INT", "if null": "", "FK": ["Degrees", "degree_id"]}, "invited_by": {"variable type": "INT", "if null": "", "FK": ["Staff", "staff_id"]}, "self_dev": {"variable type": "BIT", "if null": ""}, "geo_flex": {"variable type": "BIT", "if null": ""}, "self_finance": {"variable type": "BIT", "if null": ""}, "result": {"variable type": "BIT", "if null": ""}, "course_interest_id": {"variable type": "INT", "if null": "", "FK": ["Course_Interests", "course_type_id"]}}}
+
+{"Name": "Candidate_Strengths", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Candidate_Weaknesses", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Trainees", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}}}
+
+{"Name": "Courses", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_name": {"variable type": "VARCHAR(20)", "if null": ""}, "start_date": {"variable type": "DATE", "if null": ""}, "end_date": {"variable type": "DATE", "if null": ""}}}
+
+{"Name": "Course_Trainer", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}, "trainer_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Staff", "staff_id"]}}}
+
+{"Name": "Staff", "Schema": {"staff_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "role_id": {"variable type": "INT", "if null": "NOT NULL", "FK": ["Staff_Roles", "role_id"]}}}
+
+{"Name": "Strengths", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Weaknesses", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Scores", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "week": {"variable type": "INT", "if null": "NOT NULL"}, "analytical": {"variable type": "INT", "if null": "NOT NULL"}, "independent": {"variable type": "INT", "if null": "NOT NULL"}, "determined": {"variable type": "INT", "if null": "NOT NULL"}, "professional": {"variable type": "INT", "if null": "NOT NULL"}, "studious": {"variable type": "INT", "if null": "NOT NULL"}, "imaginative": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+{"Name": "Locations", "Schema": {"location_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location": {"variable type": "VARCHAR(25)", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Days", "Schema": {"sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location_id": {"variable type": "INT", "if null": "", "FK": ["Locations", "location_id"]}, "date": {"variable type": "DATE", "if null": ""}}}
+
+{"Name": "Tools", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "tool": {"variable type": "VARCHAR(30)", "if null": "NOT NULL", "PK": ""}, "score": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Sparta_Scores", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Sparta_Days", "sparta_day_id"]}, "psych_percentage": {"variable type": "DECIMAL", "if null": ""}, "pres_percentage": {"variable type": "DECIMAL", "if null": ""}}}
+
+{"Name": "Universities", "Schema": {"uni_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "uni": {"variable type": "VARCHAR(100)", "if null": "NOT NULL"}}}
+
+{"Name": "Degrees", "Schema": {"degree_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "degree": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Course_Interests", "Schema": {"course_type_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_type": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+{"Name": "Cities", "Schema": {"city_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "city": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Contact_Details", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": ""}, "email": {"variable type": "VARCHAR(100)", "if null": ""}, "phone": {"variable type": "CHAR(16)", "if null": ""}, "city_id": {"variable type": "INT", "if null": ""}, "address": {"variable type": "VARCHAR(50)", "if null": ""}, "postcode": {"variable type": "VARCHAR(8)", "if null": ""}}}
+
+{"Name": "Candidates", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "gender": {"variable type": "CHAR(1)", "if null": ""}, "uni_id": {"variable type": "INT", "if null": "", "FK": ["Universities", "uni_id"]}, "degree_id": {"variable type": "INT", "if null": "", "FK": ["Degrees", "degree_id"]}, "invited_by": {"variable type": "INT", "if null": "", "FK": ["Staff", "staff_id"]}, "self_dev": {"variable type": "BIT", "if null": ""}, "geo_flex": {"variable type": "BIT", "if null": ""}, "self_finance": {"variable type": "BIT", "if null": ""}, "result": {"variable type": "BIT", "if null": ""}, "course_interest_id": {"variable type": "INT", "if null": "", "FK": ["Course_Interests", "course_type_id"]}}}
+
+{"Name": "Candidate_Strengths", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Candidate_Weaknesses", "Schema": {"candidate_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Strengths", "keyword_id"]}}}
+
+{"Name": "Trainees", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}}}
+
+{"Name": "Courses", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "course_name": {"variable type": "VARCHAR(20)", "if null": ""}, "start_date": {"variable type": "DATE", "if null": ""}, "duration": {"variable type": "INT", "if null": ""}}}
+
+{"Name": "Course_Trainer", "Schema": {"course_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Courses", "course_id"]}, "trainer_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Staff", "staff_id"]}}}
+
+{"Name": "Staff", "Schema": {"staff_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "first_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "last_name": {"variable type": "VARCHAR(30)", "if null": "NOT NULL"}, "role_id": {"variable type": "INT", "if null": "NOT NULL", "FK": ["Staff_Roles", "role_id"]}}}
+
+{"Name": "Strengths", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Weaknesses", "Schema": {"keyword_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "keyword": {"variable type": "VARCHAR(20)", "if null": "NOT NULL"}}}
+
+{"Name": "Scores", "Schema": {"trainee_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "", "FK": ["Candidates", "candidate_id"]}, "week": {"variable type": "INT", "if null": "NOT NULL"}, "analytical": {"variable type": "INT", "if null": "NOT NULL"}, "independent": {"variable type": "INT", "if null": "NOT NULL"}, "determined": {"variable type": "INT", "if null": "NOT NULL"}, "professional": {"variable type": "INT", "if null": "NOT NULL"}, "studious": {"variable type": "INT", "if null": "NOT NULL"}, "imaginative": {"variable type": "INT", "if null": "NOT NULL"}}}
+
+{"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
+
+>>>>>>> e1eefbc745288cdabc743483cb1150ca7949e591
