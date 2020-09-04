@@ -210,7 +210,6 @@ class JoinCleanData:
         query = f"SELECT * FROM {table};"
         return self._sql_query(query)
 
-
     def candidates_load(self, df):
         table = 'Candidates'
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
@@ -244,35 +243,6 @@ class JoinCleanData:
         self._sql_query(query)
         query = f"SELECT * FROM {table}"
         return self._sql_query(query)
-
-    # def candidates_load(self, df):
-    #     table = 'Candidates'
-    #     table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
-    #     table_fields = list(table_schema.keys())
-    #     table_fields.pop(0)
-    #     col_join = ', '.join(table_fields)
-    #     columns = f"({col_join})"
-    #     candidates = df[['first_name', 'last_name', 'gender', 'uni_id', 'degree_id', 'invited_by',
-    #                      'self_dev', 'geo_flex', 'self_finance', 'result', 'course_interest_id']]
-    #     candidates = candidates['uni_id'].apply(lambda x: int(float(x)))
-    #     candidates = candidates['degree_id'].apply(lambda x: int(float(x)))
-    #     candidates = candidates['talent_id'].apply(lambda x: int(float(x)))
-    #     candidates = candidates['course_type_id'].apply(lambda x: int(float(x)))
-    #     unique_df = candidates.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-    #     values = ''
-    #     for i in range(len(unique_df)):
-    #         tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', '{unique_df.loc[i, 'gender']}', "\
-    #               f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'invited_by']}', "\
-    #               f"'{unique_df.loc[i, 'self_dev']}', '{unique_df.loc[i, 'geo_flex']}', " \
-    #               f"'{unique_df.loc[i, 'self_finance']}', '{unique_df.loc[i, 'result']}', " \
-    #               f"'{unique_df.loc[i, 'course_interest_id']}')"
-    #         values += tup
-    #         values += ', '
-    #     values = values[:-2]
-    #     query = f"INSERT INTO {table} {columns} VALUES {values}"
-    #     self._sql_query(query)
-    #     query = f"SELECT * FROM {table}"
-    #     return self._sql_query(query)
 
     def staff_table_load(self, df):
         table = 'Staff'
