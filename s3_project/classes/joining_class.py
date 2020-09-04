@@ -1,8 +1,9 @@
-# from s3_project.functions import all_merges
+from s3_project.functions import all_merges
 # from s3_project.classes.academy_class import Academy
 # from s3_project.classes.talent_csv_cleaning import TalentCsv
 # from s3_project.classes.cleaning_txt import TextFiles
 # from s3_project.classes.applicant_info_class import ApplicantInfoClean
+
 from s3_project.Config.config_manager import find_hidden_variable
 from s3_project.Config.config_manager import find_variable
 import pandas as pd
@@ -12,6 +13,7 @@ import pyodbc
 from sqlalchemy import create_engine
 import warnings
 warnings.filterwarnings("ignore")
+
 
 # academy_dataframe = Academy()
 # monthly_talent_info = TalentCsv()
@@ -56,6 +58,12 @@ class JoinCleanData:
         self.__engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % self.__params)
         self.input_tables_to_sql()
         self.apply_reassign()
+        self.staff_roles_load()
+        self.staff_table_load()
+        self.assign_fk_staff()
+        self.candidates_load()
+        self.assign_fk_candidates()
+
 
     def _sql_id_query(self, sql_query):
         return self.__cursor.execute(sql_query)
@@ -73,7 +81,7 @@ class JoinCleanData:
         fk_key_dict = {}
         query = f"SELECT {sql_id}, {sql_column_name} FROM {table};"
         for index, value in self._sql_id_query(query):
-            fk_key_dict[value] = index
+            fk_key_dict[value] = int(float(index))
         return fk_key_dict
 
     def values_from_list(self, column_name, df):
@@ -181,11 +189,13 @@ class JoinCleanData:
         self.merged_df = self.reassign_values('degree_id', 'degree', 'degree', self.merged_df, 'Degrees')
         print('Reassigning values to uni column')
         self.merged_df = self.reassign_values('uni_id', 'uni', 'uni', self.merged_df, 'Universities')
+
         # print('Reassigning values to strengths column')
         # self.merged_df['strengths'] = self.merged_df['strengths'].apply(self.reassign_strengths)
         # print('Reassigning values to weaknesses column')
         # self.merged_df['weaknesses'] = self.merged_df['weaknesses'].apply(self.reassign_weaknesses)
         print('Reassignment completed')
+
 
     def staff_roles_load(self):
         table = 'Staff_Roles'
@@ -208,14 +218,14 @@ class JoinCleanData:
         query = f"SELECT * FROM {table};"
         return self._sql_query(query)
 
-    def staff_table_load(self, df):
+    def staff_table_load(self):
+        df = self.merged_df
         table = 'Staff'
         table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
         table_fields = list(table_schema.keys())
         table_fields.pop(0)
         col_join = ', '.join(table_fields)
         columns = f"({col_join})"
-
         trainers = df[['trainer_first_name', 'trainer_last_name']]
         trainers['role_id'] = self.staff_roles_dict['Trainer']
         trainers.rename({'trainer_first_name': 'first_name', 'trainer_last_name': 'last_name'}, axis=1, inplace=True)
@@ -225,7 +235,6 @@ class JoinCleanData:
         df_joined = pd.concat([trainers, talent])
         df_joined = df_joined.dropna()
         unique_df = df_joined.drop_duplicates(keep='first', inplace=False, ignore_index=True)
-
         values = ''
         for i in range(len(unique_df)):
             tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', {unique_df.loc[i, 'role_id']})"
@@ -237,7 +246,8 @@ class JoinCleanData:
         query = f"SELECT * FROM {table};"
         return self._sql_query(query)
 
-    def assign_fk_staff(self, df):
+    def assign_fk_staff(self):
+        df = self.merged_df
         table = 'Staff'
         list_entries = []
         fk_dict_trainers = {}
@@ -250,9 +260,10 @@ class JoinCleanData:
             all_values = records.fetchall()
             list_entries.append(all_values)
         for entry in list_entries[0]:
-            fk_dict_trainers[entry[1] + ' ' + entry[2]] = entry[0]
+            fk_dict_trainers[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
         for entry in list_entries[1]:
-            fk_dict_talent[entry[1] + ' ' + entry[2]] = entry[0]
+            fk_dict_talent[entry[1] + ' ' + entry[2]] = int(float(entry[0]))
+
 
         df['trainer_id'] = df['trainer_first_name'].map(str) + ' ' + df['trainer_last_name'].map(str)
         df['trainer_id'] = df['trainer_id'].map(fk_dict_trainers)
@@ -279,3 +290,37 @@ class JoinCleanData:
         self._sql_query(query)
         self.__sparta.commit()
 
+    def candidates_load(self):
+        print('Loading Candidates table into database')
+        df = self.merged_df
+        table = 'Candidates'
+        table_schema = ast.literal_eval(find_variable(table, 'TABLE SCHEMAS'))
+        table_fields = list(table_schema.keys())
+        table_fields.pop(0)
+        col_join = ', '.join(table_fields)
+        columns = f"({col_join})"
+        candidates = df[['first_name', 'last_name', 'gender', 'uni_id', 'degree_id', 'talent_id',
+                         'self_development', 'geo_flex', 'financial_support_self', 'result', 'course_type_id']]
+        candidates = candidates.fillna(1)
+        candidates['uni_id'] = candidates['uni_id'].apply(lambda x: int(float(x)))
+        candidates['degree_id'] = candidates['degree_id'].apply(lambda x: int(float(x)))
+        candidates['talent_id'] = candidates['talent_id'].apply(lambda x: int(float(x)))
+        candidates['course_type_id'] = candidates['course_type_id'].apply(lambda x: int(float(x)))
+        unique_df = candidates.drop_duplicates(keep='first', inplace=False, ignore_index=True)
+        unique_df = unique_df.rename(columns={'course_type_id':'course_interest_id', 'self_development':'self_dev',
+                                              'financial_support_self':'self_finance', 'invited_by':'talent_id'})
+        unique_df['last_name'] = unique_df['last_name'].map(lambda x: x.replace("'", ' '))
+        unique_df['first_name'] = unique_df['first_name'].map(lambda x: x.replace("'", ' '))
+        for i in range(len(unique_df)):
+            values = ''
+            tup = f"('{unique_df.loc[i, 'first_name']}', '{unique_df.loc[i, 'last_name']}', '{unique_df.loc[i, 'gender']}', "\
+                  f"'{unique_df.loc[i, 'uni_id']}', '{unique_df.loc[i, 'degree_id']}', '{unique_df.loc[i, 'talent_id']}', "\
+                  f"'{unique_df.loc[i, 'self_dev']}', '{unique_df.loc[i, 'geo_flex']}', " \
+                  f"'{unique_df.loc[i, 'self_finance']}', '{unique_df.loc[i, 'result']}', " \
+                  f"'{unique_df.loc[i, 'course_interest_id']}')"
+            values += tup
+            query = f"INSERT INTO {table} {columns} VALUES {values}"
+            self._sql_query(query)
+        print('Candidates table loaded in database')
+
+   

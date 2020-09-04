@@ -38,6 +38,8 @@
 
 {"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
 
+<<<<<<< HEAD
+=======
 {"Name": "Locations", "Schema": {"location_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location": {"variable type": "VARCHAR(25)", "if null": "NOT NULL"}}}
 
 {"Name": "Sparta_Days", "Schema": {"sparta_day_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "location_id": {"variable type": "INT", "if null": "", "FK": ["Locations", "location_id"]}, "date": {"variable type": "DATE", "if null": ""}}}
@@ -198,3 +200,4 @@
 
 {"Name": "Staff_Roles", "Schema": {"role_id": {"variable type": "INT", "if null": "NOT NULL", "PK": "IDENTITY(1,1)"}, "role": {"variable type": "VARCHAR(15)", "if null": "NOT NULL"}}}
 
+>>>>>>> e1eefbc745288cdabc743483cb1150ca7949e591
